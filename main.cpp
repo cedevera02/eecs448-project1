@@ -1,3 +1,5 @@
+//Team No.: 8 
+
 //time spent: 20 hrs to finish
 #include"game.h"
 
