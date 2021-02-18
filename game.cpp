@@ -33,7 +33,18 @@ void game::setUp()
 }
 void game::setUpIO(player* p)
 {
+    string name = '';
+    string name0 = '';
+    string shipCount = '';
+    string shipCount0 = '';
 
+    cout << "Player 1, please input your name: " >> name;
+    cout << "\nPlease enter the number of ships you could like to have?(1-6)" >> shipCount;
+    m_player1 = new player(name, stoi(shipCount););
+
+    cout << "Player 2, please input your name: " >> name0;
+    cout << "\nPlease enter the number of ships you could like to have?(1-6)" >> shipCount0;
+    m_player2 = new player(name0, stoi(shipCount0););
 }
 void game::shipIO(player* p)
 {
