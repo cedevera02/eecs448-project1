@@ -1,5 +1,8 @@
 #include"game.h"
 #include<iostream>
+#include <string>
+
+using namespace std;
 
 game::game()
 {
@@ -34,7 +37,30 @@ void game::setUpIO(player* p)
 }
 void game::shipIO(player* p)
 {
+    string xLocation1, yLocation1, orientation1;
+    string xLocation2, yLocation2, orientation2;
 
+    for (int i = 0; i < m_player1 -> m_shipCount; i++)
+    {
+        cout<< "What x - position would you like to place your "<<i+1<<" x "<<i+1<<" ship: ";
+        cin>> xLocation1;
+        cout<< "What y - position would you like to place your "<<i+1<<" x "<<i+1<<" ship: ";
+        cin>> yLocation1;
+        cout<< "What orientation would you like to place your "<<i+1<<" x "<<i+1<<" ship: ";
+        cin>> orientation1;
+        m_player1 -> m_ships = new ship(i+1 , orientation1, stoi(xLocation1), stoi(yLocation1));
+    }
+
+    for (int i = 0; i < m_player2 -> m_shipCount; i++)
+    {
+        cout<< "What x - position would you like to place your "<<i+1<<" x "<<i+1<<" ship: ";
+        cin>> xLocation2;
+        cout<< "What y - position would you like to place your "<<i+1<<" x "<<i+1<<" ship: ";
+        cin>> yLocation2;
+        cout<< "What orientation would you like to place your "<<i+1<<" x "<<i+1<<" ship: ";
+        cin>> orientation2;
+        m_player2 -> m_ships = new ship(i+1 , orientation2, stoi(xLocation2), stoi(yLocation2));
+    }
 }
 void game::fullTurn()
 {
