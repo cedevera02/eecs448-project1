@@ -34,7 +34,6 @@ std::string board::drawShipBoard()
     return finalString;
 
 //concatenate strings with "\n" to a create a block string
-}
 //returns a string of both boards to be printed
 //this will be used once the game begins
 std::string board::drawFullBoard()
