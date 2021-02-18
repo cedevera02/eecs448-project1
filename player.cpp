@@ -2,7 +2,9 @@
 
 player::player(std::string name, int shipCount)
 {
-
+    m_name = name;
+    m_shipCount = shipCount;
+    m_ships = new ship* [m_shipCount];
 }
 player::~player()
 {
