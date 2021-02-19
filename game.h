@@ -7,6 +7,7 @@ class game
 {
     private:
     bool m_gameOver;//true if a winner has been declared
+    std::string m_clearScreenString;
     int m_tempX;
     int m_tempY;
 

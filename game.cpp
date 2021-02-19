@@ -5,6 +5,14 @@ using namespace std;
 game::game()
 {
     m_gameOver = false;
+    m_tempX = 0;
+    m_tempY = 0;
+
+    m_clearScreenString = "";
+    for(int i=0; i<70;i++)//we construct this string once, that way we don't have to run the loop
+    {//every time we want to clear the screen
+        m_clearScreenString += "\n";
+    }
 }
 game::~game()
 {
@@ -101,12 +109,7 @@ void game::closingScreen()
 }
 void game::clearScreen()
 {
-    std::string s = "";
-    for(int i=0; i<70;i++)
-    {
-        s += "\n";
-    }
-    std::cout<<s;
+    std::cout<<m_clearScreenString;
 }
 void game::switchPlayerPrompt()
 {
