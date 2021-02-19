@@ -1,9 +1,13 @@
 #include"player.h"
+#include"board.h"
+#include"game.h"
+#include <iostream>
 
 player::player(std::string name, int shipCount)
 {
     m_name = name;
     m_shipCount = shipCount;
+
     m_ships = new ship* [m_shipCount];
     for(int i=0; i<m_shipCount; i++)
     {
@@ -12,7 +16,7 @@ player::player(std::string name, int shipCount)
 }
 player::~player()
 {
-    for(int i=0; i<m_shipCount; i++)
+    for (int i = 0; i < m_shipCount; i++)
     {
         delete m_ships[i];
     }
@@ -21,8 +25,101 @@ player::~player()
 
 bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 {
+    bool isvalid = true;
+    int tempx = xLoc;
+    int tempy = yLoc;
+    if (orien == true)
+    {
+  
+        //board b;
+        if (tempx < 10 && tempy < 10) {
+            for (int i = 0; i < size; i++)
+            {
+                if (tempx < 10 && tempy < 10) {
+                    if (m_board.m_shipGrid[tempx][tempy] == '.')
+                    {
+                       // m_board.m_shipGrid[tempx][tempy] = 'o';
+                        tempx = tempx + 1;
+                    }
+                    else {
+                        isvalid = false;
+                        return isvalid;
+                        //std::cout << "spot is occupied";
+                    }
+                }
+                else {
+                    isvalid = false;
+                    return isvalid;
+                    //std::cout << "Invalid option ; beyond the board boundary";
+                }
 
+            }
+        }
+        else {
+            isvalid = false;
+            return isvalid;
+            //std::cout << "Invalid option";
+        }
+    }
+    else {
+
+
+        //board b;
+        if (tempx < 10 && tempy < 10) {
+            for (int i = 0; i < size; i++)
+            {
+                if (tempx < 10 && tempy < 10) {
+                    if (m_board.m_shipGrid[tempx][tempy] == '.')
+                    {
+                       // m_board.m_shipGrid[tempx][tempy] = 'o';
+                        tempy = tempy + 1;
+                    }
+                    else {
+                        isvalid = false;
+                        return isvalid;
+                       /* std::cout << "spot is occupied";*/
+                    }
+                }
+                else {
+                    isvalid = false;
+                    return isvalid;
+                 //   std::cout << "Invalid option ; beyond the board boundary";
+                }
+
+            }
+        }
+        else {
+            isvalid = false;
+            return isvalid;
+           /* std::cout << "Invalid option";*/
+        }
+
+    }
+    if (orien == true) {
+        for (int i = 0; i < size; i++)
+        {
+
+            if (m_board.m_shipGrid[tempx][tempy] == '.')
+            {
+                m_board.m_shipGrid[tempx][tempy] = 'o';
+                tempx = tempx + 1;
+            }
+        }
+    }
+    else {
+        for (int i = 0; i < size; i++)
+        {
+
+            if (m_board.m_shipGrid[tempx][tempy] == '.')
+            {
+                m_board.m_shipGrid[tempx][tempy] = 'o';
+                tempy = tempy + 1;
+            }
+        }
+    }
+    return isvalid;
 }
+
 //returns "HIT!", "Miss", "Ship of size <s> destroyed!"
 void player::playerTurn(int x, int y, bool hitCheck)
 {
@@ -41,6 +138,7 @@ bool player::shoot(int x, int y)
 //when the opponent attacks, this function updates the ship grid of the player that is being attacked
 std::string player::updatePlayerShotAt(int x, int y)
 {
+
     if(hitCheck(x,y) == true)
     {
         m_board.m_shipGrid[x][y] = '!';//update ship grid
@@ -52,10 +150,12 @@ std::string player::updatePlayerShotAt(int x, int y)
         else return "**HIT**";
     }
     else return "**Miss**";
+
 }
 //returns true if hit, false otherwise
 bool player::hitCheck(int x, int y)
 {
+
     if(m_board.m_shipGrid[x][y] == 'o') return true;
     else return false;
 }
