@@ -94,7 +94,8 @@ ship* player::shipIdentifier(int x, int y)
 //retuns true if the player loses (shipCount == sinkCount), false otherwise
 bool player::loserCheck()
 {
-
+    if( m_shipcount == m_sinkcount) return true;
+    else return false;
 }
 //returns the full board of the player
 std::string player::printBoard()
