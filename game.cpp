@@ -120,7 +120,17 @@ void game::fullTurn()
 }
 void game::turnIO(player* p)
 {
-//check for valid input using player.shoot() method
+    int ASCII_OFFSET = 65;
+    int xLocTemp, yLocTemp;
+    string coordinatesTemp = "";
+    
+    cout<< p -> printBoard();
+    cout << "Please enter a letter (A-J), followed by number (1-10): ";
+    
+    xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
+    coordinatesTemp.erase(0,1);
+    yLocTemp = stoi(coordinatesTemp) - 1;
+    p->
 }
 void game::closingScreen()
 {
