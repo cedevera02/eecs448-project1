@@ -21,7 +21,7 @@ class player
     std::string updatePlayerShotAt(int x, int y);//returns "**HIT!**", "**Miss**", "Ship of size <s> destroyed!", updates the ships and ship board when the opponent fires 
         bool hitCheck(int x, int y);//returns true if hit, false otherwise, this is called when the opponent attacks
         int updateShip(int x, int y);//if the shot is a hit, updates the ships and return the ship size if ship is sunk, returns 0 if not sunk
-            ship shipIdentifier(int x, int y);//returns the ship that occupies the coordinates (x,y)
+            ship* shipIdentifier(int x, int y);//returns the ship that occupies the coordinates (x,y)
     bool loserCheck();//retuns true if the player loses (shipCount == sinkCount), false otherwise
     std::string printBoard();//returns the full board of the player
     std::string printShipBoard();//used in shipIO

@@ -58,15 +58,34 @@ bool player::hitCheck(int x, int y)
 //updates the ships if any have been hit
 int player::updateShip(int x, int y)
 {
-    ship s = shipIdentifier(x,y);
-    s.incrementShipHitCount();
-    if(s.sinkCheck() == true) return s.getSize();
+    ship* s = shipIdentifier(x,y);
+    s -> incrementShipHitCount();
+    if(s -> sinkCheck() == true) return s -> getSize();
     else return 0;
 }
 //returns the ship that occupies the coordinates (x,y)
-ship player::shipIdentifier(int x, int y)
+ship* player::shipIdentifier(int x, int y)
 {
-
+    for(int i=0; i < getShipCount(); i++)//iterate through every ship
+    {
+        for(int j=0; j < m_ships[i] -> getSize(); j++)//iterate along the length of the ship
+        {
+            if(m_ships[i] -> getOrien() == true)//if horizontal
+            {
+                if(m_ships[i] -> getXLoc() + j == x && m_ships[i] -> getYLoc() == y)
+                   {//check each location along the length of the ship to see if it matches the shot
+                       return m_ships[i];
+                   }
+            }
+            else//if vertical
+            {
+                if(m_ships[i] -> getXLoc() == x && m_ships[i] -> getYLoc() + j == y)
+                   {//check each location along the length of the ship to see if it matches the shot
+                       return m_ships[i];
+                   }
+            }
+        }
+    }
 }
 //retuns true if the player loses (shipCount == sinkCount), false otherwise
 bool player::loserCheck()
