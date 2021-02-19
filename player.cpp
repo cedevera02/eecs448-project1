@@ -29,7 +29,7 @@ bool player::shoot(int x, int y)
 {
     if(x < 0 || x > 9) return false;
     if(y < 0 || y > 9) return false;
-    if(m_shotGrid[x][y] != '.') return false;
+    if(m_board.m_shotGrid[x][y] != '.') return false;
     else return true;
 }
 //returns "**HIT!**", "**Miss**", "Ship of size <s> destroyed!"
