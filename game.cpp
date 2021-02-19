@@ -60,19 +60,62 @@ void game::setUpIO()
     string name0 = "";
     string shipCount = "";
     string shipCount0 = "";
+    
+    bool successInput = false;
 
     cout << "Player 1, please input your name: ";
     cin >> name;
     cout << "Please enter the number of ships you could like to have? (1-6): ";
-    cin >> shipCount;
-    m_player1 = new player(name, stoi(shipCount));
+    
+    //adding in some exception handling
+    
+     while(!successInput) //Runs until user gives a proper input
+    {
+        cin >> shipCount;
+
+        try
+        {
+            m_player1 = new player(name, stoi(shipCount));
+            if( stoi(shipCount) > 6 || stoi(shipCount) < 1 ) { //Checks 1-6 constraint
+                cout << "Please enter a number from 1-6 only";
+            }
+            else {
+                successInput = true;
+            }
+        }
+        catch(const std::exception& e) //Runs if user inputs anything but a number
+        {
+            std::cerr << "Please enter a number" << '\n';
+        }
+    }
+
+    successInput = false; //Reset success flag
 
     cout << "Player 2, please input your name: ";
     cin>> name0;
     cout << "Please enter the number of ships you could like to have? (1-6): ";
-    cin>> shipCount0;
-    m_player2 = new player(name0, stoi(shipCount0));
+    
+    while(!successInput) //Handle exceptions again
+    {
+        cin >> shipCount0;
+
+        try
+        {
+            m_player2 = new player(name, stoi(shipCount0));
+            if( stoi(shipCount0) > 6 || stoi(shipCount0) < 1 ) {
+                cout << "Please enter a number from 1-6 only";
+            }
+            else {
+                successInput = true;
+            }
+        }
+        catch(const exception &e)
+        {
+            cout << "Please enter a number";
+        }
+    }
 }
+
 void game::shipIO(player* p)
 {
     int ASCII_OFFSET = 65;
