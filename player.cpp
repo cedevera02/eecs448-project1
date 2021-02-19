@@ -65,6 +65,11 @@ std::string player::printBoard()
     return m_board.drawFullBoard();
 }
 
+std::string player::printShipBoard()
+{
+    return m_board.drawShipBoard();
+}
+
 int player::getShipCount()
 {
     return m_shipCount;
