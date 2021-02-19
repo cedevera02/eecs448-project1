@@ -15,11 +15,7 @@ player::~player()
     delete m_ships;
 }
 
-void player::placeShip(ship s)
-{
-
-}
-bool player::buildShip(int size, bool orien, int xLoc, int yLoc)
+bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 {
 
 }
@@ -31,7 +27,10 @@ void player::playerTurn(int x, int y)
 //returns true for valid input, false otherwise
 bool player::shoot(int x, int y)
 {
-
+    if(x < 0 || x > 9) return false;
+    if(y < 0 || y > 9) return false;
+    if(m_shotGrid[x][y] != '.') return false;
+    else return true;
 }
 //returns "**HIT!**", "**Miss**", "Ship of size <s> destroyed!"
 //when the opponent attacks, this function updates the ship grid of the player that is being attacked
@@ -65,6 +64,16 @@ std::string player::printBoard()
     return m_board.drawFullBoard();
 }
 
+std::string player::printShipBoard()
+{
+    return m_board.drawShipBoard();
+}
+
+int player::getShipCount()
+{
+    return m_shipCount;
+}
+
 void player::setName()
 {
 
@@ -72,5 +81,5 @@ void player::setName()
 
 std::string player::getName()
 {
-
+    return (m_name);
 }
