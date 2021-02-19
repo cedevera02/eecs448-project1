@@ -22,7 +22,8 @@ bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 //returns "HIT!", "Miss", "Ship of size <s> destroyed!"
 void player::playerTurn(int x, int y, bool hitCheck)
 {
-
+    if(hitCheck == true) m_board.m_shotGrid[x][y] = 'X';
+    else m_board.m_shotGrid[x][y] = 'O';
 }
 //returns true for valid input, false otherwise
 bool player::shoot(int x, int y)
@@ -39,7 +40,7 @@ std::string player::updatePlayerShotAt(int x, int y)
     if(hitCheck(x,y) == true)
     {
         m_board.m_shipGrid[x][y] = '!';//update ship grid
-        int temp = updateShips(x,y);//update ships returns an int if a ship is destroyed
+        int temp = updateShip(x,y);//update ships returns an int if a ship is destroyed
         if(temp != 0)
         {
             return ("HIT! Ship of size " + std::to_string(temp) + " destroyed!");
@@ -55,7 +56,7 @@ bool player::hitCheck(int x, int y)
     else return false;
 }
 //updates the ships if any have been hit
-int player::updateShips(int x, int y)
+int player::updateShip(int x, int y)
 {
     ship s = shipIdentifier(x,y);
     s.incrementShipHitCount();
@@ -86,11 +87,6 @@ std::string player::printShipBoard()
 int player::getShipCount()
 {
     return m_shipCount;
-}
-
-void player::setName()
-{
-
 }
 
 std::string player::getName()
