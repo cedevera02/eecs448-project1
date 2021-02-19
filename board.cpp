@@ -16,11 +16,10 @@ board::board()
 //this will be used in the beginning of the game when the user is placing ships
 std::string board::drawShipBoard()
 {
-    std::string finalString = "   A B C D E F G H I J\n";
+    std::string finalString = "  1 2 3 4 5 6 7 8 9 10\n";
     for(int i=0;i<10;i++)
     {
-        finalString += std::to_string(i + 1) + " ";
-        if(i != 9) finalString += " ";//this keeps the "10" formatted since it's 2 digits
+        finalString += std::string(1, static_cast<char>(65 + i)) + " ";
         for(int j=0;j<10;j++)
         {
             finalString += (m_shipGrid[i][j] + std::string(" "));
@@ -35,11 +34,10 @@ std::string board::drawShipBoard()
 std::string board::drawFullBoard()
 {
     std::string finalString = "\nShot board: \n";
-    finalString += "   A B C D E F G H I J\n";
+    finalString += "  1 2 3 4 5 6 7 8 9 10\n";
     for(int i=0;i<10;i++)
     {
-        finalString += std::to_string(i + 1) + " ";
-        if(i != 9) finalString += " ";//this keeps the "10" formatted since it's 2 digits
+        finalString += std::string(1, static_cast<char>(65 + i)) + " ";
         for(int j=0;j<10;j++)
         {
             finalString += (m_shipGrid[i][j] + std::string(" "));
@@ -50,14 +48,13 @@ std::string board::drawFullBoard()
     finalString += "\n=========================\n";
 
     finalString += "\nShip board: \n";
-    finalString += "   A B C D E F G H I J\n";
+    finalString += "  1 2 3 4 5 6 7 8 9 10\n";
     for(int i=0;i<10;i++)
     {
-        finalString += std::to_string(i + 1) + " ";
-        if(i != 9) finalString += " ";//this keeps the "10" formatted since it's 2 digits
+        finalString += std::string(1, static_cast<char>(65 + i)) + " ";
         for(int j=0;j<10;j++)
         {
-            finalString += (m_shotGrid[i][j] + std::string(" "));
+            finalString += (m_shipGrid[i][j] + std::string(" "));
         }
         finalString += "\n";
     }
