@@ -124,13 +124,13 @@ void game::turnIO(player* p)
 }
 void game::closingScreen()
 {
-    if( m_player1->loserCheck = true)
+    if( m_player1->loserCheck() == true)
     {
-        cout << "Congratulations " << m_player2 << ", you have won!\n\n";
+        cout << "Congratulations " << m_player2->getName() << ", you have won!\n\n";
     }
-    if( m_player1->loserCheck = false)
+    else( m_player1->loserCheck() == false)
     {
-        cout << "Congratulations " << m_player1 << ", you have won!\n\n";
+        cout << "Congratulations " << m_player1->getName() << ", you have won!\n\n";
     }
 
     cout << "       _      _\n";
@@ -141,7 +141,6 @@ void game::closingScreen()
     cout << "  \_/ |_|\___|\__\___/|_|   \__, |\n";
     cout << "                             __/ |\n";
     cout << "                            |___/\n";
-}
 void game::clearScreen()
 {
     std::cout<<m_clearScreenString;
