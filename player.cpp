@@ -20,7 +20,7 @@ bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 
 }
 //returns "HIT!", "Miss", "Ship of size <s> destroyed!"
-void player::playerTurn(int x, int y)
+void player::playerTurn(int x, int y, bool hitCheck)
 {
 
 }
