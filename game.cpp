@@ -64,8 +64,8 @@ void game::shipIO(player* p)
         cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
         cin>> coordinatesTemp;
         
-        yLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
-        xLocTemp = stoi(to_string((coordinatesTemp[1])) ) - 1;
+        xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
+        yLocTemp = stoi(to_string((coordinatesTemp[1])) ) - 1;
 
         p -> buildAndPlaceShip(i+1, (orientationInputTemp == "H"), xLocTemp, yLocTemp);
     }
