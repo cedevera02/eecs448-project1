@@ -25,6 +25,8 @@ class player
             ship shipIdentifier(int x, int y);//returns the ship that occupies the coordinates (x,y)
     bool loserCheck();//retuns true if the player loses (shipCount == sinkCount), false otherwise
     std::string printBoard();//returns the full board of the player
+    
+    int getShipCount();
     void setName();
     std::string getName();
 

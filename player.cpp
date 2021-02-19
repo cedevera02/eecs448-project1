@@ -65,6 +65,11 @@ std::string player::printBoard()
     return m_board.drawFullBoard();
 }
 
+int player::getShipCount()
+{
+    return m_shipCount;
+}
+
 void player::setName()
 {
 
