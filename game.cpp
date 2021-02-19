@@ -31,6 +31,22 @@ void game::play()
     }
     closingScreen();
 }
+void game::testPlay()//creates 2 players with 3 ships each
+{//ships are placed in upper left corner of the board horizontally
+    m_player1 = new player("p1", 3);
+    m_player2 = new player("p2", 3);
+    for(int i=0; i < 3; i++)
+    {
+        m_player1 -> buildAndPlaceShip(i, true, 0, i);
+        m_player2 -> buildAndPlaceShip(i, true, 0, i);
+    }
+
+    while(m_gameOver == false)
+    {
+        fullTurn();
+    }
+    closingScreen();
+}
 void game::setUp()
 {
     setUpIO();
