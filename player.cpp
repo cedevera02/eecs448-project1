@@ -82,5 +82,5 @@ void player::setName()
 
 std::string player::getName()
 {
-
+    return (m_name);
 }
