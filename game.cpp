@@ -7,6 +7,8 @@ game::game()
     m_gameOver = false;
     m_tempX = 0;
     m_tempY = 0;
+    m_player1 = nullptr;
+    m_player2 = nullptr;
 
     m_clearScreenString = "";
     for(int i=0; i<70;i++)//we construct this string once, that way we don't have to run the loop
@@ -113,5 +115,7 @@ void game::clearScreen()
 }
 void game::switchPlayerPrompt()
 {
-
+    std::string dummy;
+    std::cout<<"\nPress enter when the next player is ready: ";
+    std::getline(std::cin, dummy);
 }

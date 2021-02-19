@@ -5,6 +5,10 @@ player::player(std::string name, int shipCount)
     m_name = name;
     m_shipCount = shipCount;
     m_ships = new ship* [m_shipCount];
+    for(int i=0; i<m_shipCount; i++)
+    {
+        m_ships[i] = nullptr;
+    }
 }
 player::~player()
 {
