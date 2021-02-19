@@ -128,7 +128,7 @@ void game::closingScreen()
     {
         cout << "Congratulations " << m_player2->getName() << ", you have won!\n\n";
     }
-    else( m_player1->loserCheck() == false)
+    else
     {
         cout << "Congratulations " << m_player1->getName() << ", you have won!\n\n";
     }
@@ -141,6 +141,8 @@ void game::closingScreen()
     cout << "  \_/ |_|\___|\__\___/|_|   \__, |\n";
     cout << "                             __/ |\n";
     cout << "                            |___/\n";
+}
+
 void game::clearScreen()
 {
     std::cout<<m_clearScreenString;
