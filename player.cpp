@@ -27,7 +27,10 @@ void player::playerTurn(int x, int y)
 //returns true for valid input, false otherwise
 bool player::shoot(int x, int y)
 {
-
+    if(x < 0 || x > 9) return false;
+    if(y < 0 || y > 9) return false;
+    if(m_shotGrid[x][y] != '.') return false;
+    else return true;
 }
 //returns "**HIT!**", "**Miss**", "Ship of size <s> destroyed!"
 //when the opponent attacks, this function updates the ship grid of the player that is being attacked
