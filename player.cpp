@@ -15,11 +15,7 @@ player::~player()
     delete m_ships;
 }
 
-void player::placeShip(ship s)
-{
-
-}
-bool player::buildShip(int size, bool orien, int xLoc, int yLoc)
+bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 {
 
 }

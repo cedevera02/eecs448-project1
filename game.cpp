@@ -67,7 +67,7 @@ void game::shipIO(player* p)
         yLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
         xLocTemp = stoi(to_string((coordinatesTemp[1])) ) - 1;
 
-        p -> buildShip(i+1, (orientationInputTemp == "H"), xLocTemp, yLocTemp);
+        p -> buildAndPlaceShip(i+1, (orientationInputTemp == "H"), xLocTemp, yLocTemp);
     }
 }
 void game::fullTurn()

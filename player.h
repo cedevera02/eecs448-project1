@@ -15,8 +15,7 @@ class player
     board m_board;
     player(std::string name, int shipCount);
     ~player();
-    void placeShip(ship s);//places ship into ship grid
-        bool buildShip(int size, bool orien, int xLoc, int yLoc);//returns true and creates new ship under m_ships on valid input, returns false and does nothing on invalid input
+    bool buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc);//returns true and creates new ship under m_ships on valid input, returns false and does nothing on invalid input
     void playerTurn(int x, int y);//this function updates the player's shot grid
         bool shoot(int x, int y);//returns true for valid input, false otherwise
     std::string updatePlayerShotAt(int x, int y);//returns "**HIT!**", "**Miss**", "Ship of size <s> destroyed!", updates the ships and ship board when the opponent fires 
