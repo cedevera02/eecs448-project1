@@ -34,7 +34,8 @@ std::string board::drawShipBoard()
 //this will be used once the game begins
 std::string board::drawFullBoard()
 {
-    std::string finalString = "   A B C D E F G H I J\n";
+    std::string finalString = "\nShot board: \n";
+    finalString += "   A B C D E F G H I J\n";
     for(int i=0;i<10;i++)
     {
         finalString += std::to_string(i + 1) + " ";
@@ -46,9 +47,10 @@ std::string board::drawFullBoard()
         finalString += "\n";
     }
 
-    finalString +='\n\n=========================\n\n';
+    finalString += "\n=========================\n";
 
-    std::string finalString = "   A B C D E F G H I J\n";
+    finalString += "\nShip board: \n";
+    finalString += "   A B C D E F G H I J\n";
     for(int i=0;i<10;i++)
     {
         finalString += std::to_string(i + 1) + " ";
@@ -60,5 +62,6 @@ std::string board::drawFullBoard()
         finalString += "\n";
     }
 
+    finalString += "\n";
     return finalString;
 }
