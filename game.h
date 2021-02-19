@@ -1,6 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 #include"player.h"
+#include<iostream>
 
 class game
 {
@@ -23,6 +24,5 @@ class game
     void closingScreen();//after a winner has been determined, print a closing screen stating the winner
     void clearScreen();//prints 70 "\n"'s to clear the screen
     void switchPlayerPrompt();//waits to press enter before switching players
-
 };
 #endif
