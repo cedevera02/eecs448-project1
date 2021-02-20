@@ -2,6 +2,7 @@
 
 player::player(std::string name, int shipCount)
 {
+    m_sinkCount = 0;
     m_name = name;
     m_shipCount = shipCount;
     m_ships = new ship* [m_shipCount];
@@ -183,7 +184,11 @@ int player::updateShip(int x, int y)
 {
     ship* s = shipIdentifier(x,y);
     s -> incrementShipHitCount();
-    if(s -> sinkCheck() == true) return s -> getSize();
+    if(s -> sinkCheck() == true)
+    {
+        m_sinkCount++;
+        return s -> getSize();
+    }
     else return 0;
 }
 //returns the ship that occupies the coordinates (x,y)
