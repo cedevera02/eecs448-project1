@@ -67,15 +67,30 @@ void game::setUpIO()
 
     cout << "Player 1, please input your name: ";
     cin >> name;
+shipcountcheck1:
     cout << "Please enter the number of ships you could like to have? (1-6): ";
     cin >> shipCount;
-    m_player1 = new player(name, stoi(shipCount));
-
-    cout << "Player 2, please input your name: ";
-    cin>> name0;
+    if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+    {
+        m_player1 = new player(name, stoi(shipCount));
+    }
+    else
+    {
+        cout << "Invalid entry \n";
+        goto shipcountcheck1;
+    }cout << "Player 2, please input your name: ";
+    cin >> name0;
+shipcountcheck2:
     cout << "Please enter the number of ships you could like to have? (1-6): ";
-    cin>> shipCount0;
-    m_player2 = new player(name0, stoi(shipCount0));
+    cin >> shipCount0;
+    if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+    {
+        m_player2 = new player(name0, stoi(shipCount0));
+    }
+    else {
+        cout << "Invalid entry \n";
+        goto shipcountcheck2;
+    }
 }
 
 void game::shipIO(player* p)
