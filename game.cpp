@@ -55,7 +55,7 @@ void game::setUp()
     switchPlayerPrompt();
     shipIO(m_player2);
     switchPlayerPrompt();
-    
+
     finishSetUpPrompt();
 }
 void game::setUpIO()
@@ -111,7 +111,6 @@ void game::fullTurn()
     std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
     m_gameOver = m_player2-> loserCheck();
     switchPlayerPrompt();
-    clearScreen();
 //PLAYER2 TURN
     if(m_gameOver == false)
     {
@@ -120,7 +119,6 @@ void game::fullTurn()
         std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
         m_gameOver = m_player1-> loserCheck();
         switchPlayerPrompt();
-        clearScreen();
     }
 }
 void game::turnIO(player* p)
@@ -163,6 +161,7 @@ void game::clearScreen()
 }
 void game::switchPlayerPrompt()
 {
+    clearScreen();
     std::string dummy;
     std::cout<<"\nPress enter when the next player is ready: ";
     std::cin.ignore();
