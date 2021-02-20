@@ -54,6 +54,9 @@ void game::setUp()
     shipIO(m_player1);
     switchPlayerPrompt();
     shipIO(m_player2);
+    switchPlayerPrompt();
+    
+    finishSetUpPrompt();
 }
 void game::setUpIO()
 {
@@ -162,6 +165,15 @@ void game::switchPlayerPrompt()
 {
     std::string dummy;
     std::cout<<"\nPress enter when the next player is ready: ";
+    std::cin.ignore();
+    std::getline(std::cin, dummy);
+}
+void game::finishSetUpPrompt()
+{
+    clearScreen();
+    std::string dummy;
+    std::cout<<"\n***The battle is about to begin!***\n";
+    std::cout<<m_player1 -> getName()<<", press enter when you are ready: ";
     std::cin.ignore();
     std::getline(std::cin, dummy);
 }
