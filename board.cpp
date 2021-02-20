@@ -43,7 +43,7 @@ std::string board::drawFullBoard()
         if(i != 9) finalString += " ";
         for(int j=0;j<10;j++)
         {
-            finalString += (m_shipGrid[i][j] + std::string(" "));
+            finalString += (m_shotGrid[i][j] + std::string(" "));
         }
         finalString += "\n";
     }
