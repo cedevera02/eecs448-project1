@@ -64,7 +64,7 @@ bool player::shoot(int x, int y)
 {
     if(x < 0 || x > 9) return false;
     if(y < 0 || y > 9) return false;
-    if(m_board.m_shotGrid[x][y] != '.') return false;
+    if(m_board.m_shotGrid[y][x] != '.') return false;
     else return true;
 }
 //returns "**HIT!**", "**Miss**", "Ship of size <s> destroyed!"
@@ -73,7 +73,7 @@ std::string player::updatePlayerShotAt(int x, int y)
 {
     if(hitCheck(x,y) == true)
     {
-        m_board.m_shipGrid[x][y] = '!';//update ship grid
+        m_board.m_shipGrid[y][x] = '!';//update ship grid
         int temp = updateShip(x,y);//update ships returns an int if a ship is destroyed
         if(temp != 0)
         {
@@ -86,7 +86,7 @@ std::string player::updatePlayerShotAt(int x, int y)
 //returns true if hit, false otherwise
 bool player::hitCheck(int x, int y)
 {
-    if(m_board.m_shipGrid[x][y] == 'o') return true;
+    if(m_board.m_shipGrid[y][x] == 'o') return true;
     else return false;
 }
 //updates the ships if any have been hit
