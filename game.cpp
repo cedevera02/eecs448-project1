@@ -54,9 +54,6 @@ void game::setUp()
     shipIO(m_player1);
     switchPlayerPrompt();
     shipIO(m_player2);
-    switchPlayerPrompt();
-    
-    finishSetUpPrompt();
 }
 void game::setUpIO()
 {
@@ -147,14 +144,14 @@ void game::closingScreen()
         cout << "Congratulations " << m_player1->getName() << ", you have won!\n\n";
     }
 
-    cout << "       _      _\n";
-    cout << "      (_)    | |\n";
-    cout << "__   ___  ___| |_ ___  _ __ _   _\n";
-    cout << "\ \ / / |/ __| __/ _ \| '__| | | |\n";
-    cout << " \ V /| | (__| || (_) | |  | |_| |\n";
-    cout << "  \_/ |_|\___|\__\___/|_|   \__, |\n";
-    cout << "                             __/ |\n";
-    cout << "                            |___/\n";
+    cout << "        _      _\n";
+    cout << "       (_)    | |\n";
+    cout << " __   ___  ___| |_ ___  _ __ _   _\n";
+    cout << " \ \ / / |/ __| __/ _ \| '__| | | |\n";
+    cout << "  \ V /| | (__| || (_) | |  | |_| |\n";
+    cout << "   \_/ |_|\___|\__\___/|_|   \__, |\n";
+    cout << "                              __/ |\n";
+    cout << "                             |___/\n";
 }
 
 void game::clearScreen()
@@ -165,15 +162,6 @@ void game::switchPlayerPrompt()
 {
     std::string dummy;
     std::cout<<"\nPress enter when the next player is ready: ";
-    std::cin.ignore();
-    std::getline(std::cin, dummy);
-}
-void game::finishSetUpPrompt()
-{
-    clearScreen();
-    std::string dummy;
-    std::cout<<"\n***The battle is about to begin!***\n";
-    std::cout<<m_player1 -> getName()<<", press enter when you are ready: ";
     std::cin.ignore();
     std::getline(std::cin, dummy);
 }
