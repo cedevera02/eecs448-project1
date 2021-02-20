@@ -52,9 +52,11 @@ void game::setUp()
     setUpIO();
 
     shipIO(m_player1);
-    switchPlayerPrompt();
+    finishTurnPrompt();
+    clearScreen();
     shipIO(m_player2);
-    switchPlayerPrompt();
+    finishTurnPrompt();
+    clearScreen();
 
     finishSetUpPrompt();
 }
@@ -71,11 +73,17 @@ void game::setUpIO()
     std::getline(std::cin, shipCount);
     m_player1 = new player(name, stoi(shipCount));
 
+    switchPlayerPrompt();
+    clearScreen();
+
     cout << "Player 2, please input your name: ";
     std::getline(std::cin, name0);
     cout << "Please enter the number of ships you could like to have? (1-6): ";
     std::getline(std::cin, shipCount0);
     m_player2 = new player(name0, stoi(shipCount0));
+
+    switchPlayerPrompt();
+    clearScreen();
 }
 
 void game::shipIO(player* p)
@@ -110,7 +118,11 @@ void game::fullTurn()
     m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
     std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
     m_gameOver = m_player2-> loserCheck();
-    switchPlayerPrompt();
+    
+    finishTurnPrompt();
+    clearScreen();
+    if(m_gameOver == false) switchPlayerPrompt();
+
 //PLAYER2 TURN
     if(m_gameOver == false)
     {
@@ -118,7 +130,10 @@ void game::fullTurn()
         m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
         std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
         m_gameOver = m_player1-> loserCheck();
-        switchPlayerPrompt();
+        
+        finishTurnPrompt();
+        clearScreen();
+        if(m_gameOver == false) switchPlayerPrompt();
     }
 }
 void game::turnIO(player* p)
@@ -161,7 +176,6 @@ void game::clearScreen()
 }
 void game::switchPlayerPrompt()
 {
-    clearScreen();
     std::string dummy;
     std::cout<<"\nPress enter when the next player is ready: ";
     std::getline(std::cin, dummy);
@@ -172,5 +186,11 @@ void game::finishSetUpPrompt()
     std::string dummy;
     std::cout<<"\n***The battle is about to begin!***\n";
     std::cout<<m_player1 -> getName()<<", press enter when you are ready: ";
+    std::getline(std::cin, dummy);
+}
+void game::finishTurnPrompt()
+{
+    std::string dummy;
+    std::cout<<"\nPress enter when you are finished with your turn: ";
     std::getline(std::cin, dummy);
 }
