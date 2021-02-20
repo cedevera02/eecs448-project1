@@ -145,8 +145,8 @@ bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 //returns "HIT!", "Miss", "Ship of size <s> destroyed!"
 void player::playerTurn(int x, int y, bool hitCheck)
 {
-    if(hitCheck == true) m_board.m_shotGrid[x][y] = 'X';
-    else m_board.m_shotGrid[x][y] = 'O';
+    if(hitCheck == true) m_board.m_shotGrid[y][x] = 'X';
+    else m_board.m_shotGrid[y][x] = 'O';
 }
 //returns true for valid input, false otherwise
 bool player::shoot(int x, int y)
