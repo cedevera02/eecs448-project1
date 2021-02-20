@@ -66,15 +66,15 @@ void game::setUpIO()
     string shipCount0 = "";
 
     cout << "Player 1, please input your name: ";
-    cin >> name;
+    std::getline(std::cin, name);
     cout << "Please enter the number of ships you could like to have? (1-6): ";
-    cin >> shipCount;
+    std::getline(std::cin, shipCount);
     m_player1 = new player(name, stoi(shipCount));
 
     cout << "Player 2, please input your name: ";
-    cin>> name0;
+    std::getline(std::cin, name0);
     cout << "Please enter the number of ships you could like to have? (1-6): ";
-    cin>> shipCount0;
+    std::getline(std::cin, shipCount0);
     m_player2 = new player(name0, stoi(shipCount0));
 }
 
@@ -91,9 +91,9 @@ void game::shipIO(player* p)
     {
         cout<< "\nPlacing ship of size "<<i+1<<": \n";
         cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
-        cin>> orientationInputTemp;
+        std::getline(std::cin, orientationInputTemp);
         cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
-        cin>> coordinatesTemp;
+        std::getline(std::cin, coordinatesTemp);
         
         xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
         coordinatesTemp.erase(0,1);
@@ -128,7 +128,7 @@ void game::turnIO(player* p)
     
     cout<< p -> printBoard();
     cout << "Please enter a coordinate (ex. F8): ";
-    cin >> coordinatesTemp;
+    std::getline(std::cin, coordinatesTemp);
     
     m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
     coordinatesTemp.erase(0,1);
@@ -164,7 +164,6 @@ void game::switchPlayerPrompt()
     clearScreen();
     std::string dummy;
     std::cout<<"\nPress enter when the next player is ready: ";
-    std::cin.ignore();
     std::getline(std::cin, dummy);
 }
 void game::finishSetUpPrompt()
@@ -173,6 +172,5 @@ void game::finishSetUpPrompt()
     std::string dummy;
     std::cout<<"\n***The battle is about to begin!***\n";
     std::cout<<m_player1 -> getName()<<", press enter when you are ready: ";
-    std::cin.ignore();
     std::getline(std::cin, dummy);
 }
