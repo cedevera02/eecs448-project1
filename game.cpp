@@ -123,16 +123,14 @@ void game::fullTurn()
 void game::turnIO(player* p)
 {
     int ASCII_OFFSET = 65;
-    int xLocTemp, yLocTemp;
     string coordinatesTemp = "";
     
     cout<< p -> printBoard();
-    cout << "Please enter a letter (A-J), followed by number (1-10): ";
+    cout << "Please enter a coordinate (ex. F8): ";
     
-    xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
+    m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
     coordinatesTemp.erase(0,1);
-    yLocTemp = stoi(coordinatesTemp) - 1;
-    p->
+    m_tempY = stoi(coordinatesTemp) - 1;
 }
 void game::closingScreen()
 {
