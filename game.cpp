@@ -37,8 +37,8 @@ void game::testPlay()//creates 2 players with 3 ships each
     m_player2 = new player("p2", 3);
     for(int i=0; i < 3; i++)
     {
-        m_player1 -> buildAndPlaceShip(i, true, 0, i);
-        m_player2 -> buildAndPlaceShip(i, true, 0, i);
+        m_player1 -> buildAndPlaceShip(i + 1, true, 0, i);
+        m_player2 -> buildAndPlaceShip(i + 1, true, 0, i);
     }
 
     while(m_gameOver == false)
@@ -144,14 +144,14 @@ void game::closingScreen()
         cout << "Congratulations " << m_player1->getName() << ", you have won!\n\n";
     }
 
-    // cout << "       _      _\n";
-    // cout << "      (_)    | |\n";
-    // cout << "__   ___  ___| |_ ___  _ __ _   _\n";
-    // cout << "\ \ / / |/ __| __/ _ \| '__| | | |\n";
-    // cout << " \ V /| | (__| || (_) | |  | |_| |\n";
-    // cout << "  \_/ |_|\___|\__\___/|_|   \__, |\n";
-    // cout << "                             __/ |\n";
-    // cout << "                            |___/\n";
+    cout << "       _      _\n";
+    cout << "      (_)    | |\n";
+    cout << "__   ___  ___| |_ ___  _ __ _   _\n";
+    cout << "\ \ / / |/ __| __/ _ \| '__| | | |\n";
+    cout << " \ V /| | (__| || (_) | |  | |_| |\n";
+    cout << "  \_/ |_|\___|\__\___/|_|   \__, |\n";
+    cout << "                             __/ |\n";
+    cout << "                            |___/\n";
 }
 
 void game::clearScreen()
@@ -162,5 +162,6 @@ void game::switchPlayerPrompt()
 {
     std::string dummy;
     std::cout<<"\nPress enter when the next player is ready: ";
+    std::cin.ignore();
     std::getline(std::cin, dummy);
 }
