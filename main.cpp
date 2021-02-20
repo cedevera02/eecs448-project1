@@ -1,5 +1,5 @@
-//time spent: 20 hrs to finish
 #include"game.h"
+#include"board.h"
 
 int main()
 {
