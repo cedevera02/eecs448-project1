@@ -127,6 +127,7 @@ void game::turnIO(player* p)
     
     cout<< p -> printBoard();
     cout << "Please enter a coordinate (ex. F8): ";
+    cin >> coordinatesTemp;
     
     m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
     coordinatesTemp.erase(0,1);
