@@ -178,7 +178,7 @@ void game::shipIO(player* p)
                 if(orientationInputTemp.length() != 1 || 
                    toupper(orientationInputTemp[0]) != 'H' &&
                    toupper(orientationInputTemp[0]) != 'V') problem = true;
-                if(coordinatesTemp.length() != 2 ||
+                if(coordinatesTemp.length() > 3  || coordinatesTemp.length() < 2 ||
                    !isStringInt(coordinatesTemp.substr(1)) ||
                    !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
                 if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
@@ -189,8 +189,9 @@ void game::shipIO(player* p)
             coordinatesTemp.erase(0,1);
             yLocTemp = stoi(coordinatesTemp) - 1;
             orienTemp = (toupper(orientationInputTemp[0]) == 'H');
-
-            problem2 = !(p -> buildAndPlaceShip(i+1, orienTemp, xLocTemp, yLocTemp));
+            
+            if(yLocTemp > 10 || yLocTemp < 1) problem2 = true;
+            if(!problem2) problem2 = !(p -> buildAndPlaceShip(i+1, orienTemp, xLocTemp, yLocTemp));
         }while(problem2);
         
         cout<< p -> printShipBoard();
@@ -235,9 +236,10 @@ void game::turnIO(player* p)
         cout << "Please enter a coordinate (ex. F8): ";
         std::getline(std::cin, coordinatesTemp);
         
-        if(coordinatesTemp.length() != 2 ||
+        if(coordinatesTemp.length() > 3  || coordinatesTemp.length() < 2 ||
            !isStringInt(coordinatesTemp.substr(1)) ||
            !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
+        if(stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1 ) problem = true;
         if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
     }while(problem);
     
