@@ -27,5 +27,6 @@ class game
     void clearScreen();//prints 70 "\n"'s to clear the screen
     void switchPlayerPrompt();//waits to press enter before switching players
     void finishSetUpPrompt();//lets the users know set up is complete and the battle is beginning
+    void finishTurnPrompt();
 };
 #endif
