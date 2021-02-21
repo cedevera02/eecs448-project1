@@ -1,6 +1,20 @@
 #include"game.h"
 #include<string>
 
+bool isStringInt(std::string s)
+{
+    if(s[0] == '-') return (s.substr(1).find_first_not_of("0123456789") == std::string::npos);
+    else return (s.find_first_not_of("0123456789") == std::string::npos);
+    //find_first_not_of returns std::string::npos if no matches are found
+}
+
+bool isStringLetter(std::string s)
+{
+    std::string store = "ABCDEFGHIJ";
+    store +=            "abcdefghij";
+    return (s.find_first_not_of(store) == std::string::npos);
+}
+
 using namespace std;
 
 game::game()
@@ -53,9 +67,11 @@ void game::setUp()
     setUpIO();
 
     shipIO(m_player1);
-    switchPlayerPrompt();
+    finishTurnPrompt();
+    clearScreen();
     shipIO(m_player2);
-    switchPlayerPrompt();
+    finishTurnPrompt();
+    clearScreen();
 
     finishSetUpPrompt();
 }
@@ -67,8 +83,7 @@ void game::setUpIO()
     string shipCount0 = "";
 
     cout << "Player 1, please input your name: ";
-    cin >> name;
-shipcountcheck1:
+    std::getline(std::cin, name);
     cout << "Please enter the number of ships you could like to have? (1-6): ";
     cin >> shipCount;
     if (isStringInt(shipCount)) {
@@ -107,9 +122,11 @@ shipcountcheck2:
         cout << "Invalid entry \n";
         goto shipcountcheck2;
     }
+
 }
 void game::shipIO(player* p)
 {
+    bool problem = false;
     int ASCII_OFFSET = 65;
     int xLocTemp, yLocTemp;
     bool orienTemp;
@@ -119,18 +136,33 @@ void game::shipIO(player* p)
     cout<<"\nNow placing ships for "<<p -> getName()<<": \n";
     for (int i = 0; i < p -> getShipCount(); i++)
     {
-        cout<< "\nPlacing ship of size "<<i+1<<": \n";
-        cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
-        cin>> orientationInputTemp;
-        cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
-        cin>> coordinatesTemp;
-        
+        do
+        {
+            problem = false;
+            cout<< "\nPlacing ship of size "<<i+1<<": \n";
+            cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
+            std::getline(std::cin, orientationInputTemp);
+            cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
+            std::getline(std::cin, coordinatesTemp);
+
+            if(orientationInputTemp.length() > 1 || 
+               (toupper(orientationInputTemp[0]) != 'H' &&
+               toupper(orientationInputTemp[0]) != 'V') ) problem = true;
+            if(coordinatesTemp.length() != 2 ||
+               !isStringInt(coordinatesTemp.substr(1)) ||
+               !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
+            if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+        }
+        while(problem);
+
         xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
         coordinatesTemp.erase(0,1);
         yLocTemp = stoi(coordinatesTemp) - 1;
+        orienTemp = (toupper(orientationInputTemp[0]) == 'H');
 
         p -> buildAndPlaceShip(i+1, (orientationInputTemp == "H"), xLocTemp, yLocTemp);
         cout<< p -> printShipBoard();
+
     }
 }
 void game::fullTurn()
@@ -140,7 +172,11 @@ void game::fullTurn()
     m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
     std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
     m_gameOver = m_player2-> loserCheck();
-    switchPlayerPrompt();
+    
+    finishTurnPrompt();
+    clearScreen();
+    if(m_gameOver == false) switchPlayerPrompt();
+
 //PLAYER2 TURN
     if(m_gameOver == false)
     {
@@ -148,17 +184,30 @@ void game::fullTurn()
         m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
         std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
         m_gameOver = m_player1-> loserCheck();
-        switchPlayerPrompt();
+        
+        finishTurnPrompt();
+        clearScreen();
+        if(m_gameOver == false) switchPlayerPrompt();
     }
 }
 void game::turnIO(player* p)
 {
+    bool problem = false;
     int ASCII_OFFSET = 65;
     string coordinatesTemp = "";
     
-    cout<< p -> printBoard();
-    cout << "Please enter a coordinate (ex. F8): ";
-    cin >> coordinatesTemp;
+    do
+    {
+        if(problem == false) cout<< p -> printBoard();
+        problem = false;
+        cout << "Please enter a coordinate (ex. F8): ";
+        std::getline(std::cin, coordinatesTemp);
+        
+        if(coordinatesTemp.length() != 2 ||
+           !isStringInt(coordinatesTemp.substr(1)) ||
+           !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
+        if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+    }while(problem);
     
     m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
     coordinatesTemp.erase(0,1);
@@ -191,10 +240,8 @@ void game::clearScreen()
 }
 void game::switchPlayerPrompt()
 {
-    clearScreen();
     std::string dummy;
     std::cout<<"\nPress enter when the next player is ready: ";
-    std::cin.ignore();
     std::getline(std::cin, dummy);
 }
 void game::finishSetUpPrompt()
@@ -203,7 +250,12 @@ void game::finishSetUpPrompt()
     std::string dummy;
     std::cout<<"\n***The battle is about to begin!***\n";
     std::cout<<m_player1 -> getName()<<", press enter when you are ready: ";
-    std::cin.ignore();
+    std::getline(std::cin, dummy);
+}
+void game::finishTurnPrompt()
+{
+    std::string dummy;
+    std::cout<<"\nPress enter when you are finished with your turn: ";
     std::getline(std::cin, dummy);
 }
 bool game::isStringInt(std::string shipCount)
