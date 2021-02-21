@@ -190,7 +190,7 @@ void game::shipIO(player* p)
             yLocTemp = stoi(coordinatesTemp) - 1;
             orienTemp = (toupper(orientationInputTemp[0]) == 'H');
             
-            if(yLocTemp > 10 || yLocTemp < 1) problem2 = true;
+            if(yLocTemp > 9 || yLocTemp < 0) problem2 = true;
             if(!problem2) problem2 = !(p -> buildAndPlaceShip(i+1, orienTemp, xLocTemp, yLocTemp));
         }while(problem2);
         
