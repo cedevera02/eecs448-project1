@@ -2,11 +2,10 @@
 //CONSTRUCTOR
 ///This constructor houses important variables used in player and game.
 ///
-///@param size This taxes the value 1x(1-6) for the ship
-///@param orien This helps determine if the ship is placed horizantal or vertical
-///@param xLoc helps find the upper left coordinate of the ship
-///@param yLoc helps find the upper left coordinates of the ship
-
+///@param size This takes in the value (expected to be 1-6) for the ship
+///@param orien Horizontal == true, vertical == false
+///@param xLoc Marks the upper-left coordinate of the ship
+///@param yLoc Marks the upper-left coordinate of the ship
 ship::ship(int size, bool orien, int xLoc, int yLoc)
 {
     m_size = size;
@@ -17,8 +16,7 @@ ship::ship(int size, bool orien, int xLoc, int yLoc)
 }
 
 //METHODS
-///The ship count will be incremented by one when called.
-
+///The shipCount member will be incremented by one when called.
 void ship::incrementShipHitCount()
 {
     m_shipHitCount = m_shipHitCount + 1;
@@ -26,8 +24,7 @@ void ship::incrementShipHitCount()
 
 ///This will check if the ship is sunk.
 ///
-///returns rue if ship is sunk, false if not.
-
+///@return True if ship is sunk, false if not.
 bool ship::sinkCheck()//returns true if ship is sunk, false otherwise
 {
     if (m_shipHitCount == m_size){
@@ -37,30 +34,32 @@ bool ship::sinkCheck()//returns true if ship is sunk, false otherwise
         return false;
     }
 }
+
 //GETTERS
 
 ///Gets size and returns that size.
-
+///@return the size of the ship
 int ship::getSize()
 {
     return(m_size);
 }
 
 /// gets orientation and returns orientation.
-
+///@return the orientation of the ship
 bool ship::getOrien()
 {
     return(m_orien);
 }
 
 /// gets x locations and returns it.
+///@return the x coordinate of the ship
 int ship::getXLoc()
 {
     return(m_xLoc);
 }
 
 ///gets y location and returns it.
-
+///@return the y coordinate of the ship
 int ship::getYLoc()
 {
     return(m_yLoc);

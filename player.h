@@ -3,7 +3,7 @@
 #include"board.h"
 #include"ship.h"
 
-///The player class will handle most of the player specific inputs.
+///The player class will process most of the player specific inputs.
 ///
 ///Each player has many things attributed to them. They have their own shot and ship grids that inform them what they have done. Also this class is capable of determining a winner.
 ///It also handles much of what each player does in their turn.
@@ -11,13 +11,13 @@
 class player
 {
     private:
-    std::string m_name;
-    int m_shipCount;//how many ships does the player have
-    int m_sinkCount;//how many of their own ships have been sunk
-    ship** m_ships;//an array of ships
+    std::string m_name;///< the name of the player
+    int m_shipCount;///< how many ships does the player have
+    int m_sinkCount;///< how many of their own ships have been sunk
+    ship** m_ships;///< an array of ships
 
     public:
-    board m_board;
+    board m_board;///< the board object attatched to the player
     player(std::string name, int shipCount);
     ~player();
     bool buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc);//returns true and creates new ship under m_ships on valid input, returns false and does nothing on invalid input

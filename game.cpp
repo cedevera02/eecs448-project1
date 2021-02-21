@@ -5,7 +5,6 @@ using namespace std;
 
 
 ///This constructs some of the more important variables and helps limit loops.
-
 game::game()
 {
     m_gameOver = false;
@@ -22,7 +21,6 @@ game::game()
 }
 
 ///Deconstructing player objects.
-
 game::~game()
 {
     delete m_player1;
@@ -30,7 +28,6 @@ game::~game()
 }
 
 ///This is the main game loop.
-
 void game::play()
 {
     setUp();
@@ -41,10 +38,9 @@ void game::play()
     closingScreen();
 }
 
-///creates 2 players with 3 ships each
+///creates 2 players with 3 ships each, used to skip shipIO and speed up testing
 ///
 ///ships are placed in upper left corner of the board horizontally
-
 void game::testPlay()
 {
     m_player1 = new player("p1", 3);
@@ -63,7 +59,6 @@ void game::testPlay()
 }
 
 ///calls the functions that allow the users to set up their boards
-
 void game::setUp()
 {
     setUpIO();
@@ -79,7 +74,6 @@ void game::setUp()
 }
 
 ///gets the name of the a player and their number of ships.
-
 void game::setUpIO()
 {
     string name = "";
@@ -116,7 +110,7 @@ void game::setUpIO()
         std::getline(std::cin, name0);
         cout << "Please enter the number of ships you could like to have? (1-6): ";
         std::getline(std::cin, shipCount0);
-
+        //INPUT VALIDATION
         if(!isStringInt(shipCount0) || shipCount0.length() == 0) problem = true;
         if(!problem)
         {
@@ -130,49 +124,11 @@ void game::setUpIO()
 
     finishTurnPrompt();
     clearScreen();
-// shipcountcheck1:
-//     if (isStringInt(shipCount)) {
-//         if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
-//         {
-//             m_player1 = new player(name, stoi(shipCount));
-//         }
-//         else
-//         {
-//             cout << "Invalid entry \n";
-//             goto shipcountcheck1;
-//         }
-//     }
-//     else
-//     {
-//         cout << "Invalid entry \n";
-//         goto shipcountcheck1;
-//     }
-//     cout << "Player 2, please input your name: ";
-//     std::getline(std::cin, name0);
-// shipcountcheck2:
-//     cout << "Please enter the number of ships you could like to have? (1-6): ";
-//     std::getline(std::cin, shipCount0);
-//     if (isStringInt(shipCount)) {
-//         if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
-//         {
-//             m_player2 = new player(name0, stoi(shipCount0));
-//         }
-//         else
-//         {
-//             cout << "Invalid entry \n";
-//             goto shipcountcheck1;
-//         }
-//     }
-//     else {
-//         cout << "Invalid entry \n";
-//         goto shipcountcheck2;
-//     }
-
 }
 
 
 ///allows the user to place their ships.
-
+///@param a pointer to the player who is taking their turn
 void game::shipIO(player* p)
 {
     bool problem = false;
@@ -200,7 +156,7 @@ void game::shipIO(player* p)
                 cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
                 std::getline(std::cin, coordinatesTemp);
 
-
+                //INPUT VALIDATION
                 if(orientationInputTemp.length() != 1 ||
                    (toupper(orientationInputTemp[0]) != 'H' &&
                    toupper(orientationInputTemp[0]) != 'V') ) problem = true;
@@ -210,7 +166,7 @@ void game::shipIO(player* p)
                 if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
             }
             while(problem);
-
+            //CONVERT INPUT
             xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
             coordinatesTemp.erase(0,1);
             yLocTemp = stoi(coordinatesTemp) - 1;
@@ -225,10 +181,9 @@ void game::shipIO(player* p)
     }
 }
 
-///Runs the player turns and keeps them in order.
+///Runs the player turns.
 ///
-///This is one of the most important members in the entire program. it steps through the game process one by one.
-
+///This is one of the most important methods in the entire program. it steps through the game process one by one.
 void game::fullTurn()
 {
 //PLAYER1 TURN
@@ -255,15 +210,13 @@ void game::fullTurn()
     }
 }
 
-///gathers the input for a half turn, sets m_shotX and m_shotY based on input, prints full board.
-///@param player p is the player being modified.
-
+///gathers the input for a half turn (only one player goes), sets m_shotX and m_shotY based on input, prints full board.
+///@param p is the player being modified.
 void game::turnIO(player* p)
 {
     bool problem = false;
     int ASCII_OFFSET = 65;
     string coordinatesTemp = "";
-
 
     do
     {
@@ -271,29 +224,24 @@ void game::turnIO(player* p)
         problem = false;
         cout << "Please enter a coordinate (ex. F8): ";
         std::getline(std::cin, coordinatesTemp);
-
-
+        //INPUT VALIDATION
         if(coordinatesTemp.length() > 3  || coordinatesTemp.length() < 2 ||
            !isStringInt(coordinatesTemp.substr(1)) ||
            !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
         if(stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1 ) problem = true;
 
         if(!problem)
-        {
+        {   //CONVERT INPUT
             m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
             coordinatesTemp.erase(0,1);
             m_tempY = stoi(coordinatesTemp) - 1;
-            if(p -> m_board.m_shotGrid[m_tempY][m_tempX] != '.') problem = true;
+            if(p -> m_board.m_shotGrid[m_tempY][m_tempX] != '.') problem = true;//place the ship
         }
         if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
     }while(problem);
-
-
->>>>>>> ab2e93f1e927a13b4f0718c1ab58a8caf9a2b791
 }
 
-///after a winner has been determined, print a closing screen stating the winne
-
+///after a winner has been determined, print a closing screen stating the winner
 void game::closingScreen()
 {
     if( m_player1->loserCheck() == true)
@@ -316,14 +264,12 @@ void game::closingScreen()
 }
 
 ///clears the screen to help secrecy of the players info
-
 void game::clearScreen()
 {
     std::cout<<m_clearScreenString;
 }
 
-///prints 70 "\n"'s to clear the screen
-
+///Allows the user to move away from the screen while the next player takes their turn
 void game::switchPlayerPrompt()
 {
     std::string dummy;
@@ -332,7 +278,6 @@ void game::switchPlayerPrompt()
 }
 
 ///waits for the next player to press enter then switches players
-
 void game::finishSetUpPrompt()
 {
     clearScreen();
@@ -341,18 +286,27 @@ void game::finishSetUpPrompt()
     std::cout<<m_player1 -> getName()<<", press enter when you are ready: ";
     std::getline(std::cin, dummy);
 }
+
+///Allows the user to see the result of their turn before the screen gets cleared
 void game::finishTurnPrompt()
 {
     std::string dummy;
     std::cout<<"\nPress enter when you are finished with your turn: ";
     std::getline(std::cin, dummy);
 }
+
+///helper method to see if a string is an int
+///@param s the string to be checked
+///@return true if the string is a positive int, false otherwise
 bool game::isStringInt(std::string s)
 {
     return (s.find_first_not_of("0123456789") == std::string::npos);
     //find_first_not_of returns std::string::npos if no matches are found
 }
 
+///helper method to see if a string contains the letters allowable as coordinates
+///@param s the string to be checked
+///@return true if the string is a a-j, false otherwise
 bool game::isStringLetter(std::string s)
 {
     std::string store = "ABCDEFGHIJ";

@@ -16,13 +16,15 @@ board::board()
         }
     }
 }
+
 //returns a string of the ship board to be outputted
 //this will be used in the beginning of the game when the user is placing ships
-///Creating board for ships.
-///
-///Using strings it is possible to output our board more efficiently. This will be all the data behind the actual boards.
-///returns a string to format the board.
 
+///Drawing the board that stores the ships.
+///
+///Using strings it is possible to cout the board in a different class. This will be all the data behind the actual boards.
+///returns a string to format the board.
+///@return the formatted string of the board
 std::string board::drawShipBoard()
 {
     std::string finalString = "\nShip board: \n";
@@ -39,6 +41,7 @@ std::string board::drawShipBoard()
     }
     return finalString;
 }
+
 //concatenate strings with "\n" to a create a block string
 //returns a string of both boards to be printed
 //this will be used once the game begins
@@ -47,7 +50,7 @@ std::string board::drawShipBoard()
 ///
 ///The board is created two separate times so data can be mapped and displayed to the player during the game.
 ///returns string that combines both of the boards together.
-
+///@return the formatted string of the board
 std::string board::drawFullBoard()
 {
     std::string finalString = "\nShot board: \n";
