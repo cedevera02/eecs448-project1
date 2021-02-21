@@ -107,6 +107,9 @@ void game::setUpIO()
 
     }while(problem);
     m_player2 = new player(name0, stoi(shipCount0));
+
+    finishTurnPrompt();
+    clearScreen();
 // shipcountcheck1:
 //     if (isStringInt(shipCount)) {
 //         if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
@@ -149,6 +152,7 @@ void game::setUpIO()
 void game::shipIO(player* p)
 {
     bool problem = false;
+    bool problem2 = false;
     int ASCII_OFFSET = 65;
     int xLocTemp, yLocTemp;
     bool orienTemp;
@@ -160,29 +164,35 @@ void game::shipIO(player* p)
     {
         do
         {
-            problem = false;
-            cout<< "\nPlacing ship of size "<<i+1<<": \n";
-            cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
-            std::getline(std::cin, orientationInputTemp);
-            cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
-            std::getline(std::cin, coordinatesTemp);
+            if(problem2) std::cout<<"\n**Ship could not be placed. Please check the coordinates and try again.**\n";
+            problem2 = false;
+            do
+            {
+                problem = false;
+                cout<< "\nPlacing ship of size "<<i+1<<": \n";
+                cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
+                std::getline(std::cin, orientationInputTemp);
+                cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
+                std::getline(std::cin, coordinatesTemp);
 
-            if(orientationInputTemp.length() != 1 || 
-               (toupper(orientationInputTemp[0]) != 'H' &&
-               toupper(orientationInputTemp[0]) != 'V') ) problem = true;
-            if(coordinatesTemp.length() != 2 ||
-               !isStringInt(coordinatesTemp.substr(1)) ||
-               !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
-            if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
-        }
-        while(problem);
+                if(orientationInputTemp.length() != 1 || 
+                   toupper(orientationInputTemp[0]) != 'H' &&
+                   toupper(orientationInputTemp[0]) != 'V') problem = true;
+                if(coordinatesTemp.length() != 2 ||
+                   !isStringInt(coordinatesTemp.substr(1)) ||
+                   !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
+                if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+            }
+            while(problem);
 
-        xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
-        coordinatesTemp.erase(0,1);
-        yLocTemp = stoi(coordinatesTemp) - 1;
-        orienTemp = (toupper(orientationInputTemp[0]) == 'H');
+            xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
+            coordinatesTemp.erase(0,1);
+            yLocTemp = stoi(coordinatesTemp) - 1;
+            orienTemp = (toupper(orientationInputTemp[0]) == 'H');
 
-        p -> buildAndPlaceShip(i+1, (orientationInputTemp == "H"), xLocTemp, yLocTemp);
+            problem2 = !(p -> buildAndPlaceShip(i+1, orienTemp, xLocTemp, yLocTemp));
+        }while(problem2);
+        
         cout<< p -> printShipBoard();
 
     }
