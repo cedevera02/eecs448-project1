@@ -1,20 +1,6 @@
 #include"game.h"
 #include<string>
 
-bool isStringInt(std::string s)
-{
-    if(s[0] == '-') return (s.substr(1).find_first_not_of("0123456789") == std::string::npos);
-    else return (s.find_first_not_of("0123456789") == std::string::npos);
-    //find_first_not_of returns std::string::npos if no matches are found
-}
-
-bool isStringLetter(std::string s)
-{
-    std::string store = "ABCDEFGHIJ";
-    store +=            "abcdefghij";
-    return (s.find_first_not_of(store) == std::string::npos);
-}
-
 using namespace std;
 
 game::game()
@@ -81,47 +67,83 @@ void game::setUpIO()
     string name0 = "";
     string shipCount = "";
     string shipCount0 = "";
-
-    cout << "Player 1, please input your name: ";
-    std::getline(std::cin, name);
-    cout << "Please enter the number of ships you could like to have? (1-6): ";
-    cin >> shipCount;
-    if (isStringInt(shipCount)) {
-        if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
-        {
-            m_player1 = new player(name, stoi(shipCount));
-        }
-        else
-        {
-            cout << "Invalid entry \n";
-            goto shipcountcheck1;
-        }
-    }
-    else
+    bool problem = false;
+//PLAYER1
+    do
     {
-        cout << "Invalid entry \n";
-        goto shipcountcheck1;
-    }
-    cout << "Player 2, please input your name: ";
-    cin >> name0;
-shipcountcheck2:
-    cout << "Please enter the number of ships you could like to have? (1-6): ";
-    cin >> shipCount0;
-    if (isStringInt(shipCount)) {
-        if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+        problem = false;
+        cout << "Player 1, please input your name: ";
+        std::getline(std::cin, name);
+        cout << "Please enter the number of ships you could like to have? (1-6): ";
+        std::getline(std::cin, shipCount);
+
+        if(!isStringInt(shipCount) || shipCount.length() == 0) problem = true;
+        if(!problem)
         {
-            m_player2 = new player(name0, stoi(shipCount0));
+            if(stoi(shipCount) > 6 || stoi(shipCount) < 1 ) problem = true;
         }
-        else
+        if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+
+    }while(problem);
+    m_player1 = new player(name, stoi(shipCount));
+    
+    finishTurnPrompt();
+    clearScreen();
+//PLAYER2
+    do
+    {
+        problem = false;
+        cout << "Player 2, please input your name: ";
+        std::getline(std::cin, name0);
+        cout << "Please enter the number of ships you could like to have? (1-6): ";
+        std::getline(std::cin, shipCount0);
+
+        if(!isStringInt(shipCount0) || shipCount0.length() == 0) problem = true;
+        if(!problem)
         {
-            cout << "Invalid entry \n";
-            goto shipcountcheck1;
+            if(stoi(shipCount0) > 6 || stoi(shipCount0) < 1 ) problem = true;
         }
-    }
-    else {
-        cout << "Invalid entry \n";
-        goto shipcountcheck2;
-    }
+        if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+
+    }while(problem);
+    m_player2 = new player(name0, stoi(shipCount0));
+// shipcountcheck1:
+//     if (isStringInt(shipCount)) {
+//         if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+//         {
+//             m_player1 = new player(name, stoi(shipCount));
+//         }
+//         else
+//         {
+//             cout << "Invalid entry \n";
+//             goto shipcountcheck1;
+//         }
+//     }
+//     else
+//     {
+//         cout << "Invalid entry \n";
+//         goto shipcountcheck1;
+//     }
+//     cout << "Player 2, please input your name: ";
+//     std::getline(std::cin, name0);
+// shipcountcheck2:
+//     cout << "Please enter the number of ships you could like to have? (1-6): ";
+//     std::getline(std::cin, shipCount0);
+//     if (isStringInt(shipCount)) {
+//         if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+//         {
+//             m_player2 = new player(name0, stoi(shipCount0));
+//         }
+//         else
+//         {
+//             cout << "Invalid entry \n";
+//             goto shipcountcheck1;
+//         }
+//     }
+//     else {
+//         cout << "Invalid entry \n";
+//         goto shipcountcheck2;
+//     }
 
 }
 void game::shipIO(player* p)
@@ -145,7 +167,7 @@ void game::shipIO(player* p)
             cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
             std::getline(std::cin, coordinatesTemp);
 
-            if(orientationInputTemp.length() > 1 || 
+            if(orientationInputTemp.length() != 1 || 
                (toupper(orientationInputTemp[0]) != 'H' &&
                toupper(orientationInputTemp[0]) != 'V') ) problem = true;
             if(coordinatesTemp.length() != 2 ||
@@ -258,9 +280,15 @@ void game::finishTurnPrompt()
     std::cout<<"\nPress enter when you are finished with your turn: ";
     std::getline(std::cin, dummy);
 }
-bool game::isStringInt(std::string shipCount)
+bool game::isStringInt(std::string s)
 {
-    if (shipCount[0] == '-') return (shipCount.substr(1).find_first_not_of("0123456789") == std::string::npos);
-    else return (shipCount.find_first_not_of("0123456789") == std::string::npos);
+    return (s.find_first_not_of("0123456789") == std::string::npos);
     //find_first_not_of returns std::string::npos if no matches are found
+}
+
+bool game::isStringLetter(std::string s)
+{
+    std::string store = "ABCDEFGHIJ";
+    store +=            "abcdefghij";
+    return (s.find_first_not_of(store) == std::string::npos);
 }
