@@ -1,4 +1,5 @@
 #include"game.h"
+#include<string>
 
 bool isStringInt(std::string s)
 {
@@ -84,22 +85,45 @@ void game::setUpIO()
     cout << "Player 1, please input your name: ";
     std::getline(std::cin, name);
     cout << "Please enter the number of ships you could like to have? (1-6): ";
-    std::getline(std::cin, shipCount);
-    m_player1 = new player(name, stoi(shipCount));
-
-    switchPlayerPrompt();
-    clearScreen();
-
+    cin >> shipCount;
+    if (isStringInt(shipCount)) {
+        if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+        {
+            m_player1 = new player(name, stoi(shipCount));
+        }
+        else
+        {
+            cout << "Invalid entry \n";
+            goto shipcountcheck1;
+        }
+    }
+    else
+    {
+        cout << "Invalid entry \n";
+        goto shipcountcheck1;
+    }
     cout << "Player 2, please input your name: ";
-    std::getline(std::cin, name0);
+    cin >> name0;
+shipcountcheck2:
     cout << "Please enter the number of ships you could like to have? (1-6): ";
-    std::getline(std::cin, shipCount0);
-    m_player2 = new player(name0, stoi(shipCount0));
+    cin >> shipCount0;
+    if (isStringInt(shipCount)) {
+        if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+        {
+            m_player2 = new player(name0, stoi(shipCount0));
+        }
+        else
+        {
+            cout << "Invalid entry \n";
+            goto shipcountcheck1;
+        }
+    }
+    else {
+        cout << "Invalid entry \n";
+        goto shipcountcheck2;
+    }
 
-    switchPlayerPrompt();
-    clearScreen();
 }
-
 void game::shipIO(player* p)
 {
     bool problem = false;
@@ -233,4 +257,10 @@ void game::finishTurnPrompt()
     std::string dummy;
     std::cout<<"\nPress enter when you are finished with your turn: ";
     std::getline(std::cin, dummy);
+}
+bool game::isStringInt(std::string shipCount)
+{
+    if (shipCount[0] == '-') return (shipCount.substr(1).find_first_not_of("0123456789") == std::string::npos);
+    else return (shipCount.find_first_not_of("0123456789") == std::string::npos);
+    //find_first_not_of returns std::string::npos if no matches are found
 }
