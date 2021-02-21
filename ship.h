@@ -1,6 +1,11 @@
 #ifndef SHIP_H
 #define SHIP_H
 
+///Each ship will be placed differently and a class is needed to organize this information.
+///
+///Ships will each have an size, orientation and coordinates to be documented. As the game progresses they will also take damage and
+/// be destroyed. This class helps determine that information so it can be used and altered in different classes such as game.
+
 class ship
 {
     private:

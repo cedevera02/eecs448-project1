@@ -2,6 +2,10 @@
 #define BOARD_H
 #include<string>
 
+///This class will handle many calls to generate and read boards.
+///
+///In the game of battleship, seeing the board as you play is paramount. To correctly enable this feature its own class is required. This will be used to print boards on every turn after updates have been made.
+
 class board
 {
     public:

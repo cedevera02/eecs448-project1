@@ -2,6 +2,9 @@
 
 using namespace std;
 
+
+///This constructs some of the more important variables and helps limit loops.
+
 game::game()
 {
     m_gameOver = false;
@@ -16,12 +19,17 @@ game::game()
         m_clearScreenString += "\n";
     }
 }
+
+///Deconstructing player objects.
+
 game::~game()
 {
     delete m_player1;
     delete m_player2;
 }
-//the main game loop
+
+///This is the main game loop.
+
 void game::play()
 {
     setUp();
@@ -31,8 +39,13 @@ void game::play()
     }
     closingScreen();
 }
-void game::testPlay()//creates 2 players with 3 ships each
-{//ships are placed in upper left corner of the board horizontally
+
+///creates 2 players with 3 ships each
+///
+///ships are placed in upper left corner of the board horizontally
+
+void game::testPlay()
+{
     m_player1 = new player("p1", 3);
     m_player2 = new player("p2", 3);
     for(int i=0; i < 3; i++)
@@ -47,6 +60,9 @@ void game::testPlay()//creates 2 players with 3 ships each
     }
     closingScreen();
 }
+
+///calls the functions that allow the users to set up their boards
+
 void game::setUp()
 {
     setUpIO();
@@ -58,6 +74,9 @@ void game::setUp()
 
     finishSetUpPrompt();
 }
+
+///gets the name of the a player and their number of ships.
+
 void game::setUpIO()
 {
     string name = "";
@@ -78,6 +97,9 @@ void game::setUpIO()
     m_player2 = new player(name0, stoi(shipCount0));
 }
 
+///allows the user to place their ships.
+
+
 void game::shipIO(player* p)
 {
     int ASCII_OFFSET = 65;
@@ -94,7 +116,7 @@ void game::shipIO(player* p)
         cin>> orientationInputTemp;
         cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
         cin>> coordinatesTemp;
-        
+
         xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
         coordinatesTemp.erase(0,1);
         yLocTemp = stoi(coordinatesTemp) - 1;
@@ -103,6 +125,11 @@ void game::shipIO(player* p)
         cout<< p -> printShipBoard();
     }
 }
+
+///Runs the player turns and keeps them in order.
+///
+///This is one of the most important members in the entire program. it steps through the game process one by one.
+
 void game::fullTurn()
 {
 //PLAYER1 TURN
@@ -121,19 +148,26 @@ void game::fullTurn()
         switchPlayerPrompt();
     }
 }
+
+///gathers the input for a half turn, sets m_shotX and m_shotY based on input, prints full board.
+///@param player p is the player being modified.
+
 void game::turnIO(player* p)
 {
     int ASCII_OFFSET = 65;
     string coordinatesTemp = "";
-    
+
     cout<< p -> printBoard();
     cout << "Please enter a coordinate (ex. F8): ";
     cin >> coordinatesTemp;
-    
+
     m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
     coordinatesTemp.erase(0,1);
     m_tempY = stoi(coordinatesTemp) - 1;
 }
+
+///after a winner has been determined, print a closing screen stating the winne
+
 void game::closingScreen()
 {
     if( m_player1->loserCheck() == true)
@@ -155,10 +189,15 @@ void game::closingScreen()
     cout << "                             |___/\n";
 }
 
+///clears the screen to help secrecy of the players info
+
 void game::clearScreen()
 {
     std::cout<<m_clearScreenString;
 }
+
+///prints 70 "\n"'s to clear the screen
+
 void game::switchPlayerPrompt()
 {
     clearScreen();
@@ -167,6 +206,9 @@ void game::switchPlayerPrompt()
     std::cin.ignore();
     std::getline(std::cin, dummy);
 }
+
+///waits for the next player to press enter then switches players
+
 void game::finishSetUpPrompt()
 {
     clearScreen();

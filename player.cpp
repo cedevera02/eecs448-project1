@@ -1,5 +1,10 @@
 #include"player.h"
 
+/// player constructor, initializes member variables to input params.
+///
+///@param name Creates a name i.e "John".
+///@param shipCount How many ships the player selects (1-6).
+
 player::player(std::string name, int shipCount)
 {
     m_sinkCount = 0;
@@ -11,6 +16,9 @@ player::player(std::string name, int shipCount)
         m_ships[i] = nullptr;
     }
 }
+
+///Simple deconstructor for the heap allocated array.
+
 player::~player()
 {
     for(int i=0; i<m_shipCount; i++)
@@ -19,6 +27,12 @@ player::~player()
     }
     delete m_ships;
 }
+
+///Main logic for ships and their placement.
+///
+///checks for valid input, if valid: creates a ship object in the m_ships array, then places the ship into the shipGrid, does nothing on invalid input.
+///parameters are the same as the constructor.
+///returns true - input is valid and ship was placed | false - invalid input.
 
 bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 {
@@ -53,13 +67,24 @@ bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
     }
     return true;
 }
+
 //returns "HIT!", "Miss", "Ship of size <s> destroyed!"
+///allows a player to shoot a shot and updates the player's shot grid.
+///
+///@param hitCheck returns true if hit
+///@param x shows the x coord that was selected
+///@param y shows the y coord that was selected
 void player::playerTurn(int x, int y, bool hitCheck)
 {
     if(hitCheck == true) m_board.m_shotGrid[y][x] = 'X';
     else m_board.m_shotGrid[y][x] = 'O';
 }
 //returns true for valid input, false otherwise
+///checks for valid input.
+///
+///@param x takes in x coord to check
+///@param y takes in y coord to check
+
 bool player::shoot(int x, int y)
 {
     if(x < 0 || x > 9) return false;
@@ -67,8 +92,15 @@ bool player::shoot(int x, int y)
     if(m_board.m_shotGrid[y][x] != '.') return false;
     else return true;
 }
+
 //returns "**HIT!**", "**Miss**", "Ship of size <s> destroyed!"
 //when the opponent attacks, this function updates the ship grid of the player that is being attacked
+///Shows where player has shot in grid.
+///
+///during player1's turn, this will be called on player2 to update their board and ships, and get information about the shot.
+///@param x takes in x coord to update
+///@param y takes in y coord to update
+
 std::string player::updatePlayerShotAt(int x, int y)
 {
     if(hitCheck(x,y) == true)
@@ -83,13 +115,24 @@ std::string player::updatePlayerShotAt(int x, int y)
     }
     else return "**Miss**";
 }
+
 //returns true if hit, false otherwise
+///Checks to see if a shot was a hit.
+///
+///@param x takes in x coord to check
+///@param y takes in y coord to check
 bool player::hitCheck(int x, int y)
 {
     if(m_board.m_shipGrid[y][x] == 'o') return true;
     else return false;
 }
+
 //updates the ships if any have been hit
+///updates the ships if any have been hit.
+///
+///@param x takes in x coord to check
+///@param y takes in y coord to check
+
 int player::updateShip(int x, int y)
 {
     ship* s = shipIdentifier(x,y);
@@ -101,7 +144,12 @@ int player::updateShip(int x, int y)
     }
     else return 0;
 }
-//returns the ship that occupies the coordinates (x,y)
+
+///given a coordinate, find the ship that occupies that coordinate.
+///returns the ship that occupies the coordinates (x,y).
+///
+///@param x takes in x coord to check
+///@param y takes in y coord to check
 ship* player::shipIdentifier(int x, int y)
 {
     for(int i=0; i < getShipCount(); i++)//iterate through every ship
@@ -125,27 +173,37 @@ ship* player::shipIdentifier(int x, int y)
         }
     }
 }
-//retuns true if the player loses (shipCount == sinkCount), false otherwise
+///checks if the player has lost i.e. (shipCount == sinkCount).
+///
+///retuns true if the player loses (shipCount == sinkCount), false otherwise
+
 bool player::loserCheck()
 {
     if( m_shipCount == m_sinkCount) return true;
     else return false;
 }
-//returns the full board of the player
+
+///returns the full board of the player.
+
 std::string player::printBoard()
 {
     return m_board.drawFullBoard();
 }
+
+///returns the ship board of the player.
 
 std::string player::printShipBoard()
 {
     return m_board.drawShipBoard();
 }
 
+///Gets the shipCount left.
 int player::getShipCount()
 {
     return m_shipCount;
 }
+
+///Gets name of player.
 
 std::string player::getName()
 {

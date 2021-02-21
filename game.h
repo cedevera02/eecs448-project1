@@ -3,6 +3,11 @@
 #include"player.h"
 #include<iostream>
 
+///game is where most of the other classes interact and does the heavy lifting.
+///
+///This class is the most vital class to the project. It will take in its own parameters as well as use parts of the player, board and ship classes.
+///Throughout the class many values for the game to progress will be created stored and used. This main logic is stored here.
+
 class game
 {
     private:
