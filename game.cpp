@@ -164,6 +164,7 @@ void game::shipIO(player* p)
             cout<< "\nPlacing ship of size "<<i+1<<": \n";
             cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
             std::getline(std::cin, orientationInputTemp);
+            coordinateCheck:
             cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
             std::getline(std::cin, coordinatesTemp);
 
@@ -182,9 +183,12 @@ void game::shipIO(player* p)
         yLocTemp = stoi(coordinatesTemp) - 1;
         orienTemp = (toupper(orientationInputTemp[0]) == 'H');
 
-        p -> buildAndPlaceShip(i+1, (orientationInputTemp == "H"), xLocTemp, yLocTemp);
-        cout<< p -> printShipBoard();
-
+        if (p->buildAndPlaceShip(i + 1, (orientationInputTemp == "H"), xLocTemp, yLocTemp))
+            cout << p->printShipBoard();
+        else {
+            cout << "Invalid coordinate \n";
+            goto coordinateCheck;
+        }
     }
 }
 void game::fullTurn()
