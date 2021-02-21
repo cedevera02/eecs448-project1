@@ -1,5 +1,19 @@
 #include"game.h"
 
+bool isStringInt(std::string s)
+{
+    if(s[0] == '-') return (s.substr(1).find_first_not_of("0123456789") == std::string::npos);
+    else return (s.find_first_not_of("0123456789") == std::string::npos);
+    //find_first_not_of returns std::string::npos if no matches are found
+}
+
+bool isStringLetter(std::string s)
+{
+    std::string store = "ABCDEFGHIJ";
+    store +=            "abcdefghij";
+    return (s.find_first_not_of(store) == std::string::npos);
+}
+
 using namespace std;
 
 game::game()
@@ -88,6 +102,7 @@ void game::setUpIO()
 
 void game::shipIO(player* p)
 {
+    bool problem = false;
     int ASCII_OFFSET = 65;
     int xLocTemp, yLocTemp;
     bool orienTemp;
@@ -97,18 +112,33 @@ void game::shipIO(player* p)
     cout<<"\nNow placing ships for "<<p -> getName()<<": \n";
     for (int i = 0; i < p -> getShipCount(); i++)
     {
-        cout<< "\nPlacing ship of size "<<i+1<<": \n";
-        cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
-        std::getline(std::cin, orientationInputTemp);
-        cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
-        std::getline(std::cin, coordinatesTemp);
-        
+        do
+        {
+            problem = false;
+            cout<< "\nPlacing ship of size "<<i+1<<": \n";
+            cout<< "Would you like your ship to be veritcal or horizontal? (H/V): ";
+            std::getline(std::cin, orientationInputTemp);
+            cout<< "To place your ship, enter the coordinate of the upper-left most slot: ";
+            std::getline(std::cin, coordinatesTemp);
+
+            if(orientationInputTemp.length() > 1 || 
+               (toupper(orientationInputTemp[0]) != 'H' &&
+               toupper(orientationInputTemp[0]) != 'V') ) problem = true;
+            if(coordinatesTemp.length() != 2 ||
+               !isStringInt(coordinatesTemp.substr(1)) ||
+               !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
+            if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+        }
+        while(problem);
+
         xLocTemp = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
         coordinatesTemp.erase(0,1);
         yLocTemp = stoi(coordinatesTemp) - 1;
+        orienTemp = (toupper(orientationInputTemp[0]) == 'H');
 
         p -> buildAndPlaceShip(i+1, (orientationInputTemp == "H"), xLocTemp, yLocTemp);
         cout<< p -> printShipBoard();
+
     }
 }
 void game::fullTurn()
@@ -138,12 +168,22 @@ void game::fullTurn()
 }
 void game::turnIO(player* p)
 {
+    bool problem = false;
     int ASCII_OFFSET = 65;
     string coordinatesTemp = "";
     
-    cout<< p -> printBoard();
-    cout << "Please enter a coordinate (ex. F8): ";
-    std::getline(std::cin, coordinatesTemp);
+    do
+    {
+        if(problem == false) cout<< p -> printBoard();
+        problem = false;
+        cout << "Please enter a coordinate (ex. F8): ";
+        std::getline(std::cin, coordinatesTemp);
+        
+        if(coordinatesTemp.length() != 2 ||
+           !isStringInt(coordinatesTemp.substr(1)) ||
+           !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
+        if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+    }while(problem);
     
     m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
     coordinatesTemp.erase(0,1);
