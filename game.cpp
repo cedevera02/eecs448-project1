@@ -1,4 +1,5 @@
 #include"game.h"
+#include<string>
 
 using namespace std;
 
@@ -70,29 +71,43 @@ void game::setUpIO()
 shipcountcheck1:
     cout << "Please enter the number of ships you could like to have? (1-6): ";
     cin >> shipCount;
-    if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
-    {
-        m_player1 = new player(name, stoi(shipCount));
+    if (isStringInt(shipCount)) {
+        if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+        {
+            m_player1 = new player(name, stoi(shipCount));
+        }
+        else
+        {
+            cout << "Invalid entry \n";
+            goto shipcountcheck1;
+        }
     }
     else
     {
         cout << "Invalid entry \n";
         goto shipcountcheck1;
-    }cout << "Player 2, please input your name: ";
+    }
+    cout << "Player 2, please input your name: ";
     cin >> name0;
 shipcountcheck2:
     cout << "Please enter the number of ships you could like to have? (1-6): ";
     cin >> shipCount0;
-    if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
-    {
-        m_player2 = new player(name0, stoi(shipCount0));
+    if (isStringInt(shipCount)) {
+        if (stoi(shipCount) > 0 && stoi(shipCount) < 7)
+        {
+            m_player2 = new player(name0, stoi(shipCount0));
+        }
+        else
+        {
+            cout << "Invalid entry \n";
+            goto shipcountcheck1;
+        }
     }
     else {
         cout << "Invalid entry \n";
         goto shipcountcheck2;
     }
 }
-
 void game::shipIO(player* p)
 {
     int ASCII_OFFSET = 65;
@@ -190,4 +205,10 @@ void game::finishSetUpPrompt()
     std::cout<<m_player1 -> getName()<<", press enter when you are ready: ";
     std::cin.ignore();
     std::getline(std::cin, dummy);
+}
+bool game::isStringInt(std::string shipCount)
+{
+    if (shipCount[0] == '-') return (shipCount.substr(1).find_first_not_of("0123456789") == std::string::npos);
+    else return (shipCount.find_first_not_of("0123456789") == std::string::npos);
+    //find_first_not_of returns std::string::npos if no matches are found
 }
