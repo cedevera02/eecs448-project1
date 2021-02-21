@@ -176,8 +176,8 @@ void game::shipIO(player* p)
                 std::getline(std::cin, coordinatesTemp);
 
                 if(orientationInputTemp.length() != 1 || 
-                   toupper(orientationInputTemp[0]) != 'H' &&
-                   toupper(orientationInputTemp[0]) != 'V') problem = true;
+                   (toupper(orientationInputTemp[0]) != 'H' &&
+                   toupper(orientationInputTemp[0]) != 'V') ) problem = true;
                 if(coordinatesTemp.length() > 3  || coordinatesTemp.length() < 2 ||
                    !isStringInt(coordinatesTemp.substr(1)) ||
                    !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
@@ -236,16 +236,23 @@ void game::turnIO(player* p)
         cout << "Please enter a coordinate (ex. F8): ";
         std::getline(std::cin, coordinatesTemp);
         
+        
         if(coordinatesTemp.length() > 3  || coordinatesTemp.length() < 2 ||
            !isStringInt(coordinatesTemp.substr(1)) ||
            !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
         if(stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1 ) problem = true;
+
+        if(!problem)
+        {
+            m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
+            coordinatesTemp.erase(0,1);
+            m_tempY = stoi(coordinatesTemp) - 1;
+            if(p -> m_board.m_shotGrid[m_tempY][m_tempX] != '.') problem = true;
+        }
         if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
     }while(problem);
     
-    m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
-    coordinatesTemp.erase(0,1);
-    m_tempY = stoi(coordinatesTemp) - 1;
+    
 }
 void game::closingScreen()
 {
