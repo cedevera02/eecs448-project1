@@ -228,8 +228,10 @@ void game::turnIO(player* p)
         if(coordinatesTemp.length() > 3  || coordinatesTemp.length() < 2 ||
            !isStringInt(coordinatesTemp.substr(1)) ||
            !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
-        if(stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1 ) problem = true;
-
+        if(!problem)
+        {
+            if(stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1 ) problem = true;
+        }
         if(!problem)
         {   //CONVERT INPUT
             m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
