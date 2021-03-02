@@ -15,6 +15,7 @@ class game
     std::string m_clearScreenString;///< a string of "\n"'s stored so it only has to be constructed once
     int m_tempX;///< a variable to store the corrinate for the current turn
     int m_tempY;///< a variable to store the corrinate for the current turn
+	std::string useMissile;// string that stored player choice of use missile or not
 
     public:
     player* m_player1;///< a pointer to a player that will be created at runtime
