@@ -19,6 +19,7 @@ class player
     public:
     board m_board;///< the board object attatched to the player
     player(std::string name, int shipCount);
+    player();//default
     ~player();
     bool buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc);//returns true and creates new ship under m_ships on valid input, returns false and does nothing on invalid input
     void playerTurn(int x, int y, bool hitCheck);//this function updates the player's shot grid

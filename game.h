@@ -15,6 +15,7 @@ class game
     std::string m_clearScreenString;///< a string of "\n"'s stored so it only has to be constructed once
     int m_tempX;///< a variable to store the corrinate for the current turn
     int m_tempY;///< a variable to store the corrinate for the current turn
+    int m_mode;///< a variable to store the mode of the game (0 for AI off, 1 for AI on)
 
     public:
     player* m_player1;///< a pointer to a player that will be created at runtime
@@ -26,8 +27,10 @@ class game
     void setUp();//get the names of the players and place their ships
         void setUpIO();//takes in the player being modified, gets the names of the a player and their number of ships
         void shipIO(player* p);//takes in the player being modified, allows the user to place their ships
+        void aiShipIO(player* p);
     void fullTurn();//a full turn occurs after both players finish their turn
         void turnIO(player* p);//takes in the player being modified, gathers the input for a half turn, sets m_shotX and m_shotY, prints full board
+        void aiTurnIO(player* p);
     void closingScreen();//after a winner has been determined, print a closing screen stating the winner
     void clearScreen();//prints 70 "\n"'s to clear the screen
     void switchPlayerPrompt();//waits to press enter before switching players

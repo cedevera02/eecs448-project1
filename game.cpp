@@ -12,6 +12,7 @@ game::game()
     m_tempY = 0;
     m_player1 = nullptr;
     m_player2 = nullptr;
+    m_mode = 0;
 
     m_clearScreenString = "";
     for(int i=0; i<70;i++)//we construct this string once, that way we don't have to run the loop
@@ -66,7 +67,10 @@ void game::setUp()
     shipIO(m_player1);
     finishTurnPrompt();
     clearScreen();
+    //if
     shipIO(m_player2);
+    //else 
+        //aiShipIO(m_player2);
     finishTurnPrompt();
     clearScreen();
 
@@ -103,6 +107,7 @@ void game::setUpIO()
     finishTurnPrompt();
     clearScreen();
 //PLAYER2
+    //if statement to wrap this whole thing
     do
     {
         problem = false;
@@ -120,6 +125,9 @@ void game::setUpIO()
 
     }while(problem);
     m_player2 = new player(name0, stoi(shipCount0));
+    //to here
+        //shipCount0 = shipCount;
+        //m_player2 = new AI(stoi(shipCount0));
 
 
     finishTurnPrompt();
@@ -199,10 +207,16 @@ void game::fullTurn()
 //PLAYER2 TURN
     if(m_gameOver == false)
     {
-        turnIO(m_player2);//gathers input and prints player boards
-        m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
-        std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+        if(m_mode == 0) {
+            turnIO(m_player2);//gathers input and prints player boards
+            m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
+            std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+        } else {
+            //aiTurnIO(m_player2);
+            //m_player2 -> aiTurn();
+        }
         m_gameOver = m_player1-> loserCheck();
+        
 
         finishTurnPrompt();
         clearScreen();

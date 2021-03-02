@@ -16,6 +16,11 @@ player::player(std::string name, int shipCount)
     }
 }
 
+player::player()
+{
+    
+}
+
 ///Simple destructor for the heap allocated array.
 player::~player()
 {
