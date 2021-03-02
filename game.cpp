@@ -12,6 +12,7 @@ game::game()
     m_tempY = 0;
     m_player1 = nullptr;
     m_player2 = nullptr;
+	useMissile = "";
 
     m_clearScreenString = "";
     for(int i=0; i<70;i++)//we construct this string once, that way we don't have to run the loop
@@ -188,8 +189,10 @@ void game::fullTurn()
 {
 //PLAYER1 TURN
     turnIO(m_player1);//gathers input and prints player boards
-    m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
-    std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+	bool missile = useMissile == "y";
+
+	m_player1->playerTurn(m_tempX, m_tempY, m_player2->hitCheck(m_tempX, m_tempY, missile), missile);//updates the player's boards and prints the result of the shot
+    std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY, missile);//updates the opposing player's boards and prints the result of the shot
     m_gameOver = m_player2-> loserCheck();
 
     finishTurnPrompt();
@@ -200,8 +203,8 @@ void game::fullTurn()
     if(m_gameOver == false)
     {
         turnIO(m_player2);//gathers input and prints player boards
-        m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
-        std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+        m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY, missile), missile);//updates the player's boards and prints the result of the shot
+        std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY, missile);//updates the opposing player's boards and prints the result of the shot
         m_gameOver = m_player1-> loserCheck();
 
         finishTurnPrompt();
@@ -214,33 +217,93 @@ void game::fullTurn()
 ///@param p is the player being modified.
 void game::turnIO(player* p)
 {
-    bool problem = false;
-    int ASCII_OFFSET = 65;
-    string coordinatesTemp = "";
+	bool problem = false;
+	bool problem2 = false;
+	int ASCII_OFFSET = 65;
+	string coordinatesTemp = "";
 
-    do
-    {
-        if(problem == false) cout<< p -> printBoard();
-        problem = false;
-        cout << "Please enter a coordinate (ex. F8): ";
-        std::getline(std::cin, coordinatesTemp);
-        //INPUT VALIDATION
-        if(coordinatesTemp.length() > 3  || coordinatesTemp.length() < 2 ||
-           !isStringInt(coordinatesTemp.substr(1)) ||
-           !isStringLetter(coordinatesTemp.substr(0,1)) ) problem = true;
-        if(!problem)
-        {
-            if(stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1 ) problem = true;
-        }
-        if(!problem)
-        {   //CONVERT INPUT
-            m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
-            coordinatesTemp.erase(0,1);
-            m_tempY = stoi(coordinatesTemp) - 1;
-            if(p -> m_board.m_shotGrid[m_tempY][m_tempX] != '.') problem = true;//place the ship
-        }
-        if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
-    }while(problem);
+	do
+	{
+		if (problem == false) cout << p->printBoard();
+		problem = false;
+		cout << "Do you want to use the Missile? (y or n): ";
+		std::getline(std::cin, useMissile);
+		if (useMissile == "y")
+		{
+			cout << "Please enter a coordinate for Missile (ex. F8): ";
+			std::getline(std::cin, coordinatesTemp);
+			if (coordinatesTemp.length() > 3 || coordinatesTemp.length() < 2 || !isStringInt(coordinatesTemp.substr(1)) || !isStringLetter(coordinatesTemp.substr(0, 1)))
+				problem = true;
+			if (!problem)
+			{
+				if (stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1)
+					problem = true;
+			}
+			if (!problem)
+			{   //CONVERT INPUT
+				m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
+				coordinatesTemp.erase(0, 1);
+				m_tempY = stoi(coordinatesTemp) - 1;
+
+				if (p->m_board.m_shotGrid[m_tempY][m_tempX] != '.')
+					problem = true;//place the ship
+
+                //Checking coordinates to make sure not on border
+				if (m_tempX < 1 || m_tempX > 8) 
+                {
+					problem2 = true;
+				}
+				else
+                {
+					problem2 = false;
+				}
+
+				if (m_tempY < 1 || m_tempY > 8)
+                {
+					problem2 = true;
+				}
+				else
+                {
+					problem2 = false;
+				}
+
+			}
+
+			if (problem)
+			{
+				std::cout << "\n**Invalid input. Please try again.**\n";
+			}
+			else if (problem2)
+			{
+				std::cout << "\n**Cannot place on the border. Please try again.**\n";
+			}
+		}
+		else if (useMissile == "n")
+		{
+			cout << "Please enter a coordinate (ex. F8): ";
+			std::getline(std::cin, coordinatesTemp);
+			//INPUT VALIDATION
+			if (coordinatesTemp.length() > 3 || coordinatesTemp.length() < 2 || !isStringInt(coordinatesTemp.substr(1)) || !isStringLetter(coordinatesTemp.substr(0, 1)))
+				problem = true;
+			if (!problem)
+			{
+				if (stoi(coordinatesTemp.substr(1)) > 10 || stoi(coordinatesTemp.substr(1)) < 1)
+					problem = true;
+			}
+			if (!problem)
+			{   //CONVERT INPUT
+				m_tempX = (int)toupper(coordinatesTemp[0]) - ASCII_OFFSET;
+				coordinatesTemp.erase(0, 1);
+				m_tempY = stoi(coordinatesTemp) - 1;
+				if (p->m_board.m_shotGrid[m_tempY][m_tempX] != '.')
+					problem = true;//place the ship
+			}
+			if (problem)
+			{
+				std::cout << "\n**Invalid input. Please try again.**\n";
+			}
+		}
+	} while (problem || problem2);
 }
 
 ///after a winner has been determined, print a closing screen stating the winner
