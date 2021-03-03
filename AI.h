@@ -10,11 +10,11 @@ public:
 
     ~AI();
 
-    void easyPlay();
+    void easyPlay(player* p); //pass in player one to these
 
-    void mediumPlay(); //i think these three plays should essentially just be like a single turn the AI takes
+    void mediumPlay(player* p); //i think these three plays should essentially just be like a single turn the AI takes
 
-    void hardPlay();
+    void hardPlay(player* p);
 
     int randomCoord();
 
@@ -25,7 +25,7 @@ public:
 
     void randomShipPlace();
 
-    void aiTurn(); //this will call the different turn (play) types
+    void aiTurn(player* p); //this will call the different turn (play) types
 
 
 

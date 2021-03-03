@@ -33,7 +33,7 @@ class game
         void aiShipIO(AI* p);
     void fullTurn();//a full turn occurs after both players finish their turn
         void turnIO(player* p);//takes in the player being modified, gathers the input for a half turn, sets m_shotX and m_shotY, prints full board
-        void aiTurnIO(player* p);
+        void aiTurnIO(AI* p);
     void closingScreen();//after a winner has been determined, print a closing screen stating the winner
     void clearScreen();//prints 70 "\n"'s to clear the screen
     void switchPlayerPrompt();//waits to press enter before switching players

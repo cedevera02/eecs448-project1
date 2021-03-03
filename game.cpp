@@ -253,9 +253,16 @@ void game::fullTurn()
 {
 //PLAYER1 TURN
     turnIO(m_player1);//gathers input and prints player boards
-    m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
-    std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
-    m_gameOver = m_player2-> loserCheck();
+
+    if(m_mode == 0) {
+        m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
+        std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+        m_gameOver = m_player2-> loserCheck();
+    } else {
+        m_player1 -> playerTurn(m_tempX, m_tempY, m_player2AI -> hitCheck(m_tempX, m_tempY) );
+        std::cout<<m_player2AI -> updatePlayerShotAt(m_tempX, m_tempY);
+        m_gameOver = m_player2AI-> loserCheck();
+    }
 
     finishTurnPrompt();
     clearScreen();
@@ -270,7 +277,8 @@ void game::fullTurn()
             std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
         } else {
             //aiTurnIO(m_player2AI);
-            //m_player2AI -> aiTurn(m_player1);
+            cout << "AI firing!\n";
+            m_player2AI -> aiTurn(m_player1);
         }
         m_gameOver = m_player1-> loserCheck();
         
@@ -314,12 +322,30 @@ void game::turnIO(player* p)
     }while(problem);
 }
 
+void game::aiTurnIO(AI* p) // I don't think we need this actually, do it all in the AI's play methods
+{
+    bool problem = false;
+
+    cout <<"AI firing!\n";
+    do
+    {
+        m_tempX = p->randomCoord();
+        m_tempY = p->randomCoord();
+        if(p -> m_board.m_shotGrid[m_tempY][m_tempX] != '.') problem = true;
+    } while (problem);
+    
+}
+
 ///after a winner has been determined, print a closing screen stating the winner
 void game::closingScreen()
 {
     if( m_player1->loserCheck() == true)
     {
-        cout << "Congratulations " << m_player2->getName() << ", you have won!\n\n";
+        if (m_mode == 0) {
+            cout << "Congratulations " << m_player2->getName() << ", you have won!\n\n";
+        } else {
+            cout << "The AI has won! \n\n";
+        }
     }
     else
     {

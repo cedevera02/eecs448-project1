@@ -25,6 +25,37 @@ AI::~AI()
 }
 
 
+//m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
+//std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+//use these to fire the shots, it will take care of checks
+//if(m_board.m_shotGrid[m_tempY][m_tempX] != '.') problem = true; need this for ensuring firing at new loc
+
+void AI::easyPlay(player* p)
+{
+
+}
+
+void AI::mediumPlay(player* p)
+{
+
+}
+
+void AI::hardPlay(player* p)//access player 1's ship array, itterate through on each turn
+{
+
+}
+
+void AI::aiTurn(player* p)
+{
+    if(m_difficulty == 0) {
+        easyPlay(p);
+    } else if (m_difficulty == 1) {
+        mediumPlay(p);
+    } else {
+        hardPlay(p);
+    }
+}
+
 int AI::randomCoord()
 {
     srand(time(NULL));
