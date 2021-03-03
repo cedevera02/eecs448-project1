@@ -15,6 +15,14 @@ AI::AI(int shipCount, int difficulty)
     }
 }
 
+AI::~AI()
+{
+    for(int i=0; i<m_shipCount; i++)
+    {
+        delete m_ships[i];
+    }
+    delete m_ships;
+}
 
 
 int AI::randomCoord()
@@ -22,4 +30,12 @@ int AI::randomCoord()
     srand(time(NULL));
 
     return (rand() % 10);
+}
+
+int AI::randomOrien()
+{
+    srand(time(NULL));
+
+    return (rand() % 2);
+
 }

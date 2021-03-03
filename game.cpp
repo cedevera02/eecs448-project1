@@ -26,6 +26,7 @@ game::~game()
 {
     delete m_player1;
     delete m_player2;
+    delete m_player2AI;
 }
 
 ///This is the main game loop.
@@ -67,10 +68,13 @@ void game::setUp()
     shipIO(m_player1);
     finishTurnPrompt();
     clearScreen();
-    //if
-    shipIO(m_player2);
-    //else 
-        //aiShipIO(m_player2);
+    
+    if(m_mode == 0) {
+        shipIO(m_player2);
+    } else { 
+        aiShipIO(m_player2AI);
+    }
+
     finishTurnPrompt();
     clearScreen();
 
@@ -133,8 +137,8 @@ void game::setUpIO()
         m_player2 = new player(name0, stoi(shipCount0));
     } else {
         int diffTemp = aiSetUpIO();
-        shipCount0 = shipCount;
-        m_player2 = new AI(stoi(shipCount0), diffTemp);
+        //shipCount0 = shipCount;
+        m_player2AI = new AI(stoi(shipCount), diffTemp);
         cout << "AI has been created!\n";
     }
 
@@ -220,6 +224,28 @@ void game::shipIO(player* p)
     }
 }
 
+void game::aiShipIO(AI* p)
+{
+    bool problem = false;
+    int xLocTemp, yLocTemp;
+    bool orienTemp;
+
+    cout << "Now placing ships for AI: \n";
+    //cout << p->getShipCount() << "\n";
+    for (int i = 0; i < p -> getShipCount(); i++) {
+        do
+        {
+            xLocTemp = p->randomCoord();
+            yLocTemp = p->randomCoord();
+            orienTemp = (p->randomOrien() == 0) ? 0 : 1;
+            problem = !(p -> buildAndPlaceShip(i+1, orienTemp, xLocTemp, yLocTemp));
+        } while (problem);
+        //cout << "Placed a ship\n";
+    }
+    cout << "AI ships placed!\n";
+    cout << p->printShipBoard(); //for testing get rid of this when done
+}
+
 ///Runs the player turns.
 ///
 ///This is one of the most important methods in the entire program. it steps through the game process one by one.
@@ -243,8 +269,8 @@ void game::fullTurn()
             m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
             std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
         } else {
-            //aiTurnIO(m_player2);
-            //m_player2 -> aiTurn();
+            //aiTurnIO(m_player2AI);
+            //m_player2AI -> aiTurn(m_player1);
         }
         m_gameOver = m_player1-> loserCheck();
         

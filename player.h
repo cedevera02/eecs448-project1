@@ -10,7 +10,7 @@
 
 class player
 {
-    private:
+    protected:
     std::string m_name;///< the name of the player
     int m_shipCount;///< how many ships does the player have
     int m_sinkCount;///< how many of their own ships have been sunk

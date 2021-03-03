@@ -18,6 +18,8 @@ public:
 
     int randomCoord();
 
+    int randomOrien();
+
     bool randomFire(int xCoord, int yCoord);//I don't think we want this actually
     //99% sure we don't need this as I think we should just put the generated x and y coord into
 
@@ -28,12 +30,14 @@ public:
 
 
 
+
 private:
+/*
     std::string m_name;///< the name of the player
     int m_shipCount;///< how many ships does the player have
     int m_sinkCount;///< how many of their own ships have been sunk
     ship** m_ships;///< an array of ships
-
+*/
     int m_initalX;
     int m_initialY;
 

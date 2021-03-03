@@ -21,6 +21,7 @@ class game
     public:
     player* m_player1;///< a pointer to a player that will be created at runtime
     player* m_player2;///< a pointer to a player that will be created at runtime
+    AI* m_player2AI;
     game();
     ~game();
     void play();//the main game loop
@@ -29,7 +30,7 @@ class game
         void setUpIO();//takes in the player being modified, gets the names of the a player and their number of ships
         int aiSetUpIO();
         void shipIO(player* p);//takes in the player being modified, allows the user to place their ships
-        void aiShipIO(player* p);
+        void aiShipIO(AI* p);
     void fullTurn();//a full turn occurs after both players finish their turn
         void turnIO(player* p);//takes in the player being modified, gathers the input for a half turn, sets m_shotX and m_shotY, prints full board
         void aiTurnIO(player* p);
