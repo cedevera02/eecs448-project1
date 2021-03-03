@@ -9,6 +9,7 @@ player::player(std::string name, int shipCount)
     m_sinkCount = 0;
     m_name = name;
     m_shipCount = shipCount;
+    m_missilesLeft = 1;
     m_ships = new ship* [m_shipCount];
     for(int i=0; i<m_shipCount; i++)
     {
@@ -71,31 +72,10 @@ bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 ///@param hitCheck from the game class, true is passed in if the shot was a hit, false if miss
 ///@param x the x coord that was selected
 ///@param y the y coord that was selected
-void player::playerTurn(int x, int y, bool hitCheck, bool useMissile)
+void player::playerTurn(int x, int y, bool hitCheck)
 {
-	if (!useMissile)
-	{
-		if (hitCheck) m_board.m_shotGrid[y][x] = 'X';
-		else m_board.m_shotGrid[y][x] = 'O';
-	}
-	else
-	{
-		for (int i = x - 1; i <= x + 1; ++i)
-		{ 
-			for (int j = y - 1; j <= y + 1; ++j)
-			{
-
-				if(hitCheck)
-				{//Replacing ship with X for shotGrid
-					if (m_board.m_shipGrid[j][i] == 'o')
-					{
-						m_board.m_shotGrid[j][i] = 'X';
-					}
-				}
-				else m_board.m_shotGrid[j][i] = 'O';
-			}
-		}
-	}
+	if(hitCheck == true) m_board.m_shotGrid[y][x] = 'X';
+    else m_board.m_shotGrid[y][x] = 'O';
 }
 
 ///checks for valid input.
@@ -117,36 +97,19 @@ bool player::shoot(int x, int y)
 ///@param x takes in x coord to update
 ///@param y takes in y coord to update
 ///@return "**HIT!**", "**Miss**", "Ship of size <s> destroyed!"
-std::string player::updatePlayerShotAt(int x, int y, bool useMissile)
+std::string player::updatePlayerShotAt(int x, int y)
 {
-	if (hitCheck(x, y, useMissile) == true)
-	{
-		if (!useMissile)
-		{
-			m_board.m_shipGrid[y][x] = '!';//update ship grid
-		}
-		else
-		{//Replace all ships that are in the 3x3 area with hit mark !
-			for (int i = x - 1; i <= x + 1; ++i)
-			{
-				for (int j = y - 1; j <= y + 1; ++j)
-				{
-					if (m_board.m_shipGrid[j][i] == 'o')
-					{
-						m_board.m_shipGrid[j][i] = '!';
-					}
-				}
-			}
-		}
-
-		int temp = updateShip(x, y);//update ships returns an int if a ship is destroyed
-		if (temp != 0)
-		{
-			return ("HIT! Ship of size " + std::to_string(temp) + " destroyed!");
-		}
-		else return "**HIT**";
-	}
-	else return "**Miss**";
+    if(hitCheck(x,y) == true)
+    {
+        m_board.m_shipGrid[y][x] = '!';//update ship grid
+        int temp = updateShip(x,y);//update ships returns an int if a ship is destroyed
+        if(temp != 0)
+        {
+            return ("HIT! Ship of size " + std::to_string(temp) + " destroyed!");
+        }
+        else return "**HIT**";
+    }
+    else return "**Miss**";
 }
 
 
@@ -155,26 +118,10 @@ std::string player::updatePlayerShotAt(int x, int y, bool useMissile)
 ///@param x takes in x coord to check
 ///@param y takes in y coord to check
 ///@return true if hit, false otherwise
-bool player::hitCheck(int x, int y, bool useMissile)
+bool player::hitCheck(int x, int y)
 {
-	if (!useMissile)
-	{
-		if (m_board.m_shipGrid[y][x] == 'o') return true;
-		return false;
-	}
-	else
-	{
-		//Checking all 9 coordinate for ships hit
-		for (int i = x - 1; i <= x + 1; ++i)
-		{
-			for (int j = y - 1; j <= y + 1; ++j)
-			{
-
-				if (m_board.m_shipGrid[j][i] == 'o') return true;
-			}
-		}
-	}
-	return false;
+	if(m_board.m_shipGrid[y][x] == 'o') return true;
+    else return false;
 }
 
 //updates the ships if any have been hit
@@ -261,4 +208,17 @@ int player::getShipCount()
 std::string player::getName()
 {
     return (m_name);
+}
+
+///Getter for member variable
+///@return int of number of missiles left
+int player::getMissilesLeft()
+{
+    return m_missilesLeft;
+}
+
+///Decrements m_missilesLeft to indicate missile has been used
+void player::useMissile()
+{
+    m_missilesLeft--;
 }

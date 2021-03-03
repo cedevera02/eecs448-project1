@@ -16,6 +16,7 @@ class game
     int m_tempX;///< a variable to store the corrinate for the current turn
     int m_tempY;///< a variable to store the corrinate for the current turn
 	std::string useMissile;// string that stored player choice of use missile or not
+    bool m_missileGame;
 
     public:
     player* m_player1;///< a pointer to a player that will be created at runtime
@@ -36,5 +37,8 @@ class game
     void finishTurnPrompt();
     bool isStringInt(std::string s);
     bool isStringLetter(std::string s);
+    void missileTurn(player* current, player* opposing);//calls playerTurn but 9 times to simulate a 3x3 shot
+    void missileTurnIO(player* p);//gets input for 3x3 shot
+    void missilePrompt();//asks player if they want to fire a missile shot
 };
 #endif
