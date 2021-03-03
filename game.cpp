@@ -84,6 +84,7 @@ void game::setUpIO()
     string name0 = "";
     string shipCount = "";
     string shipCount0 = "";
+    string aiChoice = "";
     bool problem = false;
 //PLAYER1
     do
@@ -93,42 +94,48 @@ void game::setUpIO()
         std::getline(std::cin, name);
         cout << "Please enter the number of ships you could like to have? (1-6): ";
         std::getline(std::cin, shipCount);
+        cout << "Would you like to play with AI (Y/N): ";
+        std::getline(std::cin, aiChoice);
 
-        if(!isStringInt(shipCount) || shipCount.length() == 0) problem = true;
+        if(!isStringInt(shipCount) || shipCount.length() == 0 || aiChoice.length() != 1) problem = true;
         if(!problem)
         {
             if(stoi(shipCount) > 6 || stoi(shipCount) < 1 ) problem = true;
+            if(toupper(aiChoice[0]) != 'Y' && toupper(aiChoice[0]) != 'N') problem = true;
         }
         if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
 
     }while(problem);
     m_player1 = new player(name, stoi(shipCount));
+    m_mode = toupper(aiChoice[0]) == 0 ? 0 : 1; 
+    
 
     finishTurnPrompt();
     clearScreen();
 //PLAYER2
-    //if statement to wrap this whole thing
-    do
-    {
-        problem = false;
-        cout << "Player 2, please input your name: ";
-        std::getline(std::cin, name0);
-        cout << "Please enter the number of ships you could like to have? (1-6): ";
-        std::getline(std::cin, shipCount0);
-        //INPUT VALIDATION
-        if(!isStringInt(shipCount0) || shipCount0.length() == 0) problem = true;
-        if(!problem)
+    if(m_mode == 0) {
+        do
         {
-            if(stoi(shipCount0) > 6 || stoi(shipCount0) < 1 ) problem = true;
-        }
-        if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+            problem = false;
+            cout << "Player 2, please input your name: ";
+            std::getline(std::cin, name0);
+            cout << "Please enter the number of ships you could like to have? (1-6): ";
+            std::getline(std::cin, shipCount0);
+            //INPUT VALIDATION
+            if(!isStringInt(shipCount0) || shipCount0.length() == 0) problem = true;
+            if(!problem)
+            {
+                if(stoi(shipCount0) > 6 || stoi(shipCount0) < 1 ) problem = true;
+            }
+            if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
 
-    }while(problem);
-    m_player2 = new player(name0, stoi(shipCount0));
-    //to here
-        //shipCount0 = shipCount;
-        //m_player2 = new AI(stoi(shipCount0));
-
+        }while(problem);
+        m_player2 = new player(name0, stoi(shipCount0));
+    } else {
+        shipCount0 = shipCount;
+        m_player2 = new AI(stoi(shipCount0));
+        cout << "AI has been created!\n";
+    }
 
     finishTurnPrompt();
     clearScreen();
