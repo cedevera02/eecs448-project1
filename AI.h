@@ -6,7 +6,7 @@
 class AI: public player
 {
 public:
-    AI(int shipCount);
+    AI(int shipCount, int difficulty);
 
     ~AI();
 
@@ -27,6 +27,7 @@ public:
 
 
 
+
 private:
     std::string m_name;///< the name of the player
     int m_shipCount;///< how many ships does the player have
@@ -40,7 +41,7 @@ private:
     int m_directionY;
 
     int m_directionTracker;
-    int m_difficulty;
+    int m_difficulty;//0 is easy, 1 is medium, 2 is hard
 
 
 

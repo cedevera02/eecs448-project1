@@ -27,6 +27,7 @@ class game
     void testPlay();//runs the game but skips the set up to speed up testing
     void setUp();//get the names of the players and place their ships
         void setUpIO();//takes in the player being modified, gets the names of the a player and their number of ships
+        int aiSetUpIO();
         void shipIO(player* p);//takes in the player being modified, allows the user to place their ships
         void aiShipIO(player* p);
     void fullTurn();//a full turn occurs after both players finish their turn

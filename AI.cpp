@@ -2,9 +2,10 @@
 #include <stdlib.h> //srand and rand from here
 #include <time.h> //this allows us to get the time to generate a random seed using srand
 
-AI::AI(int shipCount)
+AI::AI(int shipCount, int difficulty)
 {
     m_sinkCount = 0;
+    m_difficulty = difficulty;
     m_name = "AI";
     m_shipCount = shipCount;
     m_ships = new ship* [m_shipCount];

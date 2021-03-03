@@ -132,13 +132,38 @@ void game::setUpIO()
         }while(problem);
         m_player2 = new player(name0, stoi(shipCount0));
     } else {
+        int diffTemp = aiSetUpIO();
         shipCount0 = shipCount;
-        m_player2 = new AI(stoi(shipCount0));
+        m_player2 = new AI(stoi(shipCount0), diffTemp);
         cout << "AI has been created!\n";
     }
 
+    
     finishTurnPrompt();
     clearScreen();
+}
+
+int game::aiSetUpIO()
+{
+    bool problem;
+    string aiDifficulty;
+
+    do
+    {
+        problem = false;
+        cout << "What difficulty would you like the AI to be?\n";
+        cout << "0 is easy, 1 is medium, 2 is hard: ";
+        std::getline(std::cin, aiDifficulty);
+        if(!isStringInt(aiDifficulty) || aiDifficulty.length() != 1) problem = true;
+        if(!problem){
+            if(stoi(aiDifficulty) > 2 || stoi(aiDifficulty) < 0) problem = true;
+        }
+        if(problem) cout <<"\n**Invalid difficulty input. Please try again.**\n";
+
+    } while (problem);
+
+    return (stoi(aiDifficulty));
+    
 }
 
 
