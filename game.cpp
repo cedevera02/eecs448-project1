@@ -107,7 +107,7 @@ void game::setUpIO()
 
     }while(problem);
     m_player1 = new player(name, stoi(shipCount));
-    m_mode = toupper(aiChoice[0]) == 0 ? 0 : 1; 
+    m_mode = toupper(aiChoice[0]) == 'N' ? 0 : 1; 
     
 
     finishTurnPrompt();
@@ -138,7 +138,6 @@ void game::setUpIO()
         cout << "AI has been created!\n";
     }
 
-    
     finishTurnPrompt();
     clearScreen();
 }
