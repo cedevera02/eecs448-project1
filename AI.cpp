@@ -35,7 +35,20 @@ int AI::getDifficulty() const
 
 void AI::easyPlay(player* p)
 {
-   
+   bool problem= false;
+  
+  
+    do{
+        problem = false;
+        m_initalX= randomCoord();
+        m_initialY= randomCoord();
+        if(m_board.m_shotGrid[m_initalX][m_initialY] != '.') problem = true;
+
+    }while(problem);
+
+    this-> playerTurn(m_initalX, m_initialY, p->hitCheck(m_initalX, m_initialY));
+    std::cout<<p->updatePlayerShotAt(m_initalX,m_initialY);
+ 
 
 }
 
