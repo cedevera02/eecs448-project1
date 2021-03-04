@@ -289,6 +289,7 @@ void game::turnIO(player* p)
     {
         if(problem == false) cout<< p -> printBoard();
         problem = false;
+	cout << p->getMissilesLeft() << " Missile remaining" << endl;
         cout << "Please enter a coordinate (ex. F8): ";
         std::getline(std::cin, coordinatesTemp);
         //INPUT VALIDATION
@@ -433,6 +434,7 @@ void game::missileTurnIO(player* p){
 	{
 		if (problem == false) cout << p->printBoard();
 		problem = false;
+		cout << p->getMissilesLeft() << " Missile remaining" << endl;
 		cout << "Please enter a coordinate for Missile (ex. F8): ";
 		std::getline(std::cin, coordinatesTemp);
 		if (coordinatesTemp.length() > 3 || coordinatesTemp.length() < 2 || !isStringInt(coordinatesTemp.substr(1)) || !isStringLetter(coordinatesTemp.substr(0, 1)))
