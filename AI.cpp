@@ -1,6 +1,7 @@
 #include "AI.h"
 #include <stdlib.h> //srand and rand from here
 #include <time.h> //this allows us to get the time to generate a random seed using srand
+#include <iostream>
 
 AI::AI(int shipCount, int difficulty)
 {
@@ -17,11 +18,13 @@ AI::AI(int shipCount, int difficulty)
 
 AI::~AI()
 {
-    for(int i=0; i<m_shipCount; i++)
-    {
-        delete m_ships[i];
-    }
-    delete m_ships;
+    
+   
+}
+
+int AI::getDifficulty() const
+{
+    return m_difficulty;
 }
 
 
@@ -32,6 +35,7 @@ AI::~AI()
 
 void AI::easyPlay(player* p)
 {
+   
 
 }
 

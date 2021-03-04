@@ -27,7 +27,7 @@ public:
 
     void aiTurn(player* p); //this will call the different turn (play) types
 
-
+    int getDifficulty() const; // for testing
 
 
 

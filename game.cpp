@@ -140,6 +140,7 @@ void game::setUpIO()
         //shipCount0 = shipCount;
         m_player2AI = new AI(stoi(shipCount), diffTemp);
         cout << "AI has been created!\n";
+        //cout << m_player2AI->getDifficulty() << "\n"; for testing
     }
 
     finishTurnPrompt();
