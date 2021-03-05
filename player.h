@@ -33,6 +33,7 @@ class player
     std::string printShipBoard();//used in shipIO
 
     int getShipCount();
+    int getSinkCount();
     std::string getName();
 
 };

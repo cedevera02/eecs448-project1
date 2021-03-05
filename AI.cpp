@@ -7,7 +7,9 @@ AI::AI(int shipCount, int difficulty)
 {
     m_sinkCount = 0;
     m_mediumState = 0;
-    m_directionTracker = 0;
+    m_directionTracker = -1;
+    m_oppsShipsSunk = 0;
+    m_failChecker = false;
     m_difficulty = difficulty;
     m_name = "AI";
     m_shipCount = shipCount;
@@ -54,13 +56,18 @@ void AI::easyPlay(player* p)
 
 }
 
+bool AI::getFailChecker() const
+{
+    return m_failChecker;
+}
+
 void AI::mediumPlay(player* p)
 {
     bool problem= false;
     bool hitChecker = false;
     
   
-    if(m_mediumState = 0) {
+    if(m_mediumState == 0) {
         do{
             problem = false;
             m_initialX= randomCoord();
@@ -69,43 +76,188 @@ void AI::mediumPlay(player* p)
 
         }while(problem);
 
-        this-> playerTurn(m_initialX, m_initialY, p->hitCheck(m_initialX, m_initialY));
+        hitChecker = p->hitCheck(m_initialX, m_initialY);
+        this-> playerTurn(m_initialX, m_initialY, hitChecker);
         std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY);
 
+        if(hitChecker) m_mediumState = 1;
+
         m_directionTracker = 0;
-        m_mediumState = 1;
-    } else if (m_mediumState = 1) {
-        if((m_initialY - 1) >= 0 && m_directionTracker == 0 
-        && m_board.m_shotGrid[m_initialY - 1][m_initialX] == '.') {
-            m_directionTracker = 1;
-            hitChecker = p->hitCheck(m_initialX, m_initialY - 1);
-            this-> playerTurn(m_initialX, m_initialY - 1, hitChecker);
-            std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY - 1);
-            if(hitChecker) {
-                m_directionX = m_initialX;
-                m_directionY = m_initialY - 1;
-                m_mediumState = 2; 
+        
+    } else if (m_mediumState == 1) {
+        do {
+            m_directionTracker ++;
+            if((m_initialY - 1) >= 0 && m_directionTracker == 0 
+            && m_board.m_shotGrid[m_initialY - 1][m_initialX] == '.') {
+                
+                hitChecker = p->hitCheck(m_initialX, m_initialY - 1);
+                this-> playerTurn(m_initialX, m_initialY - 1, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY - 1);
+                if(hitChecker) {
+                    m_directionX = m_initialX;
+                    m_directionY = m_initialY - 1;
+                    m_mediumState = 2; 
+                    
+                }
+                break;
+            } else if ((m_initialX + 1) <= 9 && m_directionTracker == 1 
+            && m_board.m_shotGrid[m_initialY][m_initialX + 1] == '.') {
+                
+                hitChecker = p->hitCheck(m_initialX+1, m_initialY);
+                this-> playerTurn(m_initialX+1, m_initialY, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX+1,m_initialY);
+                if(hitChecker) {
+                    m_directionX = m_initialX + 1;
+                    m_directionY = m_initialY;
+                    m_mediumState = 2;
+                    
+                }
+                break;
+            } else if ((m_initialY + 1) <= 9 && m_directionTracker == 2 
+            && m_board.m_shotGrid[m_initialY + 1][m_initialX] == '.') {
+                
+                hitChecker = p->hitCheck(m_initialX, m_initialY + 1);
+                this-> playerTurn(m_initialX, m_initialY + 1, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY + 1);
+                if(hitChecker) {
+                    m_directionX = m_initialX;
+                    m_directionY = m_initialY + 1;
+                    m_mediumState = 2;
+                    
+                }
+                break;
+            } else if ((m_initialX-1) <= 9 && m_directionTracker == 3 
+            && m_board.m_shotGrid[m_initialY][m_initialX - 1] == '.'){
+                hitChecker = p->hitCheck(m_initialX - 1, m_initialY);
+                this-> playerTurn(m_initialX-1, m_initialY, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX-1,m_initialY);
+                if(hitChecker) {
+                    m_directionX = m_initialX-1;
+                    m_directionY = m_initialY;
+                    m_mediumState = 2;
+                    
+                }
+                break;
             }
-        } else if ((m_initialX + 1) <= 9 && m_directionTracker == 0 
-        && m_board.m_shotGrid[m_initialY][m_initialX + 1] == '.') {
-            m_directionTracker = 2;
-            hitChecker = p->hitCheck(m_initialX+1, m_initialY);
-            this-> playerTurn(m_initialX+1, m_initialY, hitChecker);
-            std::cout<<p->updatePlayerShotAt(m_initialX+1,m_initialY);
-            if(hitChecker) {
-                m_directionX = m_initialX + 1;
-                m_directionY = m_initialY;
-                m_mediumState = 2;
-            }
-        }
+            
+        } while (m_directionTracker < 4);
 
     } else {
+        m_contChecker = true;
+        m_failChecker = false;
+        //m_incNum = 1;
+        bool hitChecker = false;
+
+        if(m_directionTracker == 0) {
+            if(m_directionY - 1 >= 0) {
+                if(m_board.m_shotGrid[m_directionY - 1][m_directionX] == '.') {
+                    
+                    hitChecker = p->hitCheck(m_directionX, m_directionY - 1);
+                    this-> playerTurn(m_directionX, m_directionY - 1, hitChecker);
+                    std::cout<<p->updatePlayerShotAt(m_directionX,m_directionY - 1);
+                    if(!hitChecker) {
+                        m_contChecker = false;
+                    }
+                    if(p->getSinkCount() > m_oppsShipsSunk) {
+                        m_oppsShipsSunk = p->getSinkCount();
+                        m_mediumState = 0;
+                    }
+                    m_directionY -= 1;
+                } else {
+                    m_contChecker = false;
+                    m_failChecker = true;
+                }
+            } else {
+                m_failChecker = true;
+            }
+
+        } else if(m_directionTracker == 1) {
+            if(m_directionX + 1 < 10) {
+                if(m_board.m_shotGrid[m_directionY][m_directionX + 1] == '.') {
+                    
+                    hitChecker = p->hitCheck(m_directionX +1 , m_directionY );
+                    this-> playerTurn(m_directionX + 1, m_directionY, hitChecker);
+                    std::cout<<p->updatePlayerShotAt(m_directionX + 1,m_directionY);
+                    if(!hitChecker) {
+                        m_contChecker = false;
+                    }
+                    if(p->getSinkCount() > m_oppsShipsSunk) {
+                        m_oppsShipsSunk = p->getSinkCount();
+                        m_mediumState = 0;
+                    }
+
+                    m_directionX += 1;
+                } else {
+                    m_contChecker = false;
+                    m_failChecker = true;
+                }
+            } else {
+                m_failChecker = true;
+            }
+
+        } else if(m_directionTracker == 2) {
+            if(m_directionY + 1 < 10) {
+                if(m_board.m_shotGrid[m_directionY + 1][m_directionX] == '.') {
+                    
+                    hitChecker = p->hitCheck(m_directionX, m_directionY + 1 );
+                    this-> playerTurn(m_directionX, m_directionY + 1, hitChecker);
+                    std::cout<<p->updatePlayerShotAt(m_directionX,m_directionY + 1);
+                    if(!hitChecker) {
+                        m_contChecker = false;
+                    }
+                    if(p->getSinkCount() > m_oppsShipsSunk) {
+                        m_oppsShipsSunk = p->getSinkCount();
+                        m_mediumState = 0;
+                    }
+
+                    m_directionY += 1;
+                } else {
+                    m_contChecker = false;
+                    m_failChecker = true;
+                }
+            } else {
+                m_failChecker = true;
+            }
+        } else if(m_directionTracker == 3) {
+            if(m_directionX - 1 >= 0) {
+                if(m_board.m_shotGrid[m_directionY][m_directionX - 1] == '.') {
+                    
+                    hitChecker = p->hitCheck(m_directionX - 1 , m_directionY );
+                    this-> playerTurn(m_directionX - 1, m_directionY, hitChecker);
+                    std::cout<<p->updatePlayerShotAt(m_directionX - 1,m_directionY);
+                    if(!hitChecker) {
+                        m_contChecker = false;
+                    }
+                    if(p->getSinkCount() > m_oppsShipsSunk) {
+                        m_oppsShipsSunk = p->getSinkCount();
+                        m_mediumState = 0;
+                    }
+
+                    m_directionX -= 1;
+                } else {
+                    m_contChecker = false;
+                    m_failChecker = true;
+                }
+            } else {
+                m_failChecker = true;
+            }
+
+        }
+
+        if(m_contChecker == false) {
+            m_mediumState = 1;
+        }
+
+        if(m_failChecker == true) {
+            m_mediumState = 1;
+        }
+        
 
     }
 
 }
 
-void AI::hardPlay(player* p)//access player 1's ship array, itterate through on each turn
+void AI::hardPlay(player* p)
 {
    bool problem= false;
   
@@ -118,19 +270,19 @@ void AI::hardPlay(player* p)//access player 1's ship array, itterate through on 
             {
                 if(p->m_board.m_shipGrid[i][j] == 'o')
                 {
-                    m_initalX= j;
+                    m_initialX= j;
                     m_initialY= i;
                     break;
                 }
             }
         }
         
-        if(m_board.m_shotGrid[m_initalX][m_initialY] != '.') problem = true;
+        if(m_board.m_shotGrid[m_initialX][m_initialY] != '.') problem = true;
 
     }while(problem);
 
-    this-> playerTurn(m_initalX, m_initialY, p->hitCheck(m_initalX, m_initialY));
-    std::cout<<p->updatePlayerShotAt(m_initalX,m_initialY);
+    this-> playerTurn(m_initialX, m_initialY, p->hitCheck(m_initialX, m_initialY));
+    std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY);
 }
 
 void AI::aiTurn(player* p)

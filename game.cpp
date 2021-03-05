@@ -279,7 +279,9 @@ void game::fullTurn()
         } else {
             //aiTurnIO(m_player2AI);
             cout << "AI firing!\n";
-            m_player2AI -> aiTurn(m_player1);
+            do{
+                m_player2AI -> aiTurn(m_player1);
+            } while (m_player2AI->getFailChecker());
         }
         m_gameOver = m_player1-> loserCheck();
         

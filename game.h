@@ -2,6 +2,7 @@
 #define GAME_H
 #include"player.h"
 #include "AI.h"
+#include "ship.h"
 #include<iostream>
 
 ///game is the driver class that handles all IO and pieces everything together.
