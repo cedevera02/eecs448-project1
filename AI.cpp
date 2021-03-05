@@ -107,7 +107,30 @@ void AI::mediumPlay(player* p)
 
 void AI::hardPlay(player* p)//access player 1's ship array, itterate through on each turn
 {
+   bool problem= false;
+  
+  
+    do{
+        problem = false;
+        for(int i=0; i < 10; i++)
+        {
+            for(int j=0; j < 10; j++)
+            {
+                if(p->m_board.m_shipGrid[i][j] == 'o')
+                {
+                    m_initalX= j;
+                    m_initialY= i;
+                    break;
+                }
+            }
+        }
+        
+        if(m_board.m_shotGrid[m_initalX][m_initialY] != '.') problem = true;
 
+    }while(problem);
+
+    this-> playerTurn(m_initalX, m_initialY, p->hitCheck(m_initalX, m_initialY));
+    std::cout<<p->updatePlayerShotAt(m_initalX,m_initialY);
 }
 
 void AI::aiTurn(player* p)
