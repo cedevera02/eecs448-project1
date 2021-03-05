@@ -83,64 +83,73 @@ void AI::mediumPlay(player* p)
         if(hitChecker) m_mediumState = 1;
 
         m_directionTracker = 0;
+
+        m_incNum = 0;
         
     } else if (m_mediumState == 1) {
         do {
             m_directionTracker ++;
-            if((m_initialY - 1) >= 0 && m_directionTracker == 0 
-            && m_board.m_shotGrid[m_initialY - 1][m_initialX] == '.') {
+            if(m_directionTracker == 4){
+                 m_directionTracker = 0;
+                 m_incNum += 1;
+            }
+
+            if((m_initialY - 1 - m_incNum) >= 0 && m_directionTracker == 0 
+            && m_board.m_shotGrid[m_initialY - 1 - m_incNum][m_initialX] == '.') {
                 
-                hitChecker = p->hitCheck(m_initialX, m_initialY - 1);
-                this-> playerTurn(m_initialX, m_initialY - 1, hitChecker);
-                std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY - 1);
+                hitChecker = p->hitCheck(m_initialX, m_initialY - 1 - m_incNum);
+                this-> playerTurn(m_initialX, m_initialY - 1 - m_incNum, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY - 1 - m_incNum);
                 if(hitChecker) {
                     m_directionX = m_initialX;
-                    m_directionY = m_initialY - 1;
+                    m_directionY = m_initialY - 1 - m_incNum;
                     m_mediumState = 2; 
                     
                 }
                 break;
-            } else if ((m_initialX + 1) <= 9 && m_directionTracker == 1 
-            && m_board.m_shotGrid[m_initialY][m_initialX + 1] == '.') {
+            } else if ((m_initialX + 1 + m_incNum) <= 9 && m_directionTracker == 1 
+            && m_board.m_shotGrid[m_initialY][m_initialX + 1 + m_incNum] == '.') {
                 
-                hitChecker = p->hitCheck(m_initialX+1, m_initialY);
-                this-> playerTurn(m_initialX+1, m_initialY, hitChecker);
-                std::cout<<p->updatePlayerShotAt(m_initialX+1,m_initialY);
+                hitChecker = p->hitCheck(m_initialX+1+ m_incNum, m_initialY);
+                this-> playerTurn(m_initialX+1+ m_incNum, m_initialY, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX+1+ m_incNum,m_initialY);
                 if(hitChecker) {
-                    m_directionX = m_initialX + 1;
+                    m_directionX = m_initialX + 1+ m_incNum;
                     m_directionY = m_initialY;
                     m_mediumState = 2;
                     
                 }
                 break;
-            } else if ((m_initialY + 1) <= 9 && m_directionTracker == 2 
-            && m_board.m_shotGrid[m_initialY + 1][m_initialX] == '.') {
+            } else if ((m_initialY + 1 + m_incNum) <= 9 && m_directionTracker == 2 
+            && m_board.m_shotGrid[m_initialY + 1 + m_incNum][m_initialX] == '.') {
                 
-                hitChecker = p->hitCheck(m_initialX, m_initialY + 1);
-                this-> playerTurn(m_initialX, m_initialY + 1, hitChecker);
-                std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY + 1);
+                hitChecker = p->hitCheck(m_initialX, m_initialY + 1 + m_incNum);
+                this-> playerTurn(m_initialX, m_initialY + 1 + m_incNum, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY + 1 + m_incNum);
                 if(hitChecker) {
                     m_directionX = m_initialX;
-                    m_directionY = m_initialY + 1;
+                    m_directionY = m_initialY + 1 + m_incNum;
                     m_mediumState = 2;
                     
                 }
                 break;
-            } else if ((m_initialX-1) <= 9 && m_directionTracker == 3 
-            && m_board.m_shotGrid[m_initialY][m_initialX - 1] == '.'){
-                hitChecker = p->hitCheck(m_initialX - 1, m_initialY);
-                this-> playerTurn(m_initialX-1, m_initialY, hitChecker);
-                std::cout<<p->updatePlayerShotAt(m_initialX-1,m_initialY);
+            } else if ((m_initialX-1-m_incNum) <= 9 && m_directionTracker == 3 
+            && m_board.m_shotGrid[m_initialY][m_initialX - 1 -m_incNum] == '.'){
+                hitChecker = p->hitCheck(m_initialX - 1 -m_incNum, m_initialY);
+                this-> playerTurn(m_initialX-1 -m_incNum, m_initialY, hitChecker);
+                std::cout<<p->updatePlayerShotAt(m_initialX-1 -m_incNum,m_initialY);
                 if(hitChecker) {
-                    m_directionX = m_initialX-1;
+                    m_directionX = m_initialX-1-m_incNum;
                     m_directionY = m_initialY;
                     m_mediumState = 2;
                     
                 }
                 break;
             }
+
             
         } while (m_directionTracker < 4);
+
 
     } else {
         m_contChecker = true;
