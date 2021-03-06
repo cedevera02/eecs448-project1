@@ -51,14 +51,13 @@ void game::play()
         }
     }
     if (m_missileGame){
-        std::cout << "\nAwesome! You have decided to play the BattleShip game with a special missile!\n";
-        std::cout << "Here are the rules:\n";
+        std::cout << "\n\nAwesome! You have decided to play the BattleShip game with a special missile!\n";
+        std::cout << "\nHere are the rules:\n";
         std::cout << "\t1) Each player gets one shot that covers a 3x3 grid.\n";
         std::cout << "\t2) Each of the 9 shots in the 3x3 grid acts as a normal shot.\n";
         std::cout << "\t3) You cannot shoot outside of the map. You will be asked for the coordinate of the middle of the\n";
         std::cout << "shot that you want to shoot. Therefore you cannot choose a coordinate at the edges of the map.\n";
-        std::cout << "\t4) You cannot overlap with one of your previous shots\n";
-        std::cout << "Let's get started!\n";
+        std::cout << "Let's get started!\n\n\n";
     }
     setUp();
     while(m_gameOver == false)
@@ -289,7 +288,9 @@ void game::turnIO(player* p)
     {
         if(problem == false) cout<< p -> printBoard();
         problem = false;
-	cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        if (m_missileGame){
+	    cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        }
         cout << "Please enter a coordinate (ex. F8): ";
         std::getline(std::cin, coordinatesTemp);
         //INPUT VALIDATION
@@ -434,7 +435,9 @@ void game::missileTurnIO(player* p){
 	{
 		if (problem == false) cout << p->printBoard();
 		problem = false;
-		cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        if (m_missileGame){
+		    cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        }
 		cout << "Please enter a coordinate for Missile (ex. F8): ";
 		std::getline(std::cin, coordinatesTemp);
 		if (coordinatesTemp.length() > 3 || coordinatesTemp.length() < 2 || !isStringInt(coordinatesTemp.substr(1)) || !isStringLetter(coordinatesTemp.substr(0, 1)))
