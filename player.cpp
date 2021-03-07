@@ -9,6 +9,7 @@ player::player(std::string name, int shipCount)
     m_sinkCount = 0;
     m_name = name;
     m_shipCount = shipCount;
+    m_missilesLeft = 1;
     m_ships = new ship* [m_shipCount];
     for(int i=0; i<m_shipCount; i++)
     {
@@ -215,4 +216,17 @@ int player::getShipCount()
 std::string player::getName()
 {
     return (m_name);
+}
+
+///Getter for member variable
+///@return int of number of missiles left
+int player::getMissilesLeft()
+{
+    return m_missilesLeft;
+}
+
+///Decrements m_missilesLeft to indicate missile has been used
+void player::useMissile()
+{
+    m_missilesLeft--;
 }
