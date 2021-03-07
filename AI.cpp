@@ -152,6 +152,7 @@ void AI::mediumPlay(player* p)
 
 
     } else {
+        //change the logic from fire where you can, to go until you miss in a direction
         m_contChecker = true;
         m_failChecker = false;
         //m_incNum = 1;
