@@ -29,6 +29,8 @@ public:
 
     int getDifficulty() const; // for testing
 
+    bool getFailChecker() const;
+
 
 
 private:
@@ -38,7 +40,7 @@ private:
     int m_sinkCount;///< how many of their own ships have been sunk
     ship** m_ships;///< an array of ships
 */
-    int m_initalX;
+    int m_initialX;
     int m_initialY;
 
     int m_directionX;
@@ -46,6 +48,13 @@ private:
 
     int m_directionTracker;
     int m_difficulty;//0 is easy, 1 is medium, 2 is hard
+
+    int m_mediumState;//keeps track of what the mediumPlay should go on the next turn
+    int m_incNum;
+    bool m_contChecker;
+    bool m_failChecker;
+
+    int m_oppsShipsSunk;
 
 
 

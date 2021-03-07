@@ -31,6 +31,11 @@ player::~player()
     delete m_ships;
 }
 
+int player::getSinkCount()
+{
+    return m_sinkCount;
+}
+
 ///Main logic for ships and their placement.
 ///
 ///checks for valid input, if valid: creates a ship object in the m_ships array, then places the ship into the shipGrid, does nothing on invalid input.

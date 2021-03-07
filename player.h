@@ -34,6 +34,7 @@ class player
     std::string printShipBoard();//used in shipIO
 
     int getShipCount();
+    int getSinkCount();
     std::string getName();
     void useMissile(); //decrements m_missilesLeft by 1
     int getMissilesLeft(); //returns m_missilesLeft
