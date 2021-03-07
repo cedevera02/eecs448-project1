@@ -17,14 +17,16 @@ class game
     std::string m_clearScreenString;///< a string of "\n"'s stored so it only has to be constructed once
     int m_tempX;///< a variable to store the corrinate for the current turn
     int m_tempY;///< a variable to store the corrinate for the current turn
+	std::string useMissile;// string that stored player choice of use missile or not
+    bool m_missileGame;
     int m_mode;///< a variable to store the mode of the game (0 for AI off, 1 for AI on)
 
     public:
     player* m_player1;///< a pointer to a player that will be created at runtime
     player* m_player2;///< a pointer to a player that will be created at runtime
-    AI* m_player2AI;
     game();
     ~game();
+    AI* m_player2AI;
     void play();//the main game loop
     void testPlay();//runs the game but skips the set up to speed up testing
     void setUp();//get the names of the players and place their ships
@@ -34,7 +36,6 @@ class game
         void aiShipIO(AI* p);
     void fullTurn();//a full turn occurs after both players finish their turn
         void turnIO(player* p);//takes in the player being modified, gathers the input for a half turn, sets m_shotX and m_shotY, prints full board
-        void aiTurnIO(AI* p);
     void closingScreen();//after a winner has been determined, print a closing screen stating the winner
     void clearScreen();//prints 70 "\n"'s to clear the screen
     void switchPlayerPrompt();//waits to press enter before switching players
@@ -42,5 +43,8 @@ class game
     void finishTurnPrompt();
     bool isStringInt(std::string s);
     bool isStringLetter(std::string s);
+    void missileTurn(player* current, player* opposing);//calls playerTurn but 9 times to simulate a 3x3 shot
+    void missileTurnIO(player* p);//gets input for 3x3 shot
+    void missilePrompt();//asks player if they want to fire a missile shot
 };
 #endif

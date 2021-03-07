@@ -82,7 +82,7 @@ void AI::mediumPlay(player* p)
 
         if(hitChecker) m_mediumState = 1;
 
-        m_directionTracker = 0;
+        m_directionTracker = -1;
 
         m_incNum = 0;
         

@@ -15,12 +15,13 @@ class player
     int m_shipCount;///< how many ships does the player have
     int m_sinkCount;///< how many of their own ships have been sunk
     ship** m_ships;///< an array of ships
+    int m_missilesLeft;//Number of missiles left
 
     public:
     board m_board;///< the board object attatched to the player
     player(std::string name, int shipCount);
-    player();//default
     ~player();
+    player();
     bool buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc);//returns true and creates new ship under m_ships on valid input, returns false and does nothing on invalid input
     void playerTurn(int x, int y, bool hitCheck);//this function updates the player's shot grid
         bool shoot(int x, int y);//returns true for valid input, false otherwise
@@ -35,6 +36,9 @@ class player
     int getShipCount();
     int getSinkCount();
     std::string getName();
+    void useMissile(); //decrements m_missilesLeft by 1
+    int getMissilesLeft(); //returns m_missilesLeft
 
 };
 #endif
+
