@@ -1,7 +1,7 @@
-+prog: main.o ship.o board.o game.o player.o
-	g++ -std=c++11 -g -Wall main.o ship.o board.o game.o player.o -o prog
++prog: main.o ship.o board.o game.o player.o AI.o
+	g++ -std=c++11 -g -Wall main.o ship.o board.o game.o player.o AI.o -o prog
 
-main.o: main.cpp ship.h board.h game.h player.h
+main.o: main.cpp ship.h board.h game.h player.h AI.h
 	g++ -std=c++11 -g -Wall -c main.cpp
 
 ship.o: ship.h ship.cpp
@@ -15,6 +15,9 @@ game.o: game.h game.cpp
 
 player.o: player.h player.cpp
 	g++ -std=c++11 -g -Wall -c player.cpp
+
+AI.o: AI.h AI.cpp
+	g++ -std=c++11 -g -Wall -c AI.cpp
 
 clean: 
 	rm *.o prog

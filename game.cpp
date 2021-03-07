@@ -14,6 +14,7 @@ game::game()
     m_player2 = nullptr;
 	useMissile = "";
     m_missileGame = false;
+    m_mode = 0;
 
     m_clearScreenString = "";
     for(int i=0; i<70;i++)//we construct this string once, that way we don't have to run the loop
@@ -27,11 +28,30 @@ game::~game()
 {
     delete m_player1;
     delete m_player2;
+    delete m_player2AI;
 }
 
 ///This is the main game loop.
 void game::play()
 {
+    std::cout << "                                                                |    |    | \n";               
+    std::cout << "                                                               )_)  )_)  )_) \n";             
+    std::cout << "                                                              )___))___))___)\\ \n";           
+    std::cout << "                                                             )____)____)_____)\\\\ \n";
+    std::cout << "                                                           _____|____|____|____\\\\\\__ \n";
+    std::cout << "-----------------------------------------------------------\\                   /------------------------------\n";
+    std::cout << "               ^^^^^           ^^^^                       ^^^^^  ^^^^^^^^^^^^^^^^^^^^^^\n";
+    std::cout << "                ^^^                                     ^^^^      ^^^^     ^^^    ^^\n";
+    std::cout << "                          ^^^^^^                            ^^^^      ^^^\n";
+    std::cout << "  ____        _   _   _       _____ _     _ \n";      
+    std::cout << " |  _ \\      | | | | | |     / ____| |   (_)    \n";  
+    std::cout << " | |_) | __ _| |_| |_| | ___| (___ | |__  _ _ __  \n";
+    std::cout << " |  _ < / _` | __| __| |/ _ \\\\___ \\| '_ \\| | '_ \\ \n";
+    std::cout << " | |_) | (_| | |_| |_| |  __/____) | | | | | |_) |\n";
+    std::cout << " |____/ \\__,_|\\__|\\__|_|\\___|_____/|_| |_|_| .__/ \n";
+    std::cout << "                                           | |    \n";
+    std::cout << "                                           |_|  \n";
+
     bool correctresp = false;
     string response;
     cout << "\nDo you want to play a normal Battleship game?(y/n): ";
@@ -96,7 +116,11 @@ void game::setUp()
     shipIO(m_player1);
     finishTurnPrompt();
     clearScreen();
-    shipIO(m_player2);
+    if(m_mode == 0) {
+        shipIO(m_player2);
+    } else { 
+        aiShipIO(m_player2AI);
+    }
     finishTurnPrompt();
     clearScreen();
 
@@ -110,6 +134,7 @@ void game::setUpIO()
     string name0 = "";
     string shipCount = "";
     string shipCount0 = "";
+    string aiChoice = "";
     bool problem = false;
 //PLAYER1
     do
@@ -119,41 +144,76 @@ void game::setUpIO()
         std::getline(std::cin, name);
         cout << "Please enter the number of ships you could like to have? (1-6): ";
         std::getline(std::cin, shipCount);
+        cout << "Would you like to play with AI (Y/N): ";
+        std::getline(std::cin, aiChoice);
 
-        if(!isStringInt(shipCount) || shipCount.length() == 0) problem = true;
+        if(!isStringInt(shipCount) || shipCount.length() == 0 || aiChoice.length() != 1) problem = true;
         if(!problem)
         {
             if(stoi(shipCount) > 6 || stoi(shipCount) < 1 ) problem = true;
+            if(toupper(aiChoice[0]) != 'Y' && toupper(aiChoice[0]) != 'N') problem = true;
         }
         if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
 
     }while(problem);
     m_player1 = new player(name, stoi(shipCount));
+    m_mode = toupper(aiChoice[0]) == 'N' ? 0 : 1; 
+    
 
     finishTurnPrompt();
     clearScreen();
 //PLAYER2
-    do
-    {
-        problem = false;
-        cout << "Player 2, please input your name: ";
-        std::getline(std::cin, name0);
-        cout << "Please enter the number of ships you could like to have? (1-6): ";
-        std::getline(std::cin, shipCount0);
-        //INPUT VALIDATION
-        if(!isStringInt(shipCount0) || shipCount0.length() == 0) problem = true;
-        if(!problem)
+    if(m_mode == 0) {
+        do
         {
-            if(stoi(shipCount0) > 6 || stoi(shipCount0) < 1 ) problem = true;
-        }
-        if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
+            problem = false;
+            cout << "Player 2, please input your name: ";
+            std::getline(std::cin, name0);
+            cout << "Please enter the number of ships you could like to have? (1-6): ";
+            std::getline(std::cin, shipCount0);
+            //INPUT VALIDATION
+            if(!isStringInt(shipCount0) || shipCount0.length() == 0) problem = true;
+            if(!problem)
+            {
+                if(stoi(shipCount0) > 6 || stoi(shipCount0) < 1 ) problem = true;
+            }
+            if(problem) std::cout<<"\n**Invalid input. Please try again.**\n";
 
-    }while(problem);
-    m_player2 = new player(name0, stoi(shipCount0));
-
+        }while(problem);
+        m_player2 = new player(name0, stoi(shipCount0));
+    } else {
+        int diffTemp = aiSetUpIO();
+        //shipCount0 = shipCount;
+        m_player2AI = new AI(stoi(shipCount), diffTemp);
+        cout << "AI has been created!\n";
+        //cout << m_player2AI->getDifficulty() << "\n"; for testing
+    }
 
     finishTurnPrompt();
     clearScreen();
+}
+
+int game::aiSetUpIO()
+{
+    bool problem;
+    string aiDifficulty;
+
+    do
+    {
+        problem = false;
+        cout << "What difficulty would you like the AI to be?\n";
+        cout << "0 is easy, 1 is medium, 2 is hard: ";
+        std::getline(std::cin, aiDifficulty);
+        if(!isStringInt(aiDifficulty) || aiDifficulty.length() != 1) problem = true;
+        if(!problem){
+            if(stoi(aiDifficulty) > 2 || stoi(aiDifficulty) < 0) problem = true;
+        }
+        if(problem) cout <<"\n**Invalid difficulty input. Please try again.**\n";
+
+    } while (problem);
+
+    return (stoi(aiDifficulty));
+    
 }
 
 
@@ -211,6 +271,28 @@ void game::shipIO(player* p)
     }
 }
 
+void game::aiShipIO(AI* p)
+{
+    bool problem = false;
+    int xLocTemp, yLocTemp;
+    bool orienTemp;
+
+    cout << "Now placing ships for AI: \n";
+    //cout << p->getShipCount() << "\n";
+    for (int i = 0; i < p -> getShipCount(); i++) {
+        do
+        {
+            xLocTemp = p->randomCoord();
+            yLocTemp = p->randomCoord();
+            orienTemp = (p->randomOrien() == 0) ? 0 : 1;
+            problem = !(p -> buildAndPlaceShip(i+1, orienTemp, xLocTemp, yLocTemp));
+        } while (problem);
+        //cout << "Placed a ship\n";
+    }
+    cout << "AI ships placed!\n";
+    cout << p->printShipBoard(); //for testing get rid of this when done
+}
+
 ///Runs the player turns.
 ///
 ///This is one of the most important methods in the entire program. it steps through the game process one by one.
@@ -225,9 +307,15 @@ void game::fullTurn()
             missileTurn(m_player1, m_player2);
         }else {
             turnIO(m_player1);//gathers input and prints player boards
-            m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
-            std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
-            m_gameOver = m_player2-> loserCheck();
+            if(m_mode == 0) {
+                m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
+                std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+                m_gameOver = m_player2-> loserCheck();
+            }else{
+                m_player1 -> playerTurn(m_tempX, m_tempY, m_player2AI -> hitCheck(m_tempX, m_tempY) );
+                std::cout<<m_player2AI -> updatePlayerShotAt(m_tempX, m_tempY);
+                m_gameOver = m_player2AI-> loserCheck();
+            }
 
             finishTurnPrompt();
             clearScreen();
@@ -235,9 +323,15 @@ void game::fullTurn()
         }
     }else{
         turnIO(m_player1);//gathers input and prints player boards
-        m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
-        std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
-        m_gameOver = m_player2-> loserCheck();
+        if(m_mode == 0){
+            m_player1 -> playerTurn(m_tempX, m_tempY, m_player2 -> hitCheck(m_tempX, m_tempY) );//updates the player's boards and prints the result of the shot
+            std::cout<<m_player2 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+            m_gameOver = m_player2-> loserCheck();
+        }else{
+            m_player1 -> playerTurn(m_tempX, m_tempY, m_player2AI -> hitCheck(m_tempX, m_tempY) );
+            std::cout<<m_player2AI -> updatePlayerShotAt(m_tempX, m_tempY);
+            m_gameOver = m_player2AI-> loserCheck();
+        }
 
         finishTurnPrompt();
         clearScreen();
@@ -247,33 +341,35 @@ void game::fullTurn()
 //PLAYER2 TURN
     if(m_gameOver == false)
     {
-        if (m_missileGame && m_player2->getMissilesLeft() > 0)
-        {
-            missilePrompt();
-            if(useMissile == "y" || useMissile == "Y"){
-                missileTurnIO(m_player2);
-                missileTurn(m_player2, m_player1);
-            }else {
+        if(m_mode == 0){
+            if (m_missileGame && m_player2->getMissilesLeft() > 0)
+            {
+                missilePrompt();
+                if(useMissile == "y" || useMissile == "Y"){
+                    missileTurnIO(m_player2);
+                    missileTurn(m_player2, m_player1);
+                }else {
+                    turnIO(m_player2);//gathers input and prints player boards
+                    m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
+                    std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+                    
+                }
+
+            }else{
                 turnIO(m_player2);//gathers input and prints player boards
                 m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
                 std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
-                m_gameOver = m_player1-> loserCheck();
-
-                finishTurnPrompt();
-                clearScreen();
-                if(m_gameOver == false) switchPlayerPrompt();
             }
-
         }else{
-            turnIO(m_player2);//gathers input and prints player boards
-            m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
-            std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
-            m_gameOver = m_player1-> loserCheck();
-
-            finishTurnPrompt();
-            clearScreen();
-            if(m_gameOver == false) switchPlayerPrompt();
+            //aiTurnIO(m_player2AI);
+            cout << "AI firing!\n";
+            m_player2AI -> aiTurn(m_player1);
         }
+        m_gameOver = m_player1-> loserCheck();
+
+        finishTurnPrompt();
+        clearScreen();
+        if(m_gameOver == false) switchPlayerPrompt();
     }
 }
 
@@ -316,7 +412,11 @@ void game::closingScreen()
 {
     if( m_player1->loserCheck() == true)
     {
-        cout << "Congratulations " << m_player2->getName() << ", you have won!\n\n";
+        if (m_mode == 0) {
+            cout << "Congratulations " << m_player2->getName() << ", you have won!\n\n";
+        } else {
+            cout << "The AI has won! \n\n";
+        }
     }
     else
     {

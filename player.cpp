@@ -9,12 +9,16 @@ player::player(std::string name, int shipCount)
     m_sinkCount = 0;
     m_name = name;
     m_shipCount = shipCount;
-    m_missilesLeft = 1;
     m_ships = new ship* [m_shipCount];
     for(int i=0; i<m_shipCount; i++)
     {
         m_ships[i] = nullptr;
     }
+}
+
+player::player()
+{
+    
 }
 
 ///Simple destructor for the heap allocated array.
@@ -74,7 +78,7 @@ bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
 ///@param y the y coord that was selected
 void player::playerTurn(int x, int y, bool hitCheck)
 {
-	if(hitCheck == true) m_board.m_shotGrid[y][x] = 'X';
+    if(hitCheck == true) m_board.m_shotGrid[y][x] = 'X';
     else m_board.m_shotGrid[y][x] = 'O';
 }
 
@@ -120,7 +124,7 @@ std::string player::updatePlayerShotAt(int x, int y)
 ///@return true if hit, false otherwise
 bool player::hitCheck(int x, int y)
 {
-	if(m_board.m_shipGrid[y][x] == 'o') return true;
+    if(m_board.m_shipGrid[y][x] == 'o') return true;
     else return false;
 }
 
@@ -133,10 +137,8 @@ bool player::hitCheck(int x, int y)
 int player::updateShip(int x, int y)
 {
     ship* s = shipIdentifier(x,y);
-	if (s == nullptr) return 0;
-
     s -> incrementShipHitCount();
-    if(s -> sinkCheck())
+    if(s -> sinkCheck() == true)
     {
         m_sinkCount++;
         return s -> getSize();
@@ -156,7 +158,7 @@ ship* player::shipIdentifier(int x, int y)
     {
         for(int j=0; j < m_ships[i] -> getSize(); j++)//iterate along the length of the ship
         {
-            if(m_ships[i] -> getOrien())//if horizontal
+            if(m_ships[i] -> getOrien() == true)//if horizontal
             {
                 if(m_ships[i] -> getXLoc() + j == x && m_ships[i] -> getYLoc() == y)
                    {//check each location along the length of the ship to see if it matches the shot
@@ -208,17 +210,4 @@ int player::getShipCount()
 std::string player::getName()
 {
     return (m_name);
-}
-
-///Getter for member variable
-///@return int of number of missiles left
-int player::getMissilesLeft()
-{
-    return m_missilesLeft;
-}
-
-///Decrements m_missilesLeft to indicate missile has been used
-void player::useMissile()
-{
-    m_missilesLeft--;
 }

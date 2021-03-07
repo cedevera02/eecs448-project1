@@ -10,7 +10,7 @@
 
 class player
 {
-    private:
+    protected:
     std::string m_name;///< the name of the player
     int m_shipCount;///< how many ships does the player have
     int m_sinkCount;///< how many of their own ships have been sunk
@@ -21,6 +21,7 @@ class player
     board m_board;///< the board object attatched to the player
     player(std::string name, int shipCount);
     ~player();
+    player();
     bool buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc);//returns true and creates new ship under m_ships on valid input, returns false and does nothing on invalid input
     void playerTurn(int x, int y, bool hitCheck);//this function updates the player's shot grid
         bool shoot(int x, int y);//returns true for valid input, false otherwise
@@ -39,3 +40,4 @@ class player
 
 };
 #endif
+
