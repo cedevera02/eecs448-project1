@@ -366,7 +366,8 @@ void game::fullTurn()
                 std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
             }
         }else{
-            cout << "AI firing!\n";
+            cout<< m_player2AI -> printBoard();
+            cout << "\nAI firing!\n";
             do{
                 m_player2AI -> aiTurn(m_player1);
             } while (m_player2AI->getFailChecker());
@@ -392,7 +393,11 @@ void game::turnIO(player* p)
     {
         if(problem == false) cout<< p -> printBoard();
         problem = false;
-	cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        if(m_missileGame)
+        {
+	        cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        }
+
         cout << "Please enter a coordinate (ex. F8): ";
         std::getline(std::cin, coordinatesTemp);
         //INPUT VALIDATION
