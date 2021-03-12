@@ -46,5 +46,6 @@ class game
     void missileTurn(player* current, player* opposing);//calls playerTurn but 9 times to simulate a 3x3 shot
     void missileTurnIO(player* p);//gets input for 3x3 shot
     void missilePrompt();//asks player if they want to fire a missile shot
+    bool overlap(int xcord, int ycord, player *p); //checks to see if missile coordinates will have a previous hit
 };
 #endif
