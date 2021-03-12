@@ -28,7 +28,9 @@ game::~game()
 {
     delete m_player1;
     delete m_player2;
-    delete m_player2AI;
+    if (m_mode != 0){
+        delete m_player2AI;
+    }
 }
 
 ///This is the main game loop.
@@ -77,7 +79,7 @@ void game::play()
         std::cout << "\t2) Each of the 9 shots in the 3x3 grid acts as a normal shot.\n";
         std::cout << "\t3) You cannot shoot outside of the map. You will be asked for the coordinate of the middle of the\n";
         std::cout << "shot that you want to shoot. Therefore you cannot choose a coordinate at the edges of the map.\n";
-        std::cout << "\t4) You cannot overlap with one of your previous shots\n";
+        std::cout << "\t4) You cannot overlap with one of your previous hits.\n";
         std::cout << "Let's get started!\n";
     }
     setUp();
@@ -366,7 +368,8 @@ void game::fullTurn()
                 std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
             }
         }else{
-            cout << "AI firing!\n";
+            cout<< m_player2AI -> printBoard();
+            cout << "\nAI firing!\n";
             do{
                 m_player2AI -> aiTurn(m_player1);
             } while (m_player2AI->getFailChecker());
@@ -392,7 +395,11 @@ void game::turnIO(player* p)
     {
         if(problem == false) cout<< p -> printBoard();
         problem = false;
-	cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        if(m_missileGame)
+        {
+	        cout << p->getMissilesLeft() << " Missile remaining" << endl;
+        }
+
         cout << "Please enter a coordinate (ex. F8): ";
         std::getline(std::cin, coordinatesTemp);
         //INPUT VALIDATION
@@ -534,6 +541,7 @@ void game::missilePrompt(){
 void game::missileTurnIO(player* p){
     bool problem = false;
 	bool problem2 = false;
+    bool problem3 = false; //problem regarding if there has been a previous hit in the coordinate given
 	int ASCII_OFFSET = 65;
 	string coordinatesTemp = "";
 
@@ -578,7 +586,7 @@ void game::missileTurnIO(player* p){
             {
 				problem2 = false;
 			}
-
+            problem3 = overlap(m_tempX, m_tempY, p);
 		}
 
 			if (problem)
@@ -588,6 +596,28 @@ void game::missileTurnIO(player* p){
 			else if (problem2)
 			{
 				std::cout << "\n**Cannot place on the border. Please try again.**\n";
-			}
-	} while (problem || problem2);
+			} 
+            else if (problem3)
+            {
+                std::cout << "\n**3x3 shot cannot contain previous hit coordinate. Please try again.**\n";
+            }
+	} while (problem || problem2 || problem3);
+}
+
+///checks to see if the missile coordinate given has a previous hit coordinate, returns true is there is, false otherwise
+///@param xcord x coordinate
+///@param ycord y coordinate
+///@param p current player being checked
+bool game::overlap(int xcord, int ycord, player *p)
+{
+    bool Xed = false;
+    for (int i = xcord - 1; i <= xcord + 1; ++i)
+	{ 
+		for (int j = ycord - 1; j <= ycord + 1; ++j)
+		{
+            Xed = (p->m_board.m_shotGrid[j][i] == 'X');
+            if (Xed) return Xed; //returns saying that there is a previous hit
+        }
+    }
+    return Xed;
 }
