@@ -5,7 +5,7 @@
 
 AI::AI(int shipCount, int difficulty)
 {
-    std::srand(5236);
+    std::srand(time(0));
     m_sinkCount = 0;
     m_mediumState = 0;
     m_directionTracker = -1;
@@ -64,7 +64,7 @@ bool AI::getFailChecker() const
 
 void AI::mediumPlay(player* p)
 {
-    bool problem= false;
+    bool problem = false;
     bool hitChecker = false;
     
   
@@ -73,7 +73,7 @@ void AI::mediumPlay(player* p)
             problem = false;
             m_initialX= randomCoord();
             m_initialY= randomCoord();
-            if(m_board.m_shotGrid[m_initialX][m_initialY] != '.') problem = true;
+            if(m_board.m_shotGrid[m_initialY][m_initialX] != '.') problem = true;
 
         }while(problem);
 
@@ -96,8 +96,7 @@ void AI::mediumPlay(player* p)
                  m_incNum += 1;
             }
 
-            if((m_initialY - 1 - m_incNum) >= 0 && m_directionTracker == 0 
-            && m_board.m_shotGrid[m_initialY - 1 - m_incNum][m_initialX] == '.') {
+            if( canFireUp( m_initialX, m_initialY - 1 - m_incNum ) ) {
                 
                 hitChecker = p->hitCheck(m_initialX, m_initialY - 1 - m_incNum);
                 this-> playerTurn(m_initialX, m_initialY - 1 - m_incNum, hitChecker);
@@ -106,11 +105,10 @@ void AI::mediumPlay(player* p)
                     m_directionX = m_initialX;
                     m_directionY = m_initialY - 1 - m_incNum;
                     m_mediumState = 2; 
-                    
+                    m_failChecker = false;
                 }
                 break;
-            } else if ((m_initialX + 1 + m_incNum) <= 9 && m_directionTracker == 1 
-            && m_board.m_shotGrid[m_initialY][m_initialX + 1 + m_incNum] == '.') {
+            } else if ( canFireRight( m_initialX + 1 + m_incNum, m_initialY ) ) {
                 
                 hitChecker = p->hitCheck(m_initialX+1+ m_incNum, m_initialY);
                 this-> playerTurn(m_initialX+1+ m_incNum, m_initialY, hitChecker);
@@ -119,11 +117,10 @@ void AI::mediumPlay(player* p)
                     m_directionX = m_initialX + 1+ m_incNum;
                     m_directionY = m_initialY;
                     m_mediumState = 2;
-                    
+                    m_failChecker = false;
                 }
                 break;
-            } else if ((m_initialY + 1 + m_incNum) <= 9 && m_directionTracker == 2 
-            && m_board.m_shotGrid[m_initialY + 1 + m_incNum][m_initialX] == '.') {
+            } else if ( canFireDown ( m_initialX, m_initialY + 1 + m_incNum ) ) {
                 
                 hitChecker = p->hitCheck(m_initialX, m_initialY + 1 + m_incNum);
                 this-> playerTurn(m_initialX, m_initialY + 1 + m_incNum, hitChecker);
@@ -132,11 +129,10 @@ void AI::mediumPlay(player* p)
                     m_directionX = m_initialX;
                     m_directionY = m_initialY + 1 + m_incNum;
                     m_mediumState = 2;
-                    
+                    m_failChecker = false;
                 }
                 break;
-            } else if ((m_initialX-1-m_incNum) <= 9 && m_directionTracker == 3 
-            && m_board.m_shotGrid[m_initialY][m_initialX - 1 -m_incNum] == '.'){
+            } else if ( canFireLeft( m_initialX - 1 - m_incNum, m_initialY ) ){
                 hitChecker = p->hitCheck(m_initialX - 1 -m_incNum, m_initialY);
                 this-> playerTurn(m_initialX-1 -m_incNum, m_initialY, hitChecker);
                 std::cout<<p->updatePlayerShotAt(m_initialX-1 -m_incNum,m_initialY);
@@ -144,7 +140,7 @@ void AI::mediumPlay(player* p)
                     m_directionX = m_initialX-1-m_incNum;
                     m_directionY = m_initialY;
                     m_mediumState = 2;
-                    
+                    m_failChecker = false;
                 }
                 break;
             }
@@ -159,11 +155,7 @@ void AI::mediumPlay(player* p)
         m_failChecker = false;
         //m_incNum = 1;
         hitChecker = false;
-        //only set contChecker to false when miss or encounter a miss, otherwise continue in that direction
-        //if you find an already hit space make contChecker true and then inc the distance and loop
-        //this will make sure we only brek out of a direction if we sink or if me get/encounter a miss
-        //if we encounter a miss i think the method needs to call itself in order to move to a new direction
-        //if we don't do this then the AI will skip its turn if it sees a miss
+    
         do {
             if(m_directionTracker == 0) {
                 if(m_directionY - 1 >= 0) {
@@ -184,6 +176,7 @@ void AI::mediumPlay(player* p)
                     } else if(m_board.m_shotGrid[m_directionY - 1][m_directionX] == 'X') {
                         m_directionY -= 1;
                         m_contChecker = true;
+                        m_failChecker = true;
                     }else {
                         m_contChecker = false;
                         m_failChecker = true;
@@ -213,6 +206,7 @@ void AI::mediumPlay(player* p)
                     } else if(m_board.m_shotGrid[m_directionY][m_directionX + 1] == 'X') {
                         m_directionX += 1;
                         m_contChecker = true;
+                        m_failChecker = true;
                     } else {
                         m_contChecker = false;
                         m_failChecker = true;
@@ -242,6 +236,7 @@ void AI::mediumPlay(player* p)
                     } else if (m_board.m_shotGrid[m_directionY + 1][m_directionX] == 'X') {
                         m_directionY += 1;
                         m_contChecker = true;
+                        m_failChecker = true;
                     } else {
                         m_contChecker = false;
                         m_failChecker = true;
@@ -270,6 +265,7 @@ void AI::mediumPlay(player* p)
                     } else if (m_board.m_shotGrid[m_directionY][m_directionX - 1] == 'X') {
                         m_directionX -= 1;
                         m_contChecker = true;
+                        m_failChecker = true;
                     } else {
                         m_contChecker = false;
                         m_failChecker = true;
@@ -288,14 +284,12 @@ void AI::mediumPlay(player* p)
             m_mediumState = 1;
         }
 
-        
+        /*
         if(m_failChecker == true) {
             m_mediumState = 1;
         }
+        */
         
-        
-        
-
     }
 
 }
@@ -341,15 +335,34 @@ void AI::aiTurn(player* p)
 
 int AI::randomCoord()
 {
-    
-
-    return (std::rand() % 10);
+    return ( std::rand() % 10) ;
 }
 
 int AI::randomOrien()
 {
-    //std::srand(time(NULL));
+    return ( std::rand() % 2 );
+}
 
-    return (std::rand() % 2);
+bool AI::canFireUp(int xCoord, int yCoord) const
+{
+    return ( ( yCoord  >= 0 ) && ( m_directionTracker == 0 ) 
+    && ( m_board.m_shotGrid[yCoord][xCoord] == '.' ) );
+}
 
+bool AI::canFireRight(int xCoord, int yCoord) const
+{
+    return ( ( xCoord <= 9 ) && ( m_directionTracker == 1) 
+    && ( m_board.m_shotGrid[yCoord][xCoord] == '.' ) );
+}
+
+bool AI::canFireDown(int xCoord, int yCoord) const
+{
+    return ( ( yCoord <= 9) && ( m_directionTracker == 2) 
+    && ( m_board.m_shotGrid[yCoord][xCoord] == '.' ) );
+}
+
+bool AI::canFireLeft(int xCoord, int yCoord) const
+{
+    return ( ( xCoord >= 0 ) && ( m_directionTracker == 3 ) 
+    && ( m_board.m_shotGrid[yCoord][xCoord] == '.' ) );
 }
