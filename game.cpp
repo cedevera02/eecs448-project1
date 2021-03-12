@@ -28,7 +28,9 @@ game::~game()
 {
     delete m_player1;
     delete m_player2;
-    delete m_player2AI;
+    if (m_mode != 0){
+        delete m_player2AI;
+    }
 }
 
 ///This is the main game loop.
