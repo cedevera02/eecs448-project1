@@ -31,6 +31,13 @@ public:
 
     bool getFailChecker() const;
 
+    bool canFireUp(int xCoord, int yCoord) const;
+
+    bool canFireRight(int xCoord, int yCoord) const;
+
+    bool canFireDown(int xCoord, int yCoord) const;
+
+    bool canFireLeft(int xCoord, int yCoord) const;
 
 
 private:
