@@ -73,7 +73,7 @@ void AI::easyPlay(player* p)
 
 }
 
-
+///Helper function to return the value of m_failChecker
 bool AI::getFailChecker() const
 {
     return m_failChecker;

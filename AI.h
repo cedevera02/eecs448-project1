@@ -24,12 +24,6 @@ public:
 
     int randomOrien(); /// creates a random orientation
 
-    bool randomFire(int xCoord, int yCoord);//I don't think we want this actually
-                                            //99% sure we don't need this as I think we should just put the generated x and y coord into
-                                            ///Not in use
-
-    void randomShipPlace(); ///Not in use
-
     void aiTurn(player* p); ///this will call the different turn (play) types
 
 
@@ -64,8 +58,8 @@ private:
 
     int m_mediumState;///<keeps track of what the mediumPlay should go on the next turn
     int m_incNum; ///<Increment number for coordinates clockwise around a hit.
-    bool m_contChecker;///< 
-    bool m_failChecker; ///< 
+    bool m_contChecker;///<Keeps track of if the medium AI should continue in a direction, false if they get a miss 
+    bool m_failChecker; ///<Ensures that the AI will try to fire again if the current location can't be fired at
 
     int m_oppsShipsSunk;///< Count of player's ships that AI sunk.
 
