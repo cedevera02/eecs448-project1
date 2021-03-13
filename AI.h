@@ -2,42 +2,48 @@
 #define AI_H
 #include "player.h"
 
+/// AI is a subclass of the Player class. It  instantiates an AI object when user wants to play with AI and
+///handles the AI easy, medium, and hard levels.
 
 class AI: public player
 {
 public:
-    AI(int shipCount, int difficulty);
+    AI(int shipCount, int difficulty); 
 
     ~AI();
 
-    void easyPlay(player* p); //pass in player one to these
+    void easyPlay(player* p); ///pass in player one to these
+                            ///If user chooses easy AI, this will be called. AI shoots randomly.
 
     void mediumPlay(player* p); //i think these three plays should essentially just be like a single turn the AI takes
+                                ///If user chooses medium AI, this will be called. If AI shoots and hits, then AI continues to shoot around that location.
 
-    void hardPlay(player* p);
+    void hardPlay(player* p); ///If user chooses hard AI, this will be called. AI knows where ships are and shoot at them. 
 
-    int randomCoord();
+    int randomCoord(); /// creates a random number
 
-    int randomOrien();
+    int randomOrien(); /// creates a random orientation
 
     bool randomFire(int xCoord, int yCoord);//I don't think we want this actually
-    //99% sure we don't need this as I think we should just put the generated x and y coord into
+                                            //99% sure we don't need this as I think we should just put the generated x and y coord into
+                                            ///Not in use
 
-    void randomShipPlace();
+    void randomShipPlace(); ///Not in use
 
-    void aiTurn(player* p); //this will call the different turn (play) types
+    void aiTurn(player* p); ///this will call the different turn (play) types
 
-    int getDifficulty() const; // for testing
 
-    bool getFailChecker() const;
+    int getDifficulty() const; /// for testing
 
-    bool canFireUp(int xCoord, int yCoord) const;
+    bool getFailChecker() const; /// helper method for MediumPlay. Returns a boolean value for failChecker
 
-    bool canFireRight(int xCoord, int yCoord) const;
+    bool canFireUp(int xCoord, int yCoord) const; /// helper method for MediumPlay. Returns true for if AI can fire above last hit. 
 
-    bool canFireDown(int xCoord, int yCoord) const;
+    bool canFireRight(int xCoord, int yCoord) const;/// helper method for MediumPlay. Returns true for if AI can fire right of last hit.
 
-    bool canFireLeft(int xCoord, int yCoord) const;
+    bool canFireDown(int xCoord, int yCoord) const; /// helper method for MediumPlay. Returns true for if AI can fire below of last hit.
+
+    bool canFireLeft(int xCoord, int yCoord) const; /// helper method for MediumPlay. Returns true for if AI can fire left of last hit.
 
 
 private:
@@ -47,21 +53,21 @@ private:
     int m_sinkCount;///< how many of their own ships have been sunk
     ship** m_ships;///< an array of ships
 */
-    int m_initialX;
-    int m_initialY;
+    int m_initialX; ///< x coordinate for AI
+    int m_initialY; ///< y coordinate for AI
 
-    int m_directionX;
-    int m_directionY;
+    int m_directionX; ///< direction of x 
+    int m_directionY; ///< y coordinate for AI
 
-    int m_directionTracker;
-    int m_difficulty;//0 is easy, 1 is medium, 2 is hard
+    int m_directionTracker; ///< 0,1,3,4 up down right left. Tracks clockwise direction for AI Firing in Mediumplay
+    int m_difficulty;///<0 is easy, 1 is medium, 2 is hard
 
-    int m_mediumState;//keeps track of what the mediumPlay should go on the next turn
-    int m_incNum;
-    bool m_contChecker;
-    bool m_failChecker;
+    int m_mediumState;///<keeps track of what the mediumPlay should go on the next turn
+    int m_incNum; ///<Increment number for coordinates clockwise around a hit.
+    bool m_contChecker;///< 
+    bool m_failChecker; ///< 
 
-    int m_oppsShipsSunk;
+    int m_oppsShipsSunk;///< Count of player's ships that AI sunk.
 
 
 
