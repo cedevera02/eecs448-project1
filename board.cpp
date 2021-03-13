@@ -24,7 +24,7 @@ board::board()
 ///
 ///Using strings it is possible to cout the board in a different class. This will be all the data behind the actual boards.
 ///returns a string to format the board.
-///@return the formatted string of the board
+///@return string, the formatted string of the board
 std::string board::drawShipBoard()
 {
     std::string finalString = "\nShip board: \n";
@@ -50,7 +50,7 @@ std::string board::drawShipBoard()
 ///
 ///The board is created two separate times so data can be mapped and displayed to the player during the game.
 ///returns string that combines both of the boards together.
-///@return the formatted string of the board
+///@return string, the formatted string of the board
 std::string board::drawFullBoard()
 {
     std::string finalString = "\nShot board: \n";

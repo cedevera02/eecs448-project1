@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['setup_93',['setUp',['../classgame.html#a5e1f254b73ea733154f2e2e26bd38e1e',1,'game']]],
-  ['setupio_94',['setUpIO',['../classgame.html#a101323ea6490ae7e5b3c014e8822be52',1,'game']]],
-  ['ship_95',['ship',['../classship.html#a9c784ee34b37120a7cdd262ae0a98be6',1,'ship']]],
-  ['shipidentifier_96',['shipIdentifier',['../classplayer.html#ab104c8f01b62c094d3735acaf1a453ce',1,'player']]],
-  ['shipio_97',['shipIO',['../classgame.html#a1a66e2447110e947eba0b4d59d8ae539',1,'game']]],
-  ['shoot_98',['shoot',['../classplayer.html#a2425978d14b09f40a3d9aee0ea61cf89',1,'player']]],
-  ['sinkcheck_99',['sinkCheck',['../classship.html#af5fe0335dd7892576618d829dc2b2919',1,'ship']]],
-  ['switchplayerprompt_100',['switchPlayerPrompt',['../classgame.html#ad1b220075e0cd61218f6036ea5e2e31a',1,'game']]]
+  ['play_96',['play',['../classgame.html#ae137c41e122aa7f165a33c4cb291811b',1,'game']]],
+  ['player_97',['player',['../classplayer.html#aa364aedeb9e89f002b392948653706d9',1,'player::player(std::string name, int shipCount)'],['../classplayer.html#a97de83bce15f880241f561b55b016b02',1,'player::player()']]],
+  ['playerturn_98',['playerTurn',['../classplayer.html#ac744220af15bd89ecdbbf0ffc1c2a1f3',1,'player']]],
+  ['printboard_99',['printBoard',['../classplayer.html#a8e5f728d7c7fd2b0b73879f46adf69f1',1,'player']]],
+  ['printshipboard_100',['printShipBoard',['../classplayer.html#a6e35f06ee65eb2fee0c00605a653a4ca',1,'player']]]
 ];
