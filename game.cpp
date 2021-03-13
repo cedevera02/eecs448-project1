@@ -3,7 +3,7 @@
 
 using namespace std;
 
-
+//CONSTRUCTOR
 ///This constructs some of the more important variables and helps limit loops.
 game::game()
 {
@@ -23,7 +23,7 @@ game::game()
     }
 }
 
-///Deconstructing player objects.
+/**Deconstructing player objects.*/
 game::~game()
 {
     delete m_player1;
@@ -34,6 +34,10 @@ game::~game()
 }
 
 ///This is the main game loop.
+/** prints out the start graphic, then proceeds with questions of the game type the user wants to play.
+ * Once game settings are choosen, setUp() is called for users to set up their ships.
+ * Then a while loop lets users take turns in the game until one user or the AI wins.
+*/
 void game::play()
 {
     std::cout << "                                                                |    |    | \n";               
@@ -90,8 +94,8 @@ void game::play()
     closingScreen();
 }
 
+///USED FOR TESTING ONLY
 ///creates 2 players with 3 ships each, used to skip shipIO and speed up testing
-///
 ///ships are placed in upper left corner of the board horizontally
 void game::testPlay()
 {
@@ -129,7 +133,7 @@ void game::setUp()
     finishSetUpPrompt();
 }
 
-///gets the name of the a player and their number of ships.
+///sets the name of the a player and their number of ships
 void game::setUpIO()
 {
     string name = "";
@@ -195,6 +199,8 @@ void game::setUpIO()
     clearScreen();
 }
 
+/// set up for the AI
+/** asks user to choose AI difficulty level*/
 int game::aiSetUpIO()
 {
     bool problem;
@@ -220,7 +226,7 @@ int game::aiSetUpIO()
 
 
 ///allows the user to place their ships.
-///@param a pointer to the player who is taking their turn
+///@param p a pointer to the player who is taking their turn
 void game::shipIO(player* p)
 {
     bool problem = false;
@@ -273,6 +279,8 @@ void game::shipIO(player* p)
     }
 }
 
+///places AI's ships and has notification of completion for user
+///@param p a pointer to the AI object that is in game
 void game::aiShipIO(AI* p)
 {
     bool problem = false;
@@ -297,7 +305,12 @@ void game::aiShipIO(AI* p)
 
 ///Runs the player turns.
 ///
-///This is one of the most important methods in the entire program. it steps through the game process one by one.
+/**This is one of the most important methods in the entire program. it steps through the game process one by one.
+ * Player one goes, then player two.
+ * Depending on the game mode, the player may be asked if they want to use their limited special shot.
+ * After player one, player two has the same process, unless there is an AI player instead, then the AI is used in the turn process.
+ * If no one has won the game, it cycles through again.
+*/
 void game::fullTurn()
 {
 //PLAYER1 TURN
@@ -384,7 +397,7 @@ void game::fullTurn()
 }
 
 ///gathers the input for a half turn (only one player goes), sets m_shotX and m_shotY based on input, prints full board.
-///@param p is the player being modified.
+///@param p is the pointer to the player being modified.
 void game::turnIO(player* p)
 {
 	bool problem = false;
@@ -537,7 +550,7 @@ void game::missilePrompt(){
 }
 
 ///basically a copy of turnIO but it just checks to make sure that the coordinate given isn't on the border
-///@param p player to ask input from
+///@param p pointer of player to ask input from
 void game::missileTurnIO(player* p){
     bool problem = false;
 	bool problem2 = false;
@@ -607,7 +620,7 @@ void game::missileTurnIO(player* p){
 ///checks to see if the missile coordinate given has a previous hit coordinate, returns true is there is, false otherwise
 ///@param xcord x coordinate
 ///@param ycord y coordinate
-///@param p current player being checked
+///@param p pointer of current player being checked
 bool game::overlap(int xcord, int ycord, player *p)
 {
     bool Xed = false;

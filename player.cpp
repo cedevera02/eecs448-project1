@@ -32,6 +32,9 @@ player::~player()
     delete m_ships;
 }
 
+///returns the count of the players ships that haven been sunk, m_sinkCount
+///
+///@return int, m_sinkCount
 int player::getSinkCount()
 {
     return m_sinkCount;
@@ -76,7 +79,7 @@ bool player::buildAndPlaceShip(int size, bool orien, int xLoc, int yLoc)
     return true;
 }
 
-//returns "HIT!", "Miss", "Ship of size <s> destroyed!"
+///returns "HIT!", "Miss", "Ship of size <s> destroyed!"
 ///allows a player to shoot a shot and updates the player's shot grid.
 ///
 ///@param hitCheck from the game class, true is passed in if the shot was a hit, false if miss
