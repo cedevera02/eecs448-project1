@@ -62,6 +62,9 @@ bool AI::getFailChecker() const
     return m_failChecker;
 }
 
+///function is called when AI is meant to play at the medium difficulty level
+/** The AI fires randomly, once the AI makes a hit it starts to hit in clockwise direction starting above the original hit and moves out until a ship is sunk.*/
+///@param p, the pointer to player 1 object
 void AI::mediumPlay(player* p)
 {
     bool problem = false;
@@ -294,6 +297,9 @@ void AI::mediumPlay(player* p)
 
 }
 
+///function called when AI is meant to play at hard difficulty level
+/** In hard play the AI knows exactly where every opponent ship is and hits them systematically.*/
+///@param p, the pointer to player 1 object
 void AI::hardPlay(player* p)
 {
    bool problem= false;
@@ -322,6 +328,8 @@ void AI::hardPlay(player* p)
     std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY);
 }
 
+///function to call to run the AI at the choosen difficulty based off the m_difficulty variable
+///@param p, the pointer to player 1 object
 void AI::aiTurn(player* p)
 {
     if(m_difficulty == 0) {
@@ -333,34 +341,55 @@ void AI::aiTurn(player* p)
     }
 }
 
+///random cooordinate generator for random ship placement and fire
+///@return int, number from 0 to 10 to represent the coordinates on the boards
 int AI::randomCoord()
 {
     return ( std::rand() % 10) ;
 }
 
+///random orientation generator, 0 (true) for horizontal and 1 (false) for vertical
+///@return int, 0 for true or 1 for false
 int AI::randomOrien()
 {
     return ( std::rand() % 2 );
 }
 
+
+///check for medium AI to see if they can fire above a hit
+///@param xCoord, x coordinate of the coordinate to fire
+///@param yCoord, y coordinate of the coordinate to fire
+///@return true if can fire, else return false
 bool AI::canFireUp(int xCoord, int yCoord) const
 {
     return ( ( yCoord  >= 0 ) && ( m_directionTracker == 0 ) 
     && ( m_board.m_shotGrid[yCoord][xCoord] == '.' ) );
 }
 
+///check for medium AI to see if they can fire to the right of a hit
+///@param xCoord, x coordinate of the coordinate to fire
+///@param yCoord, y coordinate of the coordinate to fire
+///@return true if can fire, else return false
 bool AI::canFireRight(int xCoord, int yCoord) const
 {
     return ( ( xCoord <= 9 ) && ( m_directionTracker == 1) 
     && ( m_board.m_shotGrid[yCoord][xCoord] == '.' ) );
 }
 
+///check for medium AI to see if they can fire below a hit
+///@param xCoord, x coordinate of the coordinate to fire
+///@param yCoord, y coordinate of the coordinate to fire
+///@return true if can fire, else return false
 bool AI::canFireDown(int xCoord, int yCoord) const
 {
     return ( ( yCoord <= 9) && ( m_directionTracker == 2) 
     && ( m_board.m_shotGrid[yCoord][xCoord] == '.' ) );
 }
 
+///check for medium AI to see if they can fire to the left of a hit
+///@param xCoord, x coordinate of the coordinate to fire
+///@param yCoord, y coordinate of the coordinate to fire
+///@return true if can fire, else return false
 bool AI::canFireLeft(int xCoord, int yCoord) const
 {
     return ( ( xCoord >= 0 ) && ( m_directionTracker == 3 ) 
