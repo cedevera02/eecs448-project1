@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['finishsetupprompt_69',['finishSetUpPrompt',['../classgame.html#a623c78962559050183a56a05cef85328',1,'game']]],
-  ['finishturnprompt_70',['finishTurnPrompt',['../classgame.html#a14b7721eb87962fe474fa0222d5f5158',1,'game']]],
-  ['fullturn_71',['fullTurn',['../classgame.html#ad8e818b95934ff0ad35976227c9a067c',1,'game']]]
+  ['drawfullboard_73',['drawFullBoard',['../classboard.html#af8fc01ad4d9e669f90fe9a472a1af863',1,'board']]],
+  ['drawshipboard_74',['drawShipBoard',['../classboard.html#a285e2ee5cb01ce9e0b5b3b98281107fb',1,'board']]]
 ];

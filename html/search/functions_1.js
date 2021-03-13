@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['clearscreen_65',['clearScreen',['../classgame.html#a9b9d4bb04ac81d925b90381a64b50bce',1,'game']]],
-  ['closingscreen_66',['closingScreen',['../classgame.html#aa98abb86d09dc638a58b917cb3d86b28',1,'game']]]
+  ['board_69',['board',['../classboard.html#a2a97f34e7c9ed8ace6a2508bb2c6e2a2',1,'board']]],
+  ['buildandplaceship_70',['buildAndPlaceShip',['../classplayer.html#a3072e8562d704b02da6225cebb97cdb3',1,'player']]]
 ];

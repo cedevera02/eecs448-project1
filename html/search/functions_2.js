@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['drawfullboard_67',['drawFullBoard',['../classboard.html#af8fc01ad4d9e669f90fe9a472a1af863',1,'board']]],
-  ['drawshipboard_68',['drawShipBoard',['../classboard.html#a285e2ee5cb01ce9e0b5b3b98281107fb',1,'board']]]
+  ['clearscreen_71',['clearScreen',['../classgame.html#a9b9d4bb04ac81d925b90381a64b50bce',1,'game']]],
+  ['closingscreen_72',['closingScreen',['../classgame.html#aa98abb86d09dc638a58b917cb3d86b28',1,'game']]]
 ];

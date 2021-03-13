@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['board_63',['board',['../classboard.html#a2a97f34e7c9ed8ace6a2508bb2c6e2a2',1,'board']]],
-  ['buildandplaceship_64',['buildAndPlaceShip',['../classplayer.html#a3072e8562d704b02da6225cebb97cdb3',1,'player']]]
+  ['aisetupio_67',['aiSetUpIO',['../classgame.html#aa26bae8b3bf97ab5576f0c033535c5b3',1,'game']]],
+  ['aishipio_68',['aiShipIO',['../classgame.html#a9e03612a7aa64132b09e7badb05489ea',1,'game']]]
 ];

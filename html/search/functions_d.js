@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['updateplayershotat_104',['updatePlayerShotAt',['../classplayer.html#a731854dfb89c51cb1941f18be17e5ace',1,'player']]],
-  ['updateship_105',['updateShip',['../classplayer.html#ac67ae29b249e8a412d09c48fba390d3a',1,'player']]],
-  ['usemissile_106',['useMissile',['../classplayer.html#abc24b21a7dd00b1134b7b4aa7c7a969b',1,'player']]]
+  ['testplay_109',['testPlay',['../classgame.html#a596f48ed419efaf3d06eb90ee410722e',1,'game']]],
+  ['turnio_110',['turnIO',['../classgame.html#a2b3c211e2bdb52344a91a2d2cbfdf5c0',1,'game']]]
 ];
