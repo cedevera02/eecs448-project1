@@ -1,0 +1,197 @@
+\hypertarget{classgame}{}\doxysection{game Class Reference}
+\label{classgame}\index{game@{game}}
+
+
+{\ttfamily \#include $<$game.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_ad9c102127b5038f880067ad6c9198d38}\label{classgame_ad9c102127b5038f880067ad6c9198d38}} 
+\mbox{\hyperlink{classgame_ad9c102127b5038f880067ad6c9198d38}{game}} ()
+\begin{DoxyCompactList}\small\item\em This constructs some of the more important variables and helps limit loops. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_ae87abd20c4d8a7906fa48e690a5f1d07}\label{classgame_ae87abd20c4d8a7906fa48e690a5f1d07}} 
+\mbox{\hyperlink{classgame_ae87abd20c4d8a7906fa48e690a5f1d07}{$\sim$game}} ()
+\begin{DoxyCompactList}\small\item\em Deconstructing player objects. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_ae137c41e122aa7f165a33c4cb291811b}\label{classgame_ae137c41e122aa7f165a33c4cb291811b}} 
+void \mbox{\hyperlink{classgame_ae137c41e122aa7f165a33c4cb291811b}{play}} ()
+\begin{DoxyCompactList}\small\item\em This is the main game loop. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classgame_a596f48ed419efaf3d06eb90ee410722e}{test\+Play}} ()
+\item 
+\mbox{\Hypertarget{classgame_a5e1f254b73ea733154f2e2e26bd38e1e}\label{classgame_a5e1f254b73ea733154f2e2e26bd38e1e}} 
+void \mbox{\hyperlink{classgame_a5e1f254b73ea733154f2e2e26bd38e1e}{set\+Up}} ()
+\begin{DoxyCompactList}\small\item\em calls the functions that allow the users to set up their boards \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a101323ea6490ae7e5b3c014e8822be52}\label{classgame_a101323ea6490ae7e5b3c014e8822be52}} 
+void \mbox{\hyperlink{classgame_a101323ea6490ae7e5b3c014e8822be52}{set\+Up\+IO}} ()
+\begin{DoxyCompactList}\small\item\em gets the name of the a player and their number of ships. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_aa26bae8b3bf97ab5576f0c033535c5b3}\label{classgame_aa26bae8b3bf97ab5576f0c033535c5b3}} 
+int {\bfseries ai\+Set\+Up\+IO} ()
+\item 
+void \mbox{\hyperlink{classgame_a1a66e2447110e947eba0b4d59d8ae539}{ship\+IO}} (\mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classgame_a9e03612a7aa64132b09e7badb05489ea}\label{classgame_a9e03612a7aa64132b09e7badb05489ea}} 
+void {\bfseries ai\+Ship\+IO} (\mbox{\hyperlink{class_a_i}{AI}} $\ast$p)
+\item 
+void \mbox{\hyperlink{classgame_ad8e818b95934ff0ad35976227c9a067c}{full\+Turn}} ()
+\item 
+void \mbox{\hyperlink{classgame_a2b3c211e2bdb52344a91a2d2cbfdf5c0}{turn\+IO}} (\mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classgame_aa98abb86d09dc638a58b917cb3d86b28}\label{classgame_aa98abb86d09dc638a58b917cb3d86b28}} 
+void \mbox{\hyperlink{classgame_aa98abb86d09dc638a58b917cb3d86b28}{closing\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em after a winner has been determined, print a closing screen stating the winner \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a9b9d4bb04ac81d925b90381a64b50bce}\label{classgame_a9b9d4bb04ac81d925b90381a64b50bce}} 
+void \mbox{\hyperlink{classgame_a9b9d4bb04ac81d925b90381a64b50bce}{clear\+Screen}} ()
+\begin{DoxyCompactList}\small\item\em clears the screen to help secrecy of the players info \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_ad1b220075e0cd61218f6036ea5e2e31a}\label{classgame_ad1b220075e0cd61218f6036ea5e2e31a}} 
+void \mbox{\hyperlink{classgame_ad1b220075e0cd61218f6036ea5e2e31a}{switch\+Player\+Prompt}} ()
+\begin{DoxyCompactList}\small\item\em Allows the user to move away from the screen while the next player takes their turn. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a623c78962559050183a56a05cef85328}\label{classgame_a623c78962559050183a56a05cef85328}} 
+void \mbox{\hyperlink{classgame_a623c78962559050183a56a05cef85328}{finish\+Set\+Up\+Prompt}} ()
+\begin{DoxyCompactList}\small\item\em waits for the next player to press enter then switches players \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a14b7721eb87962fe474fa0222d5f5158}\label{classgame_a14b7721eb87962fe474fa0222d5f5158}} 
+void \mbox{\hyperlink{classgame_a14b7721eb87962fe474fa0222d5f5158}{finish\+Turn\+Prompt}} ()
+\begin{DoxyCompactList}\small\item\em Allows the user to see the result of their turn before the screen gets cleared. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classgame_a2503eb0352e87a4f1cb7f7eddcf52557}{is\+String\+Int}} (std\+::string s)
+\item 
+bool \mbox{\hyperlink{classgame_a9206a20bd361bb620c0418c383cccbea}{is\+String\+Letter}} (std\+::string s)
+\item 
+void \mbox{\hyperlink{classgame_a29085c6ec90500740ad9f4d37ec23e15}{missile\+Turn}} (\mbox{\hyperlink{classplayer}{player}} $\ast$current, \mbox{\hyperlink{classplayer}{player}} $\ast$opposing)
+\item 
+void \mbox{\hyperlink{classgame_a329459182fa93642b039c8b5c50628f8}{missile\+Turn\+IO}} (\mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\item 
+\mbox{\Hypertarget{classgame_a55f336d28ca2902507ac0d527d367aee}\label{classgame_a55f336d28ca2902507ac0d527d367aee}} 
+void \mbox{\hyperlink{classgame_a55f336d28ca2902507ac0d527d367aee}{missile\+Prompt}} ()
+\begin{DoxyCompactList}\small\item\em asks current player if they want to use a missile, repeats until they input proper value \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classgame_a7826a9d25c414340025bf9fec0600d44}{overlap}} (int xcord, int ycord, \mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classgame_ad2e89c208618fa5ef6ce18f4eb9a10fb}\label{classgame_ad2e89c208618fa5ef6ce18f4eb9a10fb}} 
+\mbox{\hyperlink{classplayer}{player}} $\ast$ \mbox{\hyperlink{classgame_ad2e89c208618fa5ef6ce18f4eb9a10fb}{m\+\_\+player1}}
+\begin{DoxyCompactList}\small\item\em a pointer to a player that will be created at runtime \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a232f3965333cbaa4b1f540dbf5e43a96}\label{classgame_a232f3965333cbaa4b1f540dbf5e43a96}} 
+\mbox{\hyperlink{classplayer}{player}} $\ast$ \mbox{\hyperlink{classgame_a232f3965333cbaa4b1f540dbf5e43a96}{m\+\_\+player2}}
+\begin{DoxyCompactList}\small\item\em a pointer to a player that will be created at runtime \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classgame_a3711874d95557ddbcbfce4b3fef5c63e}\label{classgame_a3711874d95557ddbcbfce4b3fef5c63e}} 
+\mbox{\hyperlink{class_a_i}{AI}} $\ast$ {\bfseries m\+\_\+player2\+AI}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+game is the driver class that handles all IO and pieces everything together.
+
+This class is the most vital class to the project. It will take in its own parameters as well as use parts of the player, board and ship classes. Throughout the class many values for the game to progress will be created stored and used. This main logic is stored here. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classgame_ad8e818b95934ff0ad35976227c9a067c}\label{classgame_ad8e818b95934ff0ad35976227c9a067c}} 
+\index{game@{game}!fullTurn@{fullTurn}}
+\index{fullTurn@{fullTurn}!game@{game}}
+\doxysubsubsection{\texorpdfstring{fullTurn()}{fullTurn()}}
+{\footnotesize\ttfamily void game\+::full\+Turn (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Runs the player turns.
+
+This is one of the most important methods in the entire program. it steps through the game process one by one. \mbox{\Hypertarget{classgame_a2503eb0352e87a4f1cb7f7eddcf52557}\label{classgame_a2503eb0352e87a4f1cb7f7eddcf52557}} 
+\index{game@{game}!isStringInt@{isStringInt}}
+\index{isStringInt@{isStringInt}!game@{game}}
+\doxysubsubsection{\texorpdfstring{isStringInt()}{isStringInt()}}
+{\footnotesize\ttfamily bool game\+::is\+String\+Int (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})}
+
+helper method to see if a string is an int 
+\begin{DoxyParams}{Parameters}
+{\em s} & the string to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the string is a positive int, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgame_a9206a20bd361bb620c0418c383cccbea}\label{classgame_a9206a20bd361bb620c0418c383cccbea}} 
+\index{game@{game}!isStringLetter@{isStringLetter}}
+\index{isStringLetter@{isStringLetter}!game@{game}}
+\doxysubsubsection{\texorpdfstring{isStringLetter()}{isStringLetter()}}
+{\footnotesize\ttfamily bool game\+::is\+String\+Letter (\begin{DoxyParamCaption}\item[{std\+::string}]{s }\end{DoxyParamCaption})}
+
+helper method to see if a string contains the letters allowable as coordinates 
+\begin{DoxyParams}{Parameters}
+{\em s} & the string to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the string is a a-\/j, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classgame_a29085c6ec90500740ad9f4d37ec23e15}\label{classgame_a29085c6ec90500740ad9f4d37ec23e15}} 
+\index{game@{game}!missileTurn@{missileTurn}}
+\index{missileTurn@{missileTurn}!game@{game}}
+\doxysubsubsection{\texorpdfstring{missileTurn()}{missileTurn()}}
+{\footnotesize\ttfamily void game\+::missile\+Turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{current,  }\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{opposing }\end{DoxyParamCaption})}
+
+basically calls player\+Turn 9 times to simulate a 3x3 shot 
+\begin{DoxyParams}{Parameters}
+{\em current} & current player \\
+\hline
+{\em opposing} & opposing player \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgame_a329459182fa93642b039c8b5c50628f8}\label{classgame_a329459182fa93642b039c8b5c50628f8}} 
+\index{game@{game}!missileTurnIO@{missileTurnIO}}
+\index{missileTurnIO@{missileTurnIO}!game@{game}}
+\doxysubsubsection{\texorpdfstring{missileTurnIO()}{missileTurnIO()}}
+{\footnotesize\ttfamily void game\+::missile\+Turn\+IO (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+basically a copy of turn\+IO but it just checks to make sure that the coordinate given isn\textquotesingle{}t on the border 
+\begin{DoxyParams}{Parameters}
+{\em p} & player to ask input from \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgame_a7826a9d25c414340025bf9fec0600d44}\label{classgame_a7826a9d25c414340025bf9fec0600d44}} 
+\index{game@{game}!overlap@{overlap}}
+\index{overlap@{overlap}!game@{game}}
+\doxysubsubsection{\texorpdfstring{overlap()}{overlap()}}
+{\footnotesize\ttfamily bool game\+::overlap (\begin{DoxyParamCaption}\item[{int}]{xcord,  }\item[{int}]{ycord,  }\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+checks to see if the missile coordinate given has a previous hit coordinate, returns true is there is, false otherwise 
+\begin{DoxyParams}{Parameters}
+{\em xcord} & x coordinate \\
+\hline
+{\em ycord} & y coordinate \\
+\hline
+{\em p} & current player being checked \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgame_a1a66e2447110e947eba0b4d59d8ae539}\label{classgame_a1a66e2447110e947eba0b4d59d8ae539}} 
+\index{game@{game}!shipIO@{shipIO}}
+\index{shipIO@{shipIO}!game@{game}}
+\doxysubsubsection{\texorpdfstring{shipIO()}{shipIO()}}
+{\footnotesize\ttfamily void game\+::ship\+IO (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+allows the user to place their ships. 
+\begin{DoxyParams}{Parameters}
+{\em a} & pointer to the player who is taking their turn \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classgame_a596f48ed419efaf3d06eb90ee410722e}\label{classgame_a596f48ed419efaf3d06eb90ee410722e}} 
+\index{game@{game}!testPlay@{testPlay}}
+\index{testPlay@{testPlay}!game@{game}}
+\doxysubsubsection{\texorpdfstring{testPlay()}{testPlay()}}
+{\footnotesize\ttfamily void game\+::test\+Play (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+creates 2 players with 3 ships each, used to skip ship\+IO and speed up testing
+
+ships are placed in upper left corner of the board horizontally \mbox{\Hypertarget{classgame_a2b3c211e2bdb52344a91a2d2cbfdf5c0}\label{classgame_a2b3c211e2bdb52344a91a2d2cbfdf5c0}} 
+\index{game@{game}!turnIO@{turnIO}}
+\index{turnIO@{turnIO}!game@{game}}
+\doxysubsubsection{\texorpdfstring{turnIO()}{turnIO()}}
+{\footnotesize\ttfamily void game\+::turn\+IO (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+gathers the input for a half turn (only one player goes), sets m\+\_\+shotX and m\+\_\+shotY based on input, prints full board. 
+\begin{DoxyParams}{Parameters}
+{\em p} & is the player being modified. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game.\+h\item 
+game.\+cpp\end{DoxyCompactItemize}

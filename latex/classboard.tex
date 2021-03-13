@@ -1,0 +1,79 @@
+\hypertarget{classboard}{}\doxysection{board Class Reference}
+\label{classboard}\index{board@{board}}
+
+
+{\ttfamily \#include $<$board.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classboard_a2a97f34e7c9ed8ace6a2508bb2c6e2a2}{board}} ()
+\item 
+std\+::string \mbox{\hyperlink{classboard_a285e2ee5cb01ce9e0b5b3b98281107fb}{draw\+Ship\+Board}} ()
+\begin{DoxyCompactList}\small\item\em returns a string of the ship board to be outputted, this will be used when the user is placing ships \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classboard_af8fc01ad4d9e669f90fe9a472a1af863}{draw\+Full\+Board}} ()
+\begin{DoxyCompactList}\small\item\em returns a string of both boards to be printed \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classboard_a1dc8fe0a63c38b251a3b8f5477c33bfc}\label{classboard_a1dc8fe0a63c38b251a3b8f5477c33bfc}} 
+char \mbox{\hyperlink{classboard_a1dc8fe0a63c38b251a3b8f5477c33bfc}{m\+\_\+shot\+Grid}} \mbox{[}10\mbox{]}\mbox{[}10\mbox{]}
+\begin{DoxyCompactList}\small\item\em \textquotesingle{}.\textquotesingle{} -\/ empty spot, \textquotesingle{}0\textquotesingle{} -\/ miss, \textquotesingle{}X\textquotesingle{} -\/ hit \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classboard_a9cfc49f6047c42729f1e69873b9d03a8}\label{classboard_a9cfc49f6047c42729f1e69873b9d03a8}} 
+char \mbox{\hyperlink{classboard_a9cfc49f6047c42729f1e69873b9d03a8}{m\+\_\+ship\+Grid}} \mbox{[}10\mbox{]}\mbox{[}10\mbox{]}
+\begin{DoxyCompactList}\small\item\em \textquotesingle{}.\textquotesingle{} -\/ emtpty spot, \textquotesingle{}o\textquotesingle{} -\/ ship, \textquotesingle{}!\textquotesingle{} -\/ hit ship \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class will handle many calls to generate and read boards.
+
+In the game of battleship, seeing the board as you play is paramount. To correctly enable this feature its own class is required. This will be used to print boards on every turn after updates have been made. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classboard_a2a97f34e7c9ed8ace6a2508bb2c6e2a2}\label{classboard_a2a97f34e7c9ed8ace6a2508bb2c6e2a2}} 
+\index{board@{board}!board@{board}}
+\index{board@{board}!board@{board}}
+\doxysubsubsection{\texorpdfstring{board()}{board()}}
+{\footnotesize\ttfamily board\+::board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This is the Constructor for the board class.
+
+This will initialize much of what will be used to create and print boards. In set\+Up\+IO and ship\+IO, many references to this code and shot/ship grid will be made. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classboard_af8fc01ad4d9e669f90fe9a472a1af863}\label{classboard_af8fc01ad4d9e669f90fe9a472a1af863}} 
+\index{board@{board}!drawFullBoard@{drawFullBoard}}
+\index{drawFullBoard@{drawFullBoard}!board@{board}}
+\doxysubsubsection{\texorpdfstring{drawFullBoard()}{drawFullBoard()}}
+{\footnotesize\ttfamily std\+::string board\+::draw\+Full\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns a string of both boards to be printed 
+
+Creates two boards that display shots and ships respectively.
+
+The board is created two separate times so data can be mapped and displayed to the player during the game. returns string that combines both of the boards together. \begin{DoxyReturn}{Returns}
+the formatted string of the board 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classboard_a285e2ee5cb01ce9e0b5b3b98281107fb}\label{classboard_a285e2ee5cb01ce9e0b5b3b98281107fb}} 
+\index{board@{board}!drawShipBoard@{drawShipBoard}}
+\index{drawShipBoard@{drawShipBoard}!board@{board}}
+\doxysubsubsection{\texorpdfstring{drawShipBoard()}{drawShipBoard()}}
+{\footnotesize\ttfamily std\+::string board\+::draw\+Ship\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns a string of the ship board to be outputted, this will be used when the user is placing ships 
+
+Drawing the board that stores the ships.
+
+Using strings it is possible to cout the board in a different class. This will be all the data behind the actual boards. returns a string to format the board. \begin{DoxyReturn}{Returns}
+the formatted string of the board 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+board.\+h\item 
+board.\+cpp\end{DoxyCompactItemize}
