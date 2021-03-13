@@ -3,6 +3,11 @@
 #include <time.h> //this allows us to get the time to generate a random seed using srand
 #include <iostream>
 
+
+///AI CONSTRUCTOR
+///
+///@param shipCount Takes in the amount of ships chosen for game play
+///@param difficulty 0 = easy, 1= medium, 2 = hard. AI difficulty
 AI::AI(int shipCount, int difficulty)
 {
     std::srand(time(0));
@@ -21,12 +26,19 @@ AI::AI(int shipCount, int difficulty)
     }
 }
 
+/// AI DESTRUCTOR
+///
+///Simple destructor for the heap allocated array (located in Player Class)
 AI::~AI()
 {
     
    
 }
 
+///METHODS
+///
+/// This gets the difficulty and returns it.
+///@return Returns the difficulty level of AI (0= easy; 1= medium; 2= hard)
 int AI::getDifficulty() const
 {
     return m_difficulty;
@@ -38,6 +50,10 @@ int AI::getDifficulty() const
 //use these to fire the shots, it will take care of checks
 //if(m_board.m_shotGrid[m_tempY][m_tempX] != '.') problem = true; need this for ensuring firing at new loc
 
+
+///This method is the shot action of the AI when the user chooses easy difficulty. Easy play shoots at random coordinates. 
+///
+///@param p, the pointer to player one object 
 void AI::easyPlay(player* p)
 {
    bool problem= false;
@@ -56,6 +72,7 @@ void AI::easyPlay(player* p)
  
 
 }
+
 
 bool AI::getFailChecker() const
 {
