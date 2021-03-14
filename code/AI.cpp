@@ -107,6 +107,8 @@ void AI::mediumPlay(player* p)
 
         m_incNum = 0;
 
+        //std::cout << "random\n"; debug
+
         
     } else if (m_mediumState == 1) {
         do {
@@ -117,7 +119,7 @@ void AI::mediumPlay(player* p)
             }
 
             if( canFireUp( m_initialX, m_initialY - 1 - m_incNum ) ) {
-                
+                //std::cout << "UP\n"; debug
                 hitChecker = p->hitCheck(m_initialX, m_initialY - 1 - m_incNum);
                 this-> playerTurn(m_initialX, m_initialY - 1 - m_incNum, hitChecker);
                 std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY - 1 - m_incNum);
@@ -129,7 +131,7 @@ void AI::mediumPlay(player* p)
                 }
                 break;
             } else if ( canFireRight( m_initialX + 1 + m_incNum, m_initialY ) ) {
-                
+                //std::cout << "RIGHT\n"; debug
                 hitChecker = p->hitCheck(m_initialX+1+ m_incNum, m_initialY);
                 this-> playerTurn(m_initialX+1+ m_incNum, m_initialY, hitChecker);
                 std::cout<<p->updatePlayerShotAt(m_initialX+1+ m_incNum,m_initialY);
@@ -141,7 +143,7 @@ void AI::mediumPlay(player* p)
                 }
                 break;
             } else if ( canFireDown ( m_initialX, m_initialY + 1 + m_incNum ) ) {
-                
+                //std::cout << "DOWN\n"; debug
                 hitChecker = p->hitCheck(m_initialX, m_initialY + 1 + m_incNum);
                 this-> playerTurn(m_initialX, m_initialY + 1 + m_incNum, hitChecker);
                 std::cout<<p->updatePlayerShotAt(m_initialX,m_initialY + 1 + m_incNum);
@@ -153,6 +155,7 @@ void AI::mediumPlay(player* p)
                 }
                 break;
             } else if ( canFireLeft( m_initialX - 1 - m_incNum, m_initialY ) ){
+                //std::cout << "LEFT\n"; debug
                 hitChecker = p->hitCheck(m_initialX - 1 -m_incNum, m_initialY);
                 this-> playerTurn(m_initialX-1 -m_incNum, m_initialY, hitChecker);
                 std::cout<<p->updatePlayerShotAt(m_initialX-1 -m_incNum,m_initialY);
@@ -187,10 +190,7 @@ void AI::mediumPlay(player* p)
                         if(!hitChecker) {
                             m_contChecker = false;
                         }
-                        if(p->getSinkCount() > m_oppsShipsSunk) {
-                            m_oppsShipsSunk = p->getSinkCount();
-                            m_mediumState = 0;
-                        }
+                        
                         m_directionY -= 1;
                         break;
                     } else if(m_board.m_shotGrid[m_directionY - 1][m_directionX] == 'X') {
@@ -216,10 +216,7 @@ void AI::mediumPlay(player* p)
                         if(!hitChecker) {
                             m_contChecker = false;
                         }
-                        if(p->getSinkCount() > m_oppsShipsSunk) {
-                            m_oppsShipsSunk = p->getSinkCount();
-                            m_mediumState = 0;
-                        }
+                       
 
                         m_directionX += 1;
                         break;
@@ -246,10 +243,7 @@ void AI::mediumPlay(player* p)
                         if(!hitChecker) {
                             m_contChecker = false;
                         }
-                        if(p->getSinkCount() > m_oppsShipsSunk) {
-                            m_oppsShipsSunk = p->getSinkCount();
-                            m_mediumState = 0;
-                        }
+                       
 
                         m_directionY += 1;
                         break;
@@ -275,10 +269,7 @@ void AI::mediumPlay(player* p)
                         if(!hitChecker) {
                             m_contChecker = false;
                         }
-                        if(p->getSinkCount() > m_oppsShipsSunk) {
-                            m_oppsShipsSunk = p->getSinkCount();
-                            m_mediumState = 0;
-                        }
+                       
 
                         m_directionX -= 1;
                         break;
@@ -296,21 +287,18 @@ void AI::mediumPlay(player* p)
                 }
 
             }
-        } while (m_contChecker == true);
-
-        
+        } while (m_contChecker == true); 
         
         if(m_contChecker == false) {
             m_mediumState = 1;
         }
 
-        /*
-        if(m_failChecker == true) {
-            m_mediumState = 1;
-        }
-        */
-        
     }
+
+    if(p->getSinkCount() > m_oppsShipsSunk) {
+                            m_oppsShipsSunk = p->getSinkCount();
+                            m_mediumState = 0;
+                        }
 
 }
 
