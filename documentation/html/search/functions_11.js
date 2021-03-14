@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['_7eai_163',['~AI',['../class_a_i.html#a66a8645f0c27285cd75346f2c2bbfb14',1,'AI']]],
-  ['_7egame_164',['~game',['../classgame.html#ae87abd20c4d8a7906fa48e690a5f1d07',1,'game']]],
-  ['_7eplayer_165',['~player',['../classplayer.html#aab5d2e47b80e0481f09ca0df8b823057',1,'player']]]
+  ['_7eai_185',['~AI',['../class_a_i.html#a66a8645f0c27285cd75346f2c2bbfb14',1,'AI']]],
+  ['_7egame_186',['~game',['../classgame.html#ae87abd20c4d8a7906fa48e690a5f1d07',1,'game']]],
+  ['_7eplayer_187',['~player',['../classplayer.html#aab5d2e47b80e0481f09ca0df8b823057',1,'player']]]
 ];

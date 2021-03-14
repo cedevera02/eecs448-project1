@@ -24,7 +24,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="ship.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Project2
    </div>
@@ -84,6 +83,7 @@ $(document).ready(function(){initNavTree('classship.html',''); initResizable(); 
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="classship-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">ship Class Reference</div>  </div>
@@ -115,6 +115,24 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a895203f3ef14bc38380bfb73be5d6865"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classship.html#a895203f3ef14bc38380bfb73be5d6865">getYLoc</a> ()</td></tr>
 <tr class="memdesc:a895203f3ef14bc38380bfb73be5d6865"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns y coordinate of ship when called  <a href="classship.html#a895203f3ef14bc38380bfb73be5d6865">More...</a><br /></td></tr>
 <tr class="separator:a895203f3ef14bc38380bfb73be5d6865"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a81b387b9c53c2bfc3b9a85fb53388a18"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classship.html#a81b387b9c53c2bfc3b9a85fb53388a18">m_size</a></td></tr>
+<tr class="memdesc:a81b387b9c53c2bfc3b9a85fb53388a18"><td class="mdescLeft">&#160;</td><td class="mdescRight">values from 1-6  <a href="classship.html#a81b387b9c53c2bfc3b9a85fb53388a18">More...</a><br /></td></tr>
+<tr class="separator:a81b387b9c53c2bfc3b9a85fb53388a18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26b7347b83232b061210c97e75c4a8a0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classship.html#a26b7347b83232b061210c97e75c4a8a0">m_orien</a></td></tr>
+<tr class="memdesc:a26b7347b83232b061210c97e75c4a8a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">true - horizontal, false - vertical  <a href="classship.html#a26b7347b83232b061210c97e75c4a8a0">More...</a><br /></td></tr>
+<tr class="separator:a26b7347b83232b061210c97e75c4a8a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca9fc33a35fb4dc83f461d02d40cbebe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classship.html#aca9fc33a35fb4dc83f461d02d40cbebe">m_xLoc</a></td></tr>
+<tr class="memdesc:aca9fc33a35fb4dc83f461d02d40cbebe"><td class="mdescLeft">&#160;</td><td class="mdescRight">values from 0-9  <a href="classship.html#aca9fc33a35fb4dc83f461d02d40cbebe">More...</a><br /></td></tr>
+<tr class="separator:aca9fc33a35fb4dc83f461d02d40cbebe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a110a88c61a0f9d8184a5c42b93c003c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classship.html#a110a88c61a0f9d8184a5c42b93c003c4">m_yLoc</a></td></tr>
+<tr class="memdesc:a110a88c61a0f9d8184a5c42b93c003c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">values from 0-9  <a href="classship.html#a110a88c61a0f9d8184a5c42b93c003c4">More...</a><br /></td></tr>
+<tr class="separator:a110a88c61a0f9d8184a5c42b93c003c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d5e19687325e8f06a1d6da517efad0b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classship.html#a1d5e19687325e8f06a1d6da517efad0b">m_shipHitCount</a></td></tr>
+<tr class="memdesc:a1d5e19687325e8f06a1d6da517efad0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">values from 0-size, if shipHitCount==size then ship is sunk  <a href="classship.html#a1d5e19687325e8f06a1d6da517efad0b">More...</a><br /></td></tr>
+<tr class="separator:a1d5e19687325e8f06a1d6da517efad0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Each ship will be placed differently and a class is needed to organize this information.</p>
@@ -294,9 +312,130 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a26b7347b83232b061210c97e75c4a8a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26b7347b83232b061210c97e75c4a8a0">&#9670;&nbsp;</a></span>m_orien</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool ship::m_orien</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>true - horizontal, false - vertical </p>
+
+</div>
+</div>
+<a id="a1d5e19687325e8f06a1d6da517efad0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5e19687325e8f06a1d6da517efad0b">&#9670;&nbsp;</a></span>m_shipHitCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ship::m_shipHitCount</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>values from 0-size, if shipHitCount==size then ship is sunk </p>
+
+</div>
+</div>
+<a id="a81b387b9c53c2bfc3b9a85fb53388a18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81b387b9c53c2bfc3b9a85fb53388a18">&#9670;&nbsp;</a></span>m_size</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ship::m_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>values from 1-6 </p>
+
+</div>
+</div>
+<a id="aca9fc33a35fb4dc83f461d02d40cbebe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca9fc33a35fb4dc83f461d02d40cbebe">&#9670;&nbsp;</a></span>m_xLoc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ship::m_xLoc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>values from 0-9 </p>
+
+</div>
+</div>
+<a id="a110a88c61a0f9d8184a5c42b93c003c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a110a88c61a0f9d8184a5c42b93c003c4">&#9670;&nbsp;</a></span>m_yLoc</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int ship::m_yLoc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>values from 0-9 </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="ship_8h_source.html">ship.h</a></li>
-<li><a class="el" href="ship_8cpp.html">ship.cpp</a></li>
+<li>code/<a class="el" href="ship_8h_source.html">ship.h</a></li>
+<li>code/<a class="el" href="ship_8cpp.html">ship.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

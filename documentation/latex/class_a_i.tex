@@ -41,6 +41,31 @@ bool \mbox{\hyperlink{class_a_i_a2a505b16f8be6fc03997ea7b00b4f743}{can\+Fire\+Do
 \begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire right of last hit. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_a_i_a1fccff1e223fef6781e66b3882e774c8}{can\+Fire\+Left}} (int x\+Coord, int y\+Coord) const
 \begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire below of last hit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_a_i_a0f95cec29282c032d8600d80bd5bd56b}{m\+\_\+initialX}}
+\begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire left of last hit. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_ad7603bd41d8b6d8167794058fc58cc98}{m\+\_\+initialY}}
+\begin{DoxyCompactList}\small\item\em y coordinate for \mbox{\hyperlink{class_a_i}{AI}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_ad394582be727cf23f769af12c4c72c26}{m\+\_\+directionX}}
+\begin{DoxyCompactList}\small\item\em direction of x \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a47478c6b0e59f70344771a5eaf423d03}{m\+\_\+directionY}}
+\begin{DoxyCompactList}\small\item\em y coordinate for \mbox{\hyperlink{class_a_i}{AI}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a157aa78be9c5c7dc820f9080c8904f8f}{m\+\_\+direction\+Tracker}}
+\begin{DoxyCompactList}\small\item\em 0,1,3,4 up down right left. Tracks clockwise direction for \mbox{\hyperlink{class_a_i}{AI}} Firing in Mediumplay \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a14b5b0af8962672f5d1640d6373ef21b}{m\+\_\+difficulty}}
+\begin{DoxyCompactList}\small\item\em 0 is easy, 1 is medium, 2 is hard \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a5eb545153045707e42c1cb403b93fa6f}{m\+\_\+medium\+State}}
+\begin{DoxyCompactList}\small\item\em keeps track of what the medium\+Play should go on the next turn \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_abeade07b24db2b1d79e9c2f2fed7efe6}{m\+\_\+inc\+Num}}
+\begin{DoxyCompactList}\small\item\em Increment number for coordinates clockwise around a hit. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_a67442b91ef8eed3ea4fad9563cb031f6}{m\+\_\+cont\+Checker}}
+\begin{DoxyCompactList}\small\item\em Keeps track of if the medium \mbox{\hyperlink{class_a_i}{AI}} should continue in a direction, false if they get a miss. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_afb8e675d9667667746e6e29899b7f0f4}{m\+\_\+fail\+Checker}}
+\begin{DoxyCompactList}\small\item\em Ensures that the \mbox{\hyperlink{class_a_i}{AI}} will try to fire again if the current location can\textquotesingle{}t be fired at. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a942dd0bf28a696dabf6d62ebf4a4d476}{m\+\_\+opps\+Ships\+Sunk}}
+\begin{DoxyCompactList}\small\item\em Count of player\textquotesingle{}s ships that \mbox{\hyperlink{class_a_i}{AI}} sunk. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Additional Inherited Members}
 
 
@@ -272,7 +297,120 @@ int, 0 for true or 1 for false
 \end{DoxyReturn}
 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_i_a67442b91ef8eed3ea4fad9563cb031f6}\label{class_a_i_a67442b91ef8eed3ea4fad9563cb031f6}} 
+\index{AI@{AI}!m\_contChecker@{m\_contChecker}}
+\index{m\_contChecker@{m\_contChecker}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_contChecker}{m\_contChecker}}
+{\footnotesize\ttfamily bool AI\+::m\+\_\+cont\+Checker\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Keeps track of if the medium \mbox{\hyperlink{class_a_i}{AI}} should continue in a direction, false if they get a miss. 
+
+\mbox{\Hypertarget{class_a_i_a14b5b0af8962672f5d1640d6373ef21b}\label{class_a_i_a14b5b0af8962672f5d1640d6373ef21b}} 
+\index{AI@{AI}!m\_difficulty@{m\_difficulty}}
+\index{m\_difficulty@{m\_difficulty}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_difficulty}{m\_difficulty}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+difficulty\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+0 is easy, 1 is medium, 2 is hard 
+
+\mbox{\Hypertarget{class_a_i_a157aa78be9c5c7dc820f9080c8904f8f}\label{class_a_i_a157aa78be9c5c7dc820f9080c8904f8f}} 
+\index{AI@{AI}!m\_directionTracker@{m\_directionTracker}}
+\index{m\_directionTracker@{m\_directionTracker}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_directionTracker}{m\_directionTracker}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+direction\+Tracker\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+0,1,3,4 up down right left. Tracks clockwise direction for \mbox{\hyperlink{class_a_i}{AI}} Firing in Mediumplay 
+
+\mbox{\Hypertarget{class_a_i_ad394582be727cf23f769af12c4c72c26}\label{class_a_i_ad394582be727cf23f769af12c4c72c26}} 
+\index{AI@{AI}!m\_directionX@{m\_directionX}}
+\index{m\_directionX@{m\_directionX}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_directionX}{m\_directionX}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+directionX\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+direction of x 
+
+\mbox{\Hypertarget{class_a_i_a47478c6b0e59f70344771a5eaf423d03}\label{class_a_i_a47478c6b0e59f70344771a5eaf423d03}} 
+\index{AI@{AI}!m\_directionY@{m\_directionY}}
+\index{m\_directionY@{m\_directionY}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_directionY}{m\_directionY}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+directionY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+y coordinate for \mbox{\hyperlink{class_a_i}{AI}} 
+
+\mbox{\Hypertarget{class_a_i_afb8e675d9667667746e6e29899b7f0f4}\label{class_a_i_afb8e675d9667667746e6e29899b7f0f4}} 
+\index{AI@{AI}!m\_failChecker@{m\_failChecker}}
+\index{m\_failChecker@{m\_failChecker}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_failChecker}{m\_failChecker}}
+{\footnotesize\ttfamily bool AI\+::m\+\_\+fail\+Checker\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ensures that the \mbox{\hyperlink{class_a_i}{AI}} will try to fire again if the current location can\textquotesingle{}t be fired at. 
+
+\mbox{\Hypertarget{class_a_i_abeade07b24db2b1d79e9c2f2fed7efe6}\label{class_a_i_abeade07b24db2b1d79e9c2f2fed7efe6}} 
+\index{AI@{AI}!m\_incNum@{m\_incNum}}
+\index{m\_incNum@{m\_incNum}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_incNum}{m\_incNum}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+inc\+Num\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Increment number for coordinates clockwise around a hit. 
+
+\mbox{\Hypertarget{class_a_i_a0f95cec29282c032d8600d80bd5bd56b}\label{class_a_i_a0f95cec29282c032d8600d80bd5bd56b}} 
+\index{AI@{AI}!m\_initialX@{m\_initialX}}
+\index{m\_initialX@{m\_initialX}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_initialX}{m\_initialX}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+initialX\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire left of last hit. 
+
+x coordinate for \mbox{\hyperlink{class_a_i}{AI}} \mbox{\Hypertarget{class_a_i_ad7603bd41d8b6d8167794058fc58cc98}\label{class_a_i_ad7603bd41d8b6d8167794058fc58cc98}} 
+\index{AI@{AI}!m\_initialY@{m\_initialY}}
+\index{m\_initialY@{m\_initialY}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_initialY}{m\_initialY}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+initialY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+y coordinate for \mbox{\hyperlink{class_a_i}{AI}} 
+
+\mbox{\Hypertarget{class_a_i_a5eb545153045707e42c1cb403b93fa6f}\label{class_a_i_a5eb545153045707e42c1cb403b93fa6f}} 
+\index{AI@{AI}!m\_mediumState@{m\_mediumState}}
+\index{m\_mediumState@{m\_mediumState}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_mediumState}{m\_mediumState}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+medium\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+keeps track of what the medium\+Play should go on the next turn 
+
+\mbox{\Hypertarget{class_a_i_a942dd0bf28a696dabf6d62ebf4a4d476}\label{class_a_i_a942dd0bf28a696dabf6d62ebf4a4d476}} 
+\index{AI@{AI}!m\_oppsShipsSunk@{m\_oppsShipsSunk}}
+\index{m\_oppsShipsSunk@{m\_oppsShipsSunk}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_oppsShipsSunk}{m\_oppsShipsSunk}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+opps\+Ships\+Sunk\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Count of player\textquotesingle{}s ships that \mbox{\hyperlink{class_a_i}{AI}} sunk. 
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{_a_i_8h}{AI.\+h}}\item 
-\mbox{\hyperlink{_a_i_8cpp}{AI.\+cpp}}\end{DoxyCompactItemize}
+code/\mbox{\hyperlink{_a_i_8h}{AI.\+h}}\item 
+code/\mbox{\hyperlink{_a_i_8cpp}{AI.\+cpp}}\end{DoxyCompactItemize}

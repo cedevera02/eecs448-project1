@@ -22,7 +22,14 @@ var classgame =
     [ "switchPlayerPrompt", "classgame.html#ad1b220075e0cd61218f6036ea5e2e31a", null ],
     [ "testPlay", "classgame.html#a596f48ed419efaf3d06eb90ee410722e", null ],
     [ "turnIO", "classgame.html#a2b3c211e2bdb52344a91a2d2cbfdf5c0", null ],
+    [ "m_clearScreenString", "classgame.html#a5a39a435cc59d5baac825539b1566e65", null ],
+    [ "m_gameOver", "classgame.html#abc0de25dd467b5258bcfc29e7bcd362b", null ],
+    [ "m_missileGame", "classgame.html#a9fefd82e8286d0f33516d71abb74100f", null ],
+    [ "m_mode", "classgame.html#ae3fb1b09f4122c62f8cc005b894afbda", null ],
     [ "m_player1", "classgame.html#ad2e89c208618fa5ef6ce18f4eb9a10fb", null ],
     [ "m_player2", "classgame.html#a232f3965333cbaa4b1f540dbf5e43a96", null ],
-    [ "m_player2AI", "classgame.html#a3711874d95557ddbcbfce4b3fef5c63e", null ]
+    [ "m_player2AI", "classgame.html#a3711874d95557ddbcbfce4b3fef5c63e", null ],
+    [ "m_tempX", "classgame.html#af517dab73de1b21a94f449030e228137", null ],
+    [ "m_tempY", "classgame.html#ad7aa1b3abf87eb1abe13122a1df792f6", null ],
+    [ "useMissile", "classgame.html#af72edf5e2a8a2752166909a63a70ebfe", null ]
 ];

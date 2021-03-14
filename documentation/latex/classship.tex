@@ -21,6 +21,19 @@ int \mbox{\hyperlink{classship_a226c3aefd8b4bf033915b49b661f10b2}{get\+XLoc}} ()
 \begin{DoxyCompactList}\small\item\em returns x coordinate of ship when called \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{classship_a895203f3ef14bc38380bfb73be5d6865}{get\+YLoc}} ()
 \begin{DoxyCompactList}\small\item\em returns y coordinate of ship when called \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classship_a81b387b9c53c2bfc3b9a85fb53388a18}{m\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em values from 1-\/6 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classship_a26b7347b83232b061210c97e75c4a8a0}{m\+\_\+orien}}
+\begin{DoxyCompactList}\small\item\em true -\/ horizontal, false -\/ vertical \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_aca9fc33a35fb4dc83f461d02d40cbebe}{m\+\_\+x\+Loc}}
+\begin{DoxyCompactList}\small\item\em values from 0-\/9 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_a110a88c61a0f9d8184a5c42b93c003c4}{m\+\_\+y\+Loc}}
+\begin{DoxyCompactList}\small\item\em values from 0-\/9 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_a1d5e19687325e8f06a1d6da517efad0b}{m\+\_\+ship\+Hit\+Count}}
+\begin{DoxyCompactList}\small\item\em values from 0-\/size, if ship\+Hit\+Count==size then ship is sunk \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -134,7 +147,60 @@ True if ship is sunk, false if not.
 \end{DoxyReturn}
 
 
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classship_a26b7347b83232b061210c97e75c4a8a0}\label{classship_a26b7347b83232b061210c97e75c4a8a0}} 
+\index{ship@{ship}!m\_orien@{m\_orien}}
+\index{m\_orien@{m\_orien}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_orien}{m\_orien}}
+{\footnotesize\ttfamily bool ship\+::m\+\_\+orien\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+true -\/ horizontal, false -\/ vertical 
+
+\mbox{\Hypertarget{classship_a1d5e19687325e8f06a1d6da517efad0b}\label{classship_a1d5e19687325e8f06a1d6da517efad0b}} 
+\index{ship@{ship}!m\_shipHitCount@{m\_shipHitCount}}
+\index{m\_shipHitCount@{m\_shipHitCount}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_shipHitCount}{m\_shipHitCount}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+ship\+Hit\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 0-\/size, if ship\+Hit\+Count==size then ship is sunk 
+
+\mbox{\Hypertarget{classship_a81b387b9c53c2bfc3b9a85fb53388a18}\label{classship_a81b387b9c53c2bfc3b9a85fb53388a18}} 
+\index{ship@{ship}!m\_size@{m\_size}}
+\index{m\_size@{m\_size}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_size}{m\_size}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 1-\/6 
+
+\mbox{\Hypertarget{classship_aca9fc33a35fb4dc83f461d02d40cbebe}\label{classship_aca9fc33a35fb4dc83f461d02d40cbebe}} 
+\index{ship@{ship}!m\_xLoc@{m\_xLoc}}
+\index{m\_xLoc@{m\_xLoc}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_xLoc}{m\_xLoc}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+x\+Loc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 0-\/9 
+
+\mbox{\Hypertarget{classship_a110a88c61a0f9d8184a5c42b93c003c4}\label{classship_a110a88c61a0f9d8184a5c42b93c003c4}} 
+\index{ship@{ship}!m\_yLoc@{m\_yLoc}}
+\index{m\_yLoc@{m\_yLoc}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_yLoc}{m\_yLoc}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+y\+Loc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 0-\/9 
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{ship_8h}{ship.\+h}}\item 
-\mbox{\hyperlink{ship_8cpp}{ship.\+cpp}}\end{DoxyCompactItemize}
+code/\mbox{\hyperlink{ship_8h}{ship.\+h}}\item 
+code/\mbox{\hyperlink{ship_8cpp}{ship.\+cpp}}\end{DoxyCompactItemize}

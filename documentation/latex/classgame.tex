@@ -60,6 +60,23 @@ bool \mbox{\hyperlink{classgame_a7826a9d25c414340025bf9fec0600d44}{overlap}} (in
 \begin{DoxyCompactList}\small\item\em a pointer to a player that will be created at runtime \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_a_i}{AI}} $\ast$ \mbox{\hyperlink{classgame_a3711874d95557ddbcbfce4b3fef5c63e}{m\+\_\+player2\+AI}}
 \begin{DoxyCompactList}\small\item\em a pointer to the \mbox{\hyperlink{class_a_i}{AI}} player that will be created if the user chooses to play with \mbox{\hyperlink{class_a_i}{AI}} \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classgame_abc0de25dd467b5258bcfc29e7bcd362b}{m\+\_\+game\+Over}}
+\begin{DoxyCompactList}\small\item\em true if a winner has been declared \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classgame_a5a39a435cc59d5baac825539b1566e65}{m\+\_\+clear\+Screen\+String}}
+\begin{DoxyCompactList}\small\item\em a string of \char`\"{}\textbackslash{}n\char`\"{}\textquotesingle{}s stored so it only has to be constructed once \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgame_af517dab73de1b21a94f449030e228137}{m\+\_\+tempX}}
+\begin{DoxyCompactList}\small\item\em a variable to store the corrinate for the current turn \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgame_ad7aa1b3abf87eb1abe13122a1df792f6}{m\+\_\+tempY}}
+\begin{DoxyCompactList}\small\item\em a variable to store the corrinate for the current turn \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classgame_af72edf5e2a8a2752166909a63a70ebfe}{use\+Missile}}
+\begin{DoxyCompactList}\small\item\em string that stored player choice of use missile or not \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classgame_a9fefd82e8286d0f33516d71abb74100f}{m\+\_\+missile\+Game}}
+\begin{DoxyCompactList}\small\item\em bool that is true when the game enablers bissles, and false when the special game mode isn\textquotesingle{}t enabled. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classgame_ae3fb1b09f4122c62f8cc005b894afbda}{m\+\_\+mode}}
+\begin{DoxyCompactList}\small\item\em a variable to store the mode of the game (0 for \mbox{\hyperlink{class_a_i}{AI}} off, 1 for \mbox{\hyperlink{class_a_i}{AI}} on) \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -348,6 +365,46 @@ gathers the input for a half turn (only one player goes), sets m\+\_\+shotX and 
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classgame_a5a39a435cc59d5baac825539b1566e65}\label{classgame_a5a39a435cc59d5baac825539b1566e65}} 
+\index{game@{game}!m\_clearScreenString@{m\_clearScreenString}}
+\index{m\_clearScreenString@{m\_clearScreenString}!game@{game}}
+\doxysubsubsection{\texorpdfstring{m\_clearScreenString}{m\_clearScreenString}}
+{\footnotesize\ttfamily std\+::string game\+::m\+\_\+clear\+Screen\+String\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+a string of \char`\"{}\textbackslash{}n\char`\"{}\textquotesingle{}s stored so it only has to be constructed once 
+
+\mbox{\Hypertarget{classgame_abc0de25dd467b5258bcfc29e7bcd362b}\label{classgame_abc0de25dd467b5258bcfc29e7bcd362b}} 
+\index{game@{game}!m\_gameOver@{m\_gameOver}}
+\index{m\_gameOver@{m\_gameOver}!game@{game}}
+\doxysubsubsection{\texorpdfstring{m\_gameOver}{m\_gameOver}}
+{\footnotesize\ttfamily bool game\+::m\+\_\+game\+Over\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+true if a winner has been declared 
+
+\mbox{\Hypertarget{classgame_a9fefd82e8286d0f33516d71abb74100f}\label{classgame_a9fefd82e8286d0f33516d71abb74100f}} 
+\index{game@{game}!m\_missileGame@{m\_missileGame}}
+\index{m\_missileGame@{m\_missileGame}!game@{game}}
+\doxysubsubsection{\texorpdfstring{m\_missileGame}{m\_missileGame}}
+{\footnotesize\ttfamily bool game\+::m\+\_\+missile\+Game\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+bool that is true when the game enablers bissles, and false when the special game mode isn\textquotesingle{}t enabled. 
+
+\mbox{\Hypertarget{classgame_ae3fb1b09f4122c62f8cc005b894afbda}\label{classgame_ae3fb1b09f4122c62f8cc005b894afbda}} 
+\index{game@{game}!m\_mode@{m\_mode}}
+\index{m\_mode@{m\_mode}!game@{game}}
+\doxysubsubsection{\texorpdfstring{m\_mode}{m\_mode}}
+{\footnotesize\ttfamily int game\+::m\+\_\+mode\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+a variable to store the mode of the game (0 for \mbox{\hyperlink{class_a_i}{AI}} off, 1 for \mbox{\hyperlink{class_a_i}{AI}} on) 
+
 \mbox{\Hypertarget{classgame_ad2e89c208618fa5ef6ce18f4eb9a10fb}\label{classgame_ad2e89c208618fa5ef6ce18f4eb9a10fb}} 
 \index{game@{game}!m\_player1@{m\_player1}}
 \index{m\_player1@{m\_player1}!game@{game}}
@@ -378,9 +435,39 @@ a pointer to a player that will be created at runtime
 
 a pointer to the \mbox{\hyperlink{class_a_i}{AI}} player that will be created if the user chooses to play with \mbox{\hyperlink{class_a_i}{AI}} 
 
+\mbox{\Hypertarget{classgame_af517dab73de1b21a94f449030e228137}\label{classgame_af517dab73de1b21a94f449030e228137}} 
+\index{game@{game}!m\_tempX@{m\_tempX}}
+\index{m\_tempX@{m\_tempX}!game@{game}}
+\doxysubsubsection{\texorpdfstring{m\_tempX}{m\_tempX}}
+{\footnotesize\ttfamily int game\+::m\+\_\+tempX\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+a variable to store the corrinate for the current turn 
+
+\mbox{\Hypertarget{classgame_ad7aa1b3abf87eb1abe13122a1df792f6}\label{classgame_ad7aa1b3abf87eb1abe13122a1df792f6}} 
+\index{game@{game}!m\_tempY@{m\_tempY}}
+\index{m\_tempY@{m\_tempY}!game@{game}}
+\doxysubsubsection{\texorpdfstring{m\_tempY}{m\_tempY}}
+{\footnotesize\ttfamily int game\+::m\+\_\+tempY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+a variable to store the corrinate for the current turn 
+
+\mbox{\Hypertarget{classgame_af72edf5e2a8a2752166909a63a70ebfe}\label{classgame_af72edf5e2a8a2752166909a63a70ebfe}} 
+\index{game@{game}!useMissile@{useMissile}}
+\index{useMissile@{useMissile}!game@{game}}
+\doxysubsubsection{\texorpdfstring{useMissile}{useMissile}}
+{\footnotesize\ttfamily std\+::string game\+::use\+Missile\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+string that stored player choice of use missile or not 
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{game_8h}{game.\+h}}\item 
-\mbox{\hyperlink{game_8cpp}{game.\+cpp}}\end{DoxyCompactItemize}
+code/\mbox{\hyperlink{game_8h}{game.\+h}}\item 
+code/\mbox{\hyperlink{game_8cpp}{game.\+cpp}}\end{DoxyCompactItemize}

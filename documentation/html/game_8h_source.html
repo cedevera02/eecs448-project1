@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Project2: game.h Source File</title>
+<title>Project2: code/game.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -24,7 +24,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="ship.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Project2
    </div>
@@ -97,13 +96,13 @@ $(document).ready(function(){initNavTree('game_8h_source.html',''); initResizabl
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="classgame.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="classgame.html">game</a></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;{</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">bool</span> m_gameOver;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    std::string m_clearScreenString;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordtype">int</span> m_tempX;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordtype">int</span> m_tempY;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::string useMissile;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span> m_missileGame;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> m_mode;</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classgame.html#abc0de25dd467b5258bcfc29e7bcd362b">   16</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame.html#abc0de25dd467b5258bcfc29e7bcd362b">m_gameOver</a>;</div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classgame.html#a5a39a435cc59d5baac825539b1566e65">   17</a></span>&#160;    std::string <a class="code" href="classgame.html#a5a39a435cc59d5baac825539b1566e65">m_clearScreenString</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classgame.html#af517dab73de1b21a94f449030e228137">   18</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classgame.html#af517dab73de1b21a94f449030e228137">m_tempX</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classgame.html#ad7aa1b3abf87eb1abe13122a1df792f6">   19</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classgame.html#ad7aa1b3abf87eb1abe13122a1df792f6">m_tempY</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="classgame.html#af72edf5e2a8a2752166909a63a70ebfe">   20</a></span>&#160;    std::string <a class="code" href="classgame.html#af72edf5e2a8a2752166909a63a70ebfe">useMissile</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="classgame.html#a9fefd82e8286d0f33516d71abb74100f">   21</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classgame.html#a9fefd82e8286d0f33516d71abb74100f">m_missileGame</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classgame.html#ae3fb1b09f4122c62f8cc005b894afbda">   22</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classgame.html#ae3fb1b09f4122c62f8cc005b894afbda">m_mode</a>;</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="classgame.html#ad2e89c208618fa5ef6ce18f4eb9a10fb">   25</a></span>&#160;    <a class="code" href="classplayer.html">player</a>* <a class="code" href="classgame.html#ad2e89c208618fa5ef6ce18f4eb9a10fb">m_player1</a>;</div>
@@ -147,20 +146,27 @@ $(document).ready(function(){initNavTree('game_8h_source.html',''); initResizabl
 <div class="ttc" id="aclassgame_html_a3711874d95557ddbcbfce4b3fef5c63e"><div class="ttname"><a href="classgame.html#a3711874d95557ddbcbfce4b3fef5c63e">game::m_player2AI</a></div><div class="ttdeci">AI * m_player2AI</div><div class="ttdoc">a pointer to the AI player that will be created if the user chooses to play with AI</div><div class="ttdef"><b>Definition:</b> game.h:29</div></div>
 <div class="ttc" id="aclassgame_html_a55f336d28ca2902507ac0d527d367aee"><div class="ttname"><a href="classgame.html#a55f336d28ca2902507ac0d527d367aee">game::missilePrompt</a></div><div class="ttdeci">void missilePrompt()</div><div class="ttdoc">asks player if they want to fire a missile shot</div><div class="ttdef"><b>Definition:</b> game.cpp:534</div></div>
 <div class="ttc" id="aclassgame_html_a596f48ed419efaf3d06eb90ee410722e"><div class="ttname"><a href="classgame.html#a596f48ed419efaf3d06eb90ee410722e">game::testPlay</a></div><div class="ttdeci">void testPlay()</div><div class="ttdoc">runs the game but skips the set up to speed up testing</div><div class="ttdef"><b>Definition:</b> game.cpp:100</div></div>
+<div class="ttc" id="aclassgame_html_a5a39a435cc59d5baac825539b1566e65"><div class="ttname"><a href="classgame.html#a5a39a435cc59d5baac825539b1566e65">game::m_clearScreenString</a></div><div class="ttdeci">std::string m_clearScreenString</div><div class="ttdoc">a string of &quot;\n&quot;'s stored so it only has to be constructed once</div><div class="ttdef"><b>Definition:</b> game.h:17</div></div>
 <div class="ttc" id="aclassgame_html_a5e1f254b73ea733154f2e2e26bd38e1e"><div class="ttname"><a href="classgame.html#a5e1f254b73ea733154f2e2e26bd38e1e">game::setUp</a></div><div class="ttdeci">void setUp()</div><div class="ttdoc">get the names of the players and place their ships</div><div class="ttdef"><b>Definition:</b> game.cpp:118</div></div>
 <div class="ttc" id="aclassgame_html_a623c78962559050183a56a05cef85328"><div class="ttname"><a href="classgame.html#a623c78962559050183a56a05cef85328">game::finishSetUpPrompt</a></div><div class="ttdeci">void finishSetUpPrompt()</div><div class="ttdoc">lets the users know set up is complete and the battle is beginning</div><div class="ttdef"><b>Definition:</b> game.cpp:478</div></div>
 <div class="ttc" id="aclassgame_html_a7826a9d25c414340025bf9fec0600d44"><div class="ttname"><a href="classgame.html#a7826a9d25c414340025bf9fec0600d44">game::overlap</a></div><div class="ttdeci">bool overlap(int xcord, int ycord, player *p)</div><div class="ttdoc">checks to see if missile coordinates will have a previous hit</div><div class="ttdef"><b>Definition:</b> game.cpp:624</div></div>
 <div class="ttc" id="aclassgame_html_a9206a20bd361bb620c0418c383cccbea"><div class="ttname"><a href="classgame.html#a9206a20bd361bb620c0418c383cccbea">game::isStringLetter</a></div><div class="ttdeci">bool isStringLetter(std::string s)</div><div class="ttdoc">checks the string to see if it's a letter</div><div class="ttdef"><b>Definition:</b> game.cpp:507</div></div>
 <div class="ttc" id="aclassgame_html_a9b9d4bb04ac81d925b90381a64b50bce"><div class="ttname"><a href="classgame.html#a9b9d4bb04ac81d925b90381a64b50bce">game::clearScreen</a></div><div class="ttdeci">void clearScreen()</div><div class="ttdoc">prints 70 &quot;\n&quot;'s to clear the screen</div><div class="ttdef"><b>Definition:</b> game.cpp:464</div></div>
 <div class="ttc" id="aclassgame_html_a9e03612a7aa64132b09e7badb05489ea"><div class="ttname"><a href="classgame.html#a9e03612a7aa64132b09e7badb05489ea">game::aiShipIO</a></div><div class="ttdeci">void aiShipIO(AI *p)</div><div class="ttdoc">places AI ships</div><div class="ttdef"><b>Definition:</b> game.cpp:284</div></div>
+<div class="ttc" id="aclassgame_html_a9fefd82e8286d0f33516d71abb74100f"><div class="ttname"><a href="classgame.html#a9fefd82e8286d0f33516d71abb74100f">game::m_missileGame</a></div><div class="ttdeci">bool m_missileGame</div><div class="ttdoc">bool that is true when the game enablers bissles, and false when the special game mode isn't enabled.</div><div class="ttdef"><b>Definition:</b> game.h:21</div></div>
 <div class="ttc" id="aclassgame_html_aa26bae8b3bf97ab5576f0c033535c5b3"><div class="ttname"><a href="classgame.html#aa26bae8b3bf97ab5576f0c033535c5b3">game::aiSetUpIO</a></div><div class="ttdeci">int aiSetUpIO()</div><div class="ttdoc">sets up the AI</div><div class="ttdef"><b>Definition:</b> game.cpp:204</div></div>
 <div class="ttc" id="aclassgame_html_aa98abb86d09dc638a58b917cb3d86b28"><div class="ttname"><a href="classgame.html#aa98abb86d09dc638a58b917cb3d86b28">game::closingScreen</a></div><div class="ttdeci">void closingScreen()</div><div class="ttdoc">after a winner has been determined, print a closing screen stating the winner</div><div class="ttdef"><b>Definition:</b> game.cpp:438</div></div>
+<div class="ttc" id="aclassgame_html_abc0de25dd467b5258bcfc29e7bcd362b"><div class="ttname"><a href="classgame.html#abc0de25dd467b5258bcfc29e7bcd362b">game::m_gameOver</a></div><div class="ttdeci">bool m_gameOver</div><div class="ttdoc">true if a winner has been declared</div><div class="ttdef"><b>Definition:</b> game.h:16</div></div>
 <div class="ttc" id="aclassgame_html_ad1b220075e0cd61218f6036ea5e2e31a"><div class="ttname"><a href="classgame.html#ad1b220075e0cd61218f6036ea5e2e31a">game::switchPlayerPrompt</a></div><div class="ttdeci">void switchPlayerPrompt()</div><div class="ttdoc">waits to press enter before switching players</div><div class="ttdef"><b>Definition:</b> game.cpp:470</div></div>
 <div class="ttc" id="aclassgame_html_ad2e89c208618fa5ef6ce18f4eb9a10fb"><div class="ttname"><a href="classgame.html#ad2e89c208618fa5ef6ce18f4eb9a10fb">game::m_player1</a></div><div class="ttdeci">player * m_player1</div><div class="ttdoc">a pointer to a player that will be created at runtime</div><div class="ttdef"><b>Definition:</b> game.h:25</div></div>
+<div class="ttc" id="aclassgame_html_ad7aa1b3abf87eb1abe13122a1df792f6"><div class="ttname"><a href="classgame.html#ad7aa1b3abf87eb1abe13122a1df792f6">game::m_tempY</a></div><div class="ttdeci">int m_tempY</div><div class="ttdoc">a variable to store the corrinate for the current turn</div><div class="ttdef"><b>Definition:</b> game.h:19</div></div>
 <div class="ttc" id="aclassgame_html_ad8e818b95934ff0ad35976227c9a067c"><div class="ttname"><a href="classgame.html#ad8e818b95934ff0ad35976227c9a067c">game::fullTurn</a></div><div class="ttdeci">void fullTurn()</div><div class="ttdoc">a full turn occurs after both players finish their turn</div><div class="ttdef"><b>Definition:</b> game.cpp:314</div></div>
 <div class="ttc" id="aclassgame_html_ad9c102127b5038f880067ad6c9198d38"><div class="ttname"><a href="classgame.html#ad9c102127b5038f880067ad6c9198d38">game::game</a></div><div class="ttdeci">game()</div><div class="ttdoc">game constructor, sets some of the more important variables and helps limit loops.</div><div class="ttdef"><b>Definition:</b> game.cpp:8</div></div>
 <div class="ttc" id="aclassgame_html_ae137c41e122aa7f165a33c4cb291811b"><div class="ttname"><a href="classgame.html#ae137c41e122aa7f165a33c4cb291811b">game::play</a></div><div class="ttdeci">void play()</div><div class="ttdoc">the main game loop</div><div class="ttdef"><b>Definition:</b> game.cpp:41</div></div>
+<div class="ttc" id="aclassgame_html_ae3fb1b09f4122c62f8cc005b894afbda"><div class="ttname"><a href="classgame.html#ae3fb1b09f4122c62f8cc005b894afbda">game::m_mode</a></div><div class="ttdeci">int m_mode</div><div class="ttdoc">a variable to store the mode of the game (0 for AI off, 1 for AI on)</div><div class="ttdef"><b>Definition:</b> game.h:22</div></div>
 <div class="ttc" id="aclassgame_html_ae87abd20c4d8a7906fa48e690a5f1d07"><div class="ttname"><a href="classgame.html#ae87abd20c4d8a7906fa48e690a5f1d07">game::~game</a></div><div class="ttdeci">~game()</div><div class="ttdoc">game deconstrunctor</div><div class="ttdef"><b>Definition:</b> game.cpp:27</div></div>
+<div class="ttc" id="aclassgame_html_af517dab73de1b21a94f449030e228137"><div class="ttname"><a href="classgame.html#af517dab73de1b21a94f449030e228137">game::m_tempX</a></div><div class="ttdeci">int m_tempX</div><div class="ttdoc">a variable to store the corrinate for the current turn</div><div class="ttdef"><b>Definition:</b> game.h:18</div></div>
+<div class="ttc" id="aclassgame_html_af72edf5e2a8a2752166909a63a70ebfe"><div class="ttname"><a href="classgame.html#af72edf5e2a8a2752166909a63a70ebfe">game::useMissile</a></div><div class="ttdeci">std::string useMissile</div><div class="ttdoc">string that stored player choice of use missile or not</div><div class="ttdef"><b>Definition:</b> game.h:20</div></div>
 <div class="ttc" id="aclassplayer_html"><div class="ttname"><a href="classplayer.html">player</a></div><div class="ttdef"><b>Definition:</b> player.h:12</div></div>
 <div class="ttc" id="aplayer_8h_html"><div class="ttname"><a href="player_8h.html">player.h</a></div></div>
 <div class="ttc" id="aship_8h_html"><div class="ttname"><a href="ship_8h.html">ship.h</a></div></div>
@@ -169,7 +175,7 @@ $(document).ready(function(){initNavTree('game_8h_source.html',''); initResizabl
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="game_8h.html">game.h</a></li>
+    <li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="game_8h.html">game.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

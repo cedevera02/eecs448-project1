@@ -24,7 +24,6 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="ship.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">Project2
    </div>
@@ -84,6 +83,7 @@ $(document).ready(function(){initNavTree('class_a_i.html',''); initResizable(); 
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_a_i-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AI Class Reference</div>  </div>
@@ -196,6 +196,42 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a71f4a7507a798c168468a9c63d275317 inherit pub_methods_classplayer"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classplayer.html#a71f4a7507a798c168468a9c63d275317">getMissilesLeft</a> ()</td></tr>
 <tr class="memdesc:a71f4a7507a798c168468a9c63d275317 inherit pub_methods_classplayer"><td class="mdescLeft">&#160;</td><td class="mdescRight">returns m_missilesLeft  <a href="classplayer.html#a71f4a7507a798c168468a9c63d275317">More...</a><br /></td></tr>
 <tr class="separator:a71f4a7507a798c168468a9c63d275317 inherit pub_methods_classplayer"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a0f95cec29282c032d8600d80bd5bd56b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#a0f95cec29282c032d8600d80bd5bd56b">m_initialX</a></td></tr>
+<tr class="memdesc:a0f95cec29282c032d8600d80bd5bd56b"><td class="mdescLeft">&#160;</td><td class="mdescRight">helper method for MediumPlay. Returns true for if <a class="el" href="class_a_i.html">AI</a> can fire left of last hit.  <a href="class_a_i.html#a0f95cec29282c032d8600d80bd5bd56b">More...</a><br /></td></tr>
+<tr class="separator:a0f95cec29282c032d8600d80bd5bd56b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7603bd41d8b6d8167794058fc58cc98"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#ad7603bd41d8b6d8167794058fc58cc98">m_initialY</a></td></tr>
+<tr class="memdesc:ad7603bd41d8b6d8167794058fc58cc98"><td class="mdescLeft">&#160;</td><td class="mdescRight">y coordinate for <a class="el" href="class_a_i.html">AI</a>  <a href="class_a_i.html#ad7603bd41d8b6d8167794058fc58cc98">More...</a><br /></td></tr>
+<tr class="separator:ad7603bd41d8b6d8167794058fc58cc98"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad394582be727cf23f769af12c4c72c26"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#ad394582be727cf23f769af12c4c72c26">m_directionX</a></td></tr>
+<tr class="memdesc:ad394582be727cf23f769af12c4c72c26"><td class="mdescLeft">&#160;</td><td class="mdescRight">direction of x  <a href="class_a_i.html#ad394582be727cf23f769af12c4c72c26">More...</a><br /></td></tr>
+<tr class="separator:ad394582be727cf23f769af12c4c72c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47478c6b0e59f70344771a5eaf423d03"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#a47478c6b0e59f70344771a5eaf423d03">m_directionY</a></td></tr>
+<tr class="memdesc:a47478c6b0e59f70344771a5eaf423d03"><td class="mdescLeft">&#160;</td><td class="mdescRight">y coordinate for <a class="el" href="class_a_i.html">AI</a>  <a href="class_a_i.html#a47478c6b0e59f70344771a5eaf423d03">More...</a><br /></td></tr>
+<tr class="separator:a47478c6b0e59f70344771a5eaf423d03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a157aa78be9c5c7dc820f9080c8904f8f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#a157aa78be9c5c7dc820f9080c8904f8f">m_directionTracker</a></td></tr>
+<tr class="memdesc:a157aa78be9c5c7dc820f9080c8904f8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">0,1,3,4 up down right left. Tracks clockwise direction for <a class="el" href="class_a_i.html">AI</a> Firing in Mediumplay  <a href="class_a_i.html#a157aa78be9c5c7dc820f9080c8904f8f">More...</a><br /></td></tr>
+<tr class="separator:a157aa78be9c5c7dc820f9080c8904f8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14b5b0af8962672f5d1640d6373ef21b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#a14b5b0af8962672f5d1640d6373ef21b">m_difficulty</a></td></tr>
+<tr class="memdesc:a14b5b0af8962672f5d1640d6373ef21b"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 is easy, 1 is medium, 2 is hard  <a href="class_a_i.html#a14b5b0af8962672f5d1640d6373ef21b">More...</a><br /></td></tr>
+<tr class="separator:a14b5b0af8962672f5d1640d6373ef21b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5eb545153045707e42c1cb403b93fa6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#a5eb545153045707e42c1cb403b93fa6f">m_mediumState</a></td></tr>
+<tr class="memdesc:a5eb545153045707e42c1cb403b93fa6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">keeps track of what the mediumPlay should go on the next turn  <a href="class_a_i.html#a5eb545153045707e42c1cb403b93fa6f">More...</a><br /></td></tr>
+<tr class="separator:a5eb545153045707e42c1cb403b93fa6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeade07b24db2b1d79e9c2f2fed7efe6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#abeade07b24db2b1d79e9c2f2fed7efe6">m_incNum</a></td></tr>
+<tr class="memdesc:abeade07b24db2b1d79e9c2f2fed7efe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment number for coordinates clockwise around a hit.  <a href="class_a_i.html#abeade07b24db2b1d79e9c2f2fed7efe6">More...</a><br /></td></tr>
+<tr class="separator:abeade07b24db2b1d79e9c2f2fed7efe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67442b91ef8eed3ea4fad9563cb031f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#a67442b91ef8eed3ea4fad9563cb031f6">m_contChecker</a></td></tr>
+<tr class="memdesc:a67442b91ef8eed3ea4fad9563cb031f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Keeps track of if the medium <a class="el" href="class_a_i.html">AI</a> should continue in a direction, false if they get a miss.  <a href="class_a_i.html#a67442b91ef8eed3ea4fad9563cb031f6">More...</a><br /></td></tr>
+<tr class="separator:a67442b91ef8eed3ea4fad9563cb031f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afb8e675d9667667746e6e29899b7f0f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#afb8e675d9667667746e6e29899b7f0f4">m_failChecker</a></td></tr>
+<tr class="memdesc:afb8e675d9667667746e6e29899b7f0f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ensures that the <a class="el" href="class_a_i.html">AI</a> will try to fire again if the current location can't be fired at.  <a href="class_a_i.html#afb8e675d9667667746e6e29899b7f0f4">More...</a><br /></td></tr>
+<tr class="separator:afb8e675d9667667746e6e29899b7f0f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a942dd0bf28a696dabf6d62ebf4a4d476"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_i.html#a942dd0bf28a696dabf6d62ebf4a4d476">m_oppsShipsSunk</a></td></tr>
+<tr class="memdesc:a942dd0bf28a696dabf6d62ebf4a4d476"><td class="mdescLeft">&#160;</td><td class="mdescRight">Count of player's ships that <a class="el" href="class_a_i.html">AI</a> sunk.  <a href="class_a_i.html#a942dd0bf28a696dabf6d62ebf4a4d476">More...</a><br /></td></tr>
+<tr class="separator:a942dd0bf28a696dabf6d62ebf4a4d476"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -619,9 +655,275 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a67442b91ef8eed3ea4fad9563cb031f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67442b91ef8eed3ea4fad9563cb031f6">&#9670;&nbsp;</a></span>m_contChecker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AI::m_contChecker</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Keeps track of if the medium <a class="el" href="class_a_i.html">AI</a> should continue in a direction, false if they get a miss. </p>
+
+</div>
+</div>
+<a id="a14b5b0af8962672f5d1640d6373ef21b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14b5b0af8962672f5d1640d6373ef21b">&#9670;&nbsp;</a></span>m_difficulty</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_difficulty</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>0 is easy, 1 is medium, 2 is hard </p>
+
+</div>
+</div>
+<a id="a157aa78be9c5c7dc820f9080c8904f8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a157aa78be9c5c7dc820f9080c8904f8f">&#9670;&nbsp;</a></span>m_directionTracker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_directionTracker</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>0,1,3,4 up down right left. Tracks clockwise direction for <a class="el" href="class_a_i.html">AI</a> Firing in Mediumplay </p>
+
+</div>
+</div>
+<a id="ad394582be727cf23f769af12c4c72c26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad394582be727cf23f769af12c4c72c26">&#9670;&nbsp;</a></span>m_directionX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_directionX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>direction of x </p>
+
+</div>
+</div>
+<a id="a47478c6b0e59f70344771a5eaf423d03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47478c6b0e59f70344771a5eaf423d03">&#9670;&nbsp;</a></span>m_directionY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_directionY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>y coordinate for <a class="el" href="class_a_i.html">AI</a> </p>
+
+</div>
+</div>
+<a id="afb8e675d9667667746e6e29899b7f0f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb8e675d9667667746e6e29899b7f0f4">&#9670;&nbsp;</a></span>m_failChecker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AI::m_failChecker</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ensures that the <a class="el" href="class_a_i.html">AI</a> will try to fire again if the current location can't be fired at. </p>
+
+</div>
+</div>
+<a id="abeade07b24db2b1d79e9c2f2fed7efe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeade07b24db2b1d79e9c2f2fed7efe6">&#9670;&nbsp;</a></span>m_incNum</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_incNum</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Increment number for coordinates clockwise around a hit. </p>
+
+</div>
+</div>
+<a id="a0f95cec29282c032d8600d80bd5bd56b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f95cec29282c032d8600d80bd5bd56b">&#9670;&nbsp;</a></span>m_initialX</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_initialX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>helper method for MediumPlay. Returns true for if <a class="el" href="class_a_i.html">AI</a> can fire left of last hit. </p>
+<p>x coordinate for <a class="el" href="class_a_i.html">AI</a> </p>
+
+</div>
+</div>
+<a id="ad7603bd41d8b6d8167794058fc58cc98"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7603bd41d8b6d8167794058fc58cc98">&#9670;&nbsp;</a></span>m_initialY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_initialY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>y coordinate for <a class="el" href="class_a_i.html">AI</a> </p>
+
+</div>
+</div>
+<a id="a5eb545153045707e42c1cb403b93fa6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5eb545153045707e42c1cb403b93fa6f">&#9670;&nbsp;</a></span>m_mediumState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_mediumState</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>keeps track of what the mediumPlay should go on the next turn </p>
+
+</div>
+</div>
+<a id="a942dd0bf28a696dabf6d62ebf4a4d476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a942dd0bf28a696dabf6d62ebf4a4d476">&#9670;&nbsp;</a></span>m_oppsShipsSunk</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int AI::m_oppsShipsSunk</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Count of player's ships that <a class="el" href="class_a_i.html">AI</a> sunk. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li><a class="el" href="_a_i_8h_source.html">AI.h</a></li>
-<li><a class="el" href="_a_i_8cpp.html">AI.cpp</a></li>
+<li>code/<a class="el" href="_a_i_8h_source.html">AI.h</a></li>
+<li>code/<a class="el" href="_a_i_8cpp.html">AI.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
