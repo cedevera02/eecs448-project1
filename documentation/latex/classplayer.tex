@@ -1,0 +1,433 @@
+\hypertarget{classplayer}{}\doxysection{player Class Reference}
+\label{classplayer}\index{player@{player}}
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
+Inheritance diagram for player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classplayer}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classplayer_aa364aedeb9e89f002b392948653706d9}{player}} (std\+::string name, int ship\+Count)
+\begin{DoxyCompactList}\small\item\em player constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classplayer_aab5d2e47b80e0481f09ca0df8b823057}{$\sim$player}} ()
+\begin{DoxyCompactList}\small\item\em player destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classplayer_a97de83bce15f880241f561b55b016b02}{player}} ()
+\begin{DoxyCompactList}\small\item\em player empty constructor \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classplayer_a3072e8562d704b02da6225cebb97cdb3}{build\+And\+Place\+Ship}} (int size, bool orien, int x\+Loc, int y\+Loc)
+\item 
+void \mbox{\hyperlink{classplayer_ac744220af15bd89ecdbbf0ffc1c2a1f3}{player\+Turn}} (int x, int y, bool \mbox{\hyperlink{classplayer_afa55f0565ef57268aaafb22e8d6f89b8}{hit\+Check}})
+\begin{DoxyCompactList}\small\item\em this function updates the player\textquotesingle{}s shot grid \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classplayer_a2425978d14b09f40a3d9aee0ea61cf89}{shoot}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em returns true for valid input, false otherwise \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classplayer_a731854dfb89c51cb1941f18be17e5ace}{update\+Player\+Shot\+At}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em returns \char`\"{}$\ast$$\ast$\+HIT!$\ast$$\ast$\char`\"{}, \char`\"{}$\ast$$\ast$\+Miss$\ast$$\ast$\char`\"{}, \char`\"{}\+Ship of size $<$s$>$ destroyed!\char`\"{}, updates the ships and ship board when the opponent fires \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classplayer_afa55f0565ef57268aaafb22e8d6f89b8}{hit\+Check}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em returns true if hit, false otherwise, this is called when the opponent attacks \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_ac67ae29b249e8a412d09c48fba390d3a}{update\+Ship}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em if the shot is a hit, updates the ships and return the ship size if ship is sunk, returns 0 if not sunk \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classship}{ship}} $\ast$ \mbox{\hyperlink{classplayer_ab104c8f01b62c094d3735acaf1a453ce}{ship\+Identifier}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em returns the ship that occupies the coordinates (x,y) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classplayer_a8490531b4cb3e8d128a6874c774b081d}{loser\+Check}} ()
+\begin{DoxyCompactList}\small\item\em retuns true if the player loses (ship\+Count == sink\+Count), false otherwise \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classplayer_a8e5f728d7c7fd2b0b73879f46adf69f1}{print\+Board}} ()
+\begin{DoxyCompactList}\small\item\em returns the full board of the player \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classplayer_a6e35f06ee65eb2fee0c00605a653a4ca}{print\+Ship\+Board}} ()
+\begin{DoxyCompactList}\small\item\em used in ship\+IO \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_a9a50d3ad6fc068f432c0db262db580d6}{get\+Ship\+Count}} ()
+\begin{DoxyCompactList}\small\item\em returns count of players ships \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_ae8c29502f4cda40a0060fee859c6b0bb}{get\+Sink\+Count}} ()
+\begin{DoxyCompactList}\small\item\em retuns count of players ships that have been sunk \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classplayer_ae37de0e087c9feeee1fb062e6b04c145}{get\+Name}} ()
+\begin{DoxyCompactList}\small\item\em returns players name \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classplayer_abc24b21a7dd00b1134b7b4aa7c7a969b}{use\+Missile}} ()
+\begin{DoxyCompactList}\small\item\em decrements m\+\_\+missiles\+Left by 1 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_a71f4a7507a798c168468a9c63d275317}{get\+Missiles\+Left}} ()
+\begin{DoxyCompactList}\small\item\em returns m\+\_\+missiles\+Left \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classboard}{board}} \mbox{\hyperlink{classplayer_a3a6eb2817fa548c42e0646cc4c47d3a6}{m\+\_\+board}}
+\begin{DoxyCompactList}\small\item\em the board object attatched to the player \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classplayer_a628377063791d7bae76e87e4d8f9aa40}{m\+\_\+name}}
+\begin{DoxyCompactList}\small\item\em the name of the player \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_a240b23316e973e2c7d3c4d3f524af3f7}{m\+\_\+ship\+Count}}
+\begin{DoxyCompactList}\small\item\em how many ships does the player have \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_a201cf7fe89804b44dbfa2f430ff6abb5}{m\+\_\+sink\+Count}}
+\begin{DoxyCompactList}\small\item\em how many of their own ships have been sunk \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classship}{ship}} $\ast$$\ast$ \mbox{\hyperlink{classplayer_ad5d996bca95ee2b0df4126ebebe43fb2}{m\+\_\+ships}}
+\begin{DoxyCompactList}\small\item\em an array of ships \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classplayer_a84093cd4b5dbc6ce1cc5933bf087e63c}{m\+\_\+missiles\+Left}}
+\begin{DoxyCompactList}\small\item\em number of missiles left \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The player class will process most of the player specific inputs.
+
+Each player has many things attributed to them. They have their own shot and ship grids that inform them what they have done. Also this class is capable of determining a winner. It also handles much of what each player does in their turn. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classplayer_aa364aedeb9e89f002b392948653706d9}\label{classplayer_aa364aedeb9e89f002b392948653706d9}} 
+\index{player@{player}!player@{player}}
+\index{player@{player}!player@{player}}
+\doxysubsubsection{\texorpdfstring{player()}{player()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily player\+::player (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{int}]{ship\+Count }\end{DoxyParamCaption})}
+
+
+
+player constructor 
+
+player constructor, initializes member variables to input params.
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & then name of the player, i.\+e \char`\"{}\+John\char`\"{}. \\
+\hline
+{\em ship\+Count} & How many ships the player selects (expected value 1-\/6). \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classplayer_aab5d2e47b80e0481f09ca0df8b823057}\label{classplayer_aab5d2e47b80e0481f09ca0df8b823057}} 
+\index{player@{player}!````~player@{$\sim$player}}
+\index{````~player@{$\sim$player}!player@{player}}
+\doxysubsubsection{\texorpdfstring{$\sim$player()}{~player()}}
+{\footnotesize\ttfamily player\+::$\sim$player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+player destructor 
+
+Simple destructor for the heap allocated array. \mbox{\Hypertarget{classplayer_a97de83bce15f880241f561b55b016b02}\label{classplayer_a97de83bce15f880241f561b55b016b02}} 
+\index{player@{player}!player@{player}}
+\index{player@{player}!player@{player}}
+\doxysubsubsection{\texorpdfstring{player()}{player()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily player\+::player (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+player empty constructor 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classplayer_a3072e8562d704b02da6225cebb97cdb3}\label{classplayer_a3072e8562d704b02da6225cebb97cdb3}} 
+\index{player@{player}!buildAndPlaceShip@{buildAndPlaceShip}}
+\index{buildAndPlaceShip@{buildAndPlaceShip}!player@{player}}
+\doxysubsubsection{\texorpdfstring{buildAndPlaceShip()}{buildAndPlaceShip()}}
+{\footnotesize\ttfamily bool player\+::build\+And\+Place\+Ship (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{bool}]{orien,  }\item[{int}]{x\+Loc,  }\item[{int}]{y\+Loc }\end{DoxyParamCaption})}
+
+Main logic for ships and their placement.
+
+checks for valid input, if valid\+: creates a ship object in the m\+\_\+ships array, then places the ship into the ship\+Grid, does nothing on invalid input. parameters are the same as the constructor. \begin{DoxyReturn}{Returns}
+true -\/ input is valid and ship was placed, false -\/ invalid input. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_a71f4a7507a798c168468a9c63d275317}\label{classplayer_a71f4a7507a798c168468a9c63d275317}} 
+\index{player@{player}!getMissilesLeft@{getMissilesLeft}}
+\index{getMissilesLeft@{getMissilesLeft}!player@{player}}
+\doxysubsubsection{\texorpdfstring{getMissilesLeft()}{getMissilesLeft()}}
+{\footnotesize\ttfamily int player\+::get\+Missiles\+Left (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns m\+\_\+missiles\+Left 
+
+Getter for member variable \begin{DoxyReturn}{Returns}
+int of number of missiles left 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_ae37de0e087c9feeee1fb062e6b04c145}\label{classplayer_ae37de0e087c9feeee1fb062e6b04c145}} 
+\index{player@{player}!getName@{getName}}
+\index{getName@{getName}!player@{player}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily std\+::string player\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns players name 
+
+Getter for member variable \begin{DoxyReturn}{Returns}
+a string of the name of the player 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_a9a50d3ad6fc068f432c0db262db580d6}\label{classplayer_a9a50d3ad6fc068f432c0db262db580d6}} 
+\index{player@{player}!getShipCount@{getShipCount}}
+\index{getShipCount@{getShipCount}!player@{player}}
+\doxysubsubsection{\texorpdfstring{getShipCount()}{getShipCount()}}
+{\footnotesize\ttfamily int player\+::get\+Ship\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns count of players ships 
+
+Getter for member variable \begin{DoxyReturn}{Returns}
+the ship\+Count of the player 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_ae8c29502f4cda40a0060fee859c6b0bb}\label{classplayer_ae8c29502f4cda40a0060fee859c6b0bb}} 
+\index{player@{player}!getSinkCount@{getSinkCount}}
+\index{getSinkCount@{getSinkCount}!player@{player}}
+\doxysubsubsection{\texorpdfstring{getSinkCount()}{getSinkCount()}}
+{\footnotesize\ttfamily int player\+::get\+Sink\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+retuns count of players ships that have been sunk 
+
+returns the count of the players ships that haven been sunk, m\+\_\+sink\+Count
+
+\begin{DoxyReturn}{Returns}
+int, m\+\_\+sink\+Count 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_afa55f0565ef57268aaafb22e8d6f89b8}\label{classplayer_afa55f0565ef57268aaafb22e8d6f89b8}} 
+\index{player@{player}!hitCheck@{hitCheck}}
+\index{hitCheck@{hitCheck}!player@{player}}
+\doxysubsubsection{\texorpdfstring{hitCheck()}{hitCheck()}}
+{\footnotesize\ttfamily bool player\+::hit\+Check (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+returns true if hit, false otherwise, this is called when the opponent attacks 
+
+Checks to see if a shot was a hit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & takes in x coord to check \\
+\hline
+{\em y} & takes in y coord to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if hit, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_a8490531b4cb3e8d128a6874c774b081d}\label{classplayer_a8490531b4cb3e8d128a6874c774b081d}} 
+\index{player@{player}!loserCheck@{loserCheck}}
+\index{loserCheck@{loserCheck}!player@{player}}
+\doxysubsubsection{\texorpdfstring{loserCheck()}{loserCheck()}}
+{\footnotesize\ttfamily bool player\+::loser\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+retuns true if the player loses (ship\+Count == sink\+Count), false otherwise 
+
+checks if the player has lost i.\+e. (ship\+Count == sink\+Count). \begin{DoxyReturn}{Returns}
+true if the player loses (ship\+Count == sink\+Count), false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_ac744220af15bd89ecdbbf0ffc1c2a1f3}\label{classplayer_ac744220af15bd89ecdbbf0ffc1c2a1f3}} 
+\index{player@{player}!playerTurn@{playerTurn}}
+\index{playerTurn@{playerTurn}!player@{player}}
+\doxysubsubsection{\texorpdfstring{playerTurn()}{playerTurn()}}
+{\footnotesize\ttfamily void player\+::player\+Turn (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y,  }\item[{bool}]{hit\+Check }\end{DoxyParamCaption})}
+
+
+
+this function updates the player\textquotesingle{}s shot grid 
+
+returns \char`\"{}\+HIT!\char`\"{}, \char`\"{}\+Miss\char`\"{}, \char`\"{}\+Ship of size $<$s$>$ destroyed!\char`\"{} allows a player to shoot a shot and updates the player\textquotesingle{}s shot grid.
+
+
+\begin{DoxyParams}{Parameters}
+{\em hit\+Check} & from the game class, true is passed in if the shot was a hit, false if miss \\
+\hline
+{\em x} & the x coord that was selected \\
+\hline
+{\em y} & the y coord that was selected \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classplayer_a8e5f728d7c7fd2b0b73879f46adf69f1}\label{classplayer_a8e5f728d7c7fd2b0b73879f46adf69f1}} 
+\index{player@{player}!printBoard@{printBoard}}
+\index{printBoard@{printBoard}!player@{player}}
+\doxysubsubsection{\texorpdfstring{printBoard()}{printBoard()}}
+{\footnotesize\ttfamily std\+::string player\+::print\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns the full board of the player 
+
+gathers the full board of the player. \begin{DoxyReturn}{Returns}
+a string of the formatted board 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_a6e35f06ee65eb2fee0c00605a653a4ca}\label{classplayer_a6e35f06ee65eb2fee0c00605a653a4ca}} 
+\index{player@{player}!printShipBoard@{printShipBoard}}
+\index{printShipBoard@{printShipBoard}!player@{player}}
+\doxysubsubsection{\texorpdfstring{printShipBoard()}{printShipBoard()}}
+{\footnotesize\ttfamily std\+::string player\+::print\+Ship\+Board (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+used in ship\+IO 
+
+gathers the ship board of the player. \begin{DoxyReturn}{Returns}
+a string of the formatted board 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_ab104c8f01b62c094d3735acaf1a453ce}\label{classplayer_ab104c8f01b62c094d3735acaf1a453ce}} 
+\index{player@{player}!shipIdentifier@{shipIdentifier}}
+\index{shipIdentifier@{shipIdentifier}!player@{player}}
+\doxysubsubsection{\texorpdfstring{shipIdentifier()}{shipIdentifier()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classship}{ship}} $\ast$ player\+::ship\+Identifier (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+returns the ship that occupies the coordinates (x,y) 
+
+given a coordinate, find the ship that occupies that coordinate. returns the ship that occupies the coordinates (x,y).
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & takes in x coord to check \\
+\hline
+{\em y} & takes in y coord to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pointer to the ship that occupies the input coordinates 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_a2425978d14b09f40a3d9aee0ea61cf89}\label{classplayer_a2425978d14b09f40a3d9aee0ea61cf89}} 
+\index{player@{player}!shoot@{shoot}}
+\index{shoot@{shoot}!player@{player}}
+\doxysubsubsection{\texorpdfstring{shoot()}{shoot()}}
+{\footnotesize\ttfamily bool player\+::shoot (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+returns true for valid input, false otherwise 
+
+checks for valid input.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & takes in x coord to check \\
+\hline
+{\em y} & takes in y coord to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true for valid input, false otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_a731854dfb89c51cb1941f18be17e5ace}\label{classplayer_a731854dfb89c51cb1941f18be17e5ace}} 
+\index{player@{player}!updatePlayerShotAt@{updatePlayerShotAt}}
+\index{updatePlayerShotAt@{updatePlayerShotAt}!player@{player}}
+\doxysubsubsection{\texorpdfstring{updatePlayerShotAt()}{updatePlayerShotAt()}}
+{\footnotesize\ttfamily std\+::string player\+::update\+Player\+Shot\+At (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+returns \char`\"{}$\ast$$\ast$\+HIT!$\ast$$\ast$\char`\"{}, \char`\"{}$\ast$$\ast$\+Miss$\ast$$\ast$\char`\"{}, \char`\"{}\+Ship of size $<$s$>$ destroyed!\char`\"{}, updates the ships and ship board when the opponent fires 
+
+When a player is attacked, this function updates the ship grid of the player that is being attacked.
+
+during player1\textquotesingle{}s turn, this will be called on player2 to update their board and ships, and get information about the shot. 
+\begin{DoxyParams}{Parameters}
+{\em x} & takes in x coord to update \\
+\hline
+{\em y} & takes in y coord to update \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\char`\"{}$\ast$$\ast$\+HIT!$\ast$$\ast$\char`\"{}, \char`\"{}$\ast$$\ast$\+Miss$\ast$$\ast$\char`\"{}, \char`\"{}\+Ship of size $<$s$>$ destroyed!\char`\"{} 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_ac67ae29b249e8a412d09c48fba390d3a}\label{classplayer_ac67ae29b249e8a412d09c48fba390d3a}} 
+\index{player@{player}!updateShip@{updateShip}}
+\index{updateShip@{updateShip}!player@{player}}
+\doxysubsubsection{\texorpdfstring{updateShip()}{updateShip()}}
+{\footnotesize\ttfamily int player\+::update\+Ship (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+if the shot is a hit, updates the ships and return the ship size if ship is sunk, returns 0 if not sunk 
+
+updates the ships if any have been hit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & takes in x coord to check \\
+\hline
+{\em y} & takes in y coord to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if no ship was sunk, the size of the the hit ship if it was sunk from that turn 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classplayer_abc24b21a7dd00b1134b7b4aa7c7a969b}\label{classplayer_abc24b21a7dd00b1134b7b4aa7c7a969b}} 
+\index{player@{player}!useMissile@{useMissile}}
+\index{useMissile@{useMissile}!player@{player}}
+\doxysubsubsection{\texorpdfstring{useMissile()}{useMissile()}}
+{\footnotesize\ttfamily void player\+::use\+Missile (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+decrements m\+\_\+missiles\+Left by 1 
+
+Decrements m\+\_\+missiles\+Left to indicate missile has been used. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classplayer_a3a6eb2817fa548c42e0646cc4c47d3a6}\label{classplayer_a3a6eb2817fa548c42e0646cc4c47d3a6}} 
+\index{player@{player}!m\_board@{m\_board}}
+\index{m\_board@{m\_board}!player@{player}}
+\doxysubsubsection{\texorpdfstring{m\_board}{m\_board}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classboard}{board}} player\+::m\+\_\+board}
+
+
+
+the board object attatched to the player 
+
+\mbox{\Hypertarget{classplayer_a84093cd4b5dbc6ce1cc5933bf087e63c}\label{classplayer_a84093cd4b5dbc6ce1cc5933bf087e63c}} 
+\index{player@{player}!m\_missilesLeft@{m\_missilesLeft}}
+\index{m\_missilesLeft@{m\_missilesLeft}!player@{player}}
+\doxysubsubsection{\texorpdfstring{m\_missilesLeft}{m\_missilesLeft}}
+{\footnotesize\ttfamily int player\+::m\+\_\+missiles\+Left\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+number of missiles left 
+
+\mbox{\Hypertarget{classplayer_a628377063791d7bae76e87e4d8f9aa40}\label{classplayer_a628377063791d7bae76e87e4d8f9aa40}} 
+\index{player@{player}!m\_name@{m\_name}}
+\index{m\_name@{m\_name}!player@{player}}
+\doxysubsubsection{\texorpdfstring{m\_name}{m\_name}}
+{\footnotesize\ttfamily std\+::string player\+::m\+\_\+name\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+the name of the player 
+
+\mbox{\Hypertarget{classplayer_a240b23316e973e2c7d3c4d3f524af3f7}\label{classplayer_a240b23316e973e2c7d3c4d3f524af3f7}} 
+\index{player@{player}!m\_shipCount@{m\_shipCount}}
+\index{m\_shipCount@{m\_shipCount}!player@{player}}
+\doxysubsubsection{\texorpdfstring{m\_shipCount}{m\_shipCount}}
+{\footnotesize\ttfamily int player\+::m\+\_\+ship\+Count\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+how many ships does the player have 
+
+\mbox{\Hypertarget{classplayer_ad5d996bca95ee2b0df4126ebebe43fb2}\label{classplayer_ad5d996bca95ee2b0df4126ebebe43fb2}} 
+\index{player@{player}!m\_ships@{m\_ships}}
+\index{m\_ships@{m\_ships}!player@{player}}
+\doxysubsubsection{\texorpdfstring{m\_ships}{m\_ships}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classship}{ship}}$\ast$$\ast$ player\+::m\+\_\+ships\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+an array of ships 
+
+\mbox{\Hypertarget{classplayer_a201cf7fe89804b44dbfa2f430ff6abb5}\label{classplayer_a201cf7fe89804b44dbfa2f430ff6abb5}} 
+\index{player@{player}!m\_sinkCount@{m\_sinkCount}}
+\index{m\_sinkCount@{m\_sinkCount}!player@{player}}
+\doxysubsubsection{\texorpdfstring{m\_sinkCount}{m\_sinkCount}}
+{\footnotesize\ttfamily int player\+::m\+\_\+sink\+Count\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+how many of their own ships have been sunk 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{player_8h}{player.\+h}}\item 
+\mbox{\hyperlink{player_8cpp}{player.\+cpp}}\end{DoxyCompactItemize}
