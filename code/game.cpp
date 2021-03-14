@@ -372,13 +372,22 @@ void game::fullTurn()
                     turnIO(m_player2);//gathers input and prints player boards
                     m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
                     std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
-                    
+                    m_gameOver = m_player1-> loserCheck();
+
+                    finishTurnPrompt();
+                    clearScreen();
+                    if(m_gameOver == false) switchPlayerPrompt();
                 }
 
             }else{
                 turnIO(m_player2);//gathers input and prints player boards
                 m_player2 -> playerTurn(m_tempX, m_tempY, m_player1 -> hitCheck(m_tempX, m_tempY));//updates the player's boards and prints the result of the shot
                 std::cout<<m_player1 -> updatePlayerShotAt(m_tempX, m_tempY);//updates the opposing player's boards and prints the result of the shot
+                m_gameOver = m_player1-> loserCheck();
+
+                finishTurnPrompt();
+                clearScreen();
+                if(m_gameOver == false) switchPlayerPrompt();
             }
         }else{
             cout<< m_player2AI -> printBoard();
@@ -386,13 +395,15 @@ void game::fullTurn()
             do{
                 m_player2AI -> aiTurn(m_player1);
             } while (m_player2AI->getFailChecker());
+
+            m_gameOver = m_player1-> loserCheck();
+
+            finishTurnPrompt();
+            clearScreen();
+            if(m_gameOver == false) switchPlayerPrompt();
         }
         
-        m_gameOver = m_player1-> loserCheck();
-
-        finishTurnPrompt();
-        clearScreen();
-        if(m_gameOver == false) switchPlayerPrompt();
+       
     }
 }
 
