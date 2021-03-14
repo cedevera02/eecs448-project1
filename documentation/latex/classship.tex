@@ -1,0 +1,206 @@
+\hypertarget{classship}{}\doxysection{ship Class Reference}
+\label{classship}\index{ship@{ship}}
+
+
+{\ttfamily \#include $<$ship.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classship_a9c784ee34b37120a7cdd262ae0a98be6}{ship}} (int size, bool orien, int x\+Loc, int y\+Loc)
+\begin{DoxyCompactList}\small\item\em ship object constructor, sets ships size, orientation, and position \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classship_af9ba44e00b63764e5e52994fdfee8e2a}{increment\+Ship\+Hit\+Count}} ()
+\begin{DoxyCompactList}\small\item\em increases ship\+Hit\+Count when called \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classship_af5fe0335dd7892576618d829dc2b2919}{sink\+Check}} ()
+\begin{DoxyCompactList}\small\item\em returns true if ship is sunk, false otherwise \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_aa901cc98b317b0870cea9c19b8eaacd1}{get\+Size}} ()
+\begin{DoxyCompactList}\small\item\em returns size of ship when called \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classship_a374edb0aba9ac7cf8bdde97267c6d2c5}{get\+Orien}} ()
+\begin{DoxyCompactList}\small\item\em returns orientation of ship when called \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_a226c3aefd8b4bf033915b49b661f10b2}{get\+XLoc}} ()
+\begin{DoxyCompactList}\small\item\em returns x coordinate of ship when called \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_a895203f3ef14bc38380bfb73be5d6865}{get\+YLoc}} ()
+\begin{DoxyCompactList}\small\item\em returns y coordinate of ship when called \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classship_a81b387b9c53c2bfc3b9a85fb53388a18}{m\+\_\+size}}
+\begin{DoxyCompactList}\small\item\em values from 1-\/6 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classship_a26b7347b83232b061210c97e75c4a8a0}{m\+\_\+orien}}
+\begin{DoxyCompactList}\small\item\em true -\/ horizontal, false -\/ vertical \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_aca9fc33a35fb4dc83f461d02d40cbebe}{m\+\_\+x\+Loc}}
+\begin{DoxyCompactList}\small\item\em values from 0-\/9 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_a110a88c61a0f9d8184a5c42b93c003c4}{m\+\_\+y\+Loc}}
+\begin{DoxyCompactList}\small\item\em values from 0-\/9 \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classship_a1d5e19687325e8f06a1d6da517efad0b}{m\+\_\+ship\+Hit\+Count}}
+\begin{DoxyCompactList}\small\item\em values from 0-\/size, if ship\+Hit\+Count==size then ship is sunk \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Each ship will be placed differently and a class is needed to organize this information.
+
+Ships will each have a size, orientation and coordinates to be stored. As the game progresses they will also take damage and be destroyed. This class helps determine that information so it can be used and altered from different classes such as game. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classship_a9c784ee34b37120a7cdd262ae0a98be6}\label{classship_a9c784ee34b37120a7cdd262ae0a98be6}} 
+\index{ship@{ship}!ship@{ship}}
+\index{ship@{ship}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{ship()}{ship()}}
+{\footnotesize\ttfamily ship\+::ship (\begin{DoxyParamCaption}\item[{int}]{size,  }\item[{bool}]{orien,  }\item[{int}]{x\+Loc,  }\item[{int}]{y\+Loc }\end{DoxyParamCaption})}
+
+
+
+ship object constructor, sets ships size, orientation, and position 
+
+This constructor houses important variables used in player and game.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & This takes in the value (expected to be 1-\/6) for the ship \\
+\hline
+{\em orien} & Horizontal == true, vertical == false \\
+\hline
+{\em x\+Loc} & Marks the upper-\/left coordinate of the ship \\
+\hline
+{\em y\+Loc} & Marks the upper-\/left coordinate of the ship \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classship_a374edb0aba9ac7cf8bdde97267c6d2c5}\label{classship_a374edb0aba9ac7cf8bdde97267c6d2c5}} 
+\index{ship@{ship}!getOrien@{getOrien}}
+\index{getOrien@{getOrien}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{getOrien()}{getOrien()}}
+{\footnotesize\ttfamily bool ship\+::get\+Orien (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns orientation of ship when called 
+
+gets orientation and returns orientation. \begin{DoxyReturn}{Returns}
+the orientation of the ship 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classship_aa901cc98b317b0870cea9c19b8eaacd1}\label{classship_aa901cc98b317b0870cea9c19b8eaacd1}} 
+\index{ship@{ship}!getSize@{getSize}}
+\index{getSize@{getSize}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{getSize()}{getSize()}}
+{\footnotesize\ttfamily int ship\+::get\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns size of ship when called 
+
+Gets size and returns that size. \begin{DoxyReturn}{Returns}
+the size of the ship 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classship_a226c3aefd8b4bf033915b49b661f10b2}\label{classship_a226c3aefd8b4bf033915b49b661f10b2}} 
+\index{ship@{ship}!getXLoc@{getXLoc}}
+\index{getXLoc@{getXLoc}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{getXLoc()}{getXLoc()}}
+{\footnotesize\ttfamily int ship\+::get\+XLoc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns x coordinate of ship when called 
+
+gets x locations and returns it. \begin{DoxyReturn}{Returns}
+the x coordinate of the ship 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classship_a895203f3ef14bc38380bfb73be5d6865}\label{classship_a895203f3ef14bc38380bfb73be5d6865}} 
+\index{ship@{ship}!getYLoc@{getYLoc}}
+\index{getYLoc@{getYLoc}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{getYLoc()}{getYLoc()}}
+{\footnotesize\ttfamily int ship\+::get\+YLoc (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns y coordinate of ship when called 
+
+gets y location and returns it. \begin{DoxyReturn}{Returns}
+the y coordinate of the ship 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classship_af9ba44e00b63764e5e52994fdfee8e2a}\label{classship_af9ba44e00b63764e5e52994fdfee8e2a}} 
+\index{ship@{ship}!incrementShipHitCount@{incrementShipHitCount}}
+\index{incrementShipHitCount@{incrementShipHitCount}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{incrementShipHitCount()}{incrementShipHitCount()}}
+{\footnotesize\ttfamily void ship\+::increment\+Ship\+Hit\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+increases ship\+Hit\+Count when called 
+
+The ship\+Count member will be incremented by one when called. \mbox{\Hypertarget{classship_af5fe0335dd7892576618d829dc2b2919}\label{classship_af5fe0335dd7892576618d829dc2b2919}} 
+\index{ship@{ship}!sinkCheck@{sinkCheck}}
+\index{sinkCheck@{sinkCheck}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{sinkCheck()}{sinkCheck()}}
+{\footnotesize\ttfamily bool ship\+::sink\+Check (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+returns true if ship is sunk, false otherwise 
+
+This will check if the ship is sunk.
+
+\begin{DoxyReturn}{Returns}
+True if ship is sunk, false if not. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classship_a26b7347b83232b061210c97e75c4a8a0}\label{classship_a26b7347b83232b061210c97e75c4a8a0}} 
+\index{ship@{ship}!m\_orien@{m\_orien}}
+\index{m\_orien@{m\_orien}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_orien}{m\_orien}}
+{\footnotesize\ttfamily bool ship\+::m\+\_\+orien\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+true -\/ horizontal, false -\/ vertical 
+
+\mbox{\Hypertarget{classship_a1d5e19687325e8f06a1d6da517efad0b}\label{classship_a1d5e19687325e8f06a1d6da517efad0b}} 
+\index{ship@{ship}!m\_shipHitCount@{m\_shipHitCount}}
+\index{m\_shipHitCount@{m\_shipHitCount}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_shipHitCount}{m\_shipHitCount}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+ship\+Hit\+Count\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 0-\/size, if ship\+Hit\+Count==size then ship is sunk 
+
+\mbox{\Hypertarget{classship_a81b387b9c53c2bfc3b9a85fb53388a18}\label{classship_a81b387b9c53c2bfc3b9a85fb53388a18}} 
+\index{ship@{ship}!m\_size@{m\_size}}
+\index{m\_size@{m\_size}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_size}{m\_size}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+size\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 1-\/6 
+
+\mbox{\Hypertarget{classship_aca9fc33a35fb4dc83f461d02d40cbebe}\label{classship_aca9fc33a35fb4dc83f461d02d40cbebe}} 
+\index{ship@{ship}!m\_xLoc@{m\_xLoc}}
+\index{m\_xLoc@{m\_xLoc}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_xLoc}{m\_xLoc}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+x\+Loc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 0-\/9 
+
+\mbox{\Hypertarget{classship_a110a88c61a0f9d8184a5c42b93c003c4}\label{classship_a110a88c61a0f9d8184a5c42b93c003c4}} 
+\index{ship@{ship}!m\_yLoc@{m\_yLoc}}
+\index{m\_yLoc@{m\_yLoc}!ship@{ship}}
+\doxysubsubsection{\texorpdfstring{m\_yLoc}{m\_yLoc}}
+{\footnotesize\ttfamily int ship\+::m\+\_\+y\+Loc\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+values from 0-\/9 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+code/\mbox{\hyperlink{ship_8h}{ship.\+h}}\item 
+code/\mbox{\hyperlink{ship_8cpp}{ship.\+cpp}}\end{DoxyCompactItemize}

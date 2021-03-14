@@ -1,0 +1,416 @@
+\hypertarget{class_a_i}{}\doxysection{AI Class Reference}
+\label{class_a_i}\index{AI@{AI}}
+
+
+{\ttfamily \#include $<$AI.\+h$>$}
+
+Inheritance diagram for AI\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_a_i}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_a_i_a1b19f4f7fcc27c78d1e013be7bed0c49}{AI}} (int ship\+Count, int difficulty)
+\item 
+\mbox{\hyperlink{class_a_i_a66a8645f0c27285cd75346f2c2bbfb14}{$\sim$\+AI}} ()
+\item 
+void \mbox{\hyperlink{class_a_i_a2bfd1c8bb10dee1df70e2a23d897d0f5}{easy\+Play}} (\mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\item 
+void \mbox{\hyperlink{class_a_i_ab6078e60157c7d9d48b6449809d8dab3}{medium\+Play}} (\mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em If user chooses easy \mbox{\hyperlink{class_a_i}{AI}}, this will be called. \mbox{\hyperlink{class_a_i}{AI}} shoots randomly. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_i_a73aa27bb0c5c21400be7ef08b66df2ba}{hard\+Play}} (\mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em If user chooses medium \mbox{\hyperlink{class_a_i}{AI}}, this will be called. If \mbox{\hyperlink{class_a_i}{AI}} shoots and hits, then \mbox{\hyperlink{class_a_i}{AI}} continues to shoot around that location. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a50f62c34f596f9a73758cb3e053504d8}{random\+Coord}} ()
+\begin{DoxyCompactList}\small\item\em If user chooses hard \mbox{\hyperlink{class_a_i}{AI}}, this will be called. \mbox{\hyperlink{class_a_i}{AI}} knows where ships are and shoot at them. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a8048f1e7fc1faf9ffd78506aaae5dc35}{random\+Orien}} ()
+\begin{DoxyCompactList}\small\item\em creates a random number \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_a_i_a5d32646e10a5f79e62b5b1271f87d86b}{ai\+Turn}} (\mbox{\hyperlink{classplayer}{player}} $\ast$p)
+\begin{DoxyCompactList}\small\item\em creates a random orientation \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a12d5a124cf58192ba8b17b585daa8d43}{get\+Difficulty}} () const
+\begin{DoxyCompactList}\small\item\em this will call the different turn (play) types \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_a9e9d6eb321005dfa4d36739cb1aaef28}{get\+Fail\+Checker}} () const
+\begin{DoxyCompactList}\small\item\em for testing \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_a5bdd1f1604749a994d87711f21569880}{can\+Fire\+Up}} (int x\+Coord, int y\+Coord) const
+\begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns a boolean value for fail\+Checker \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_a22dc163f3d9e22003b4be4b125841161}{can\+Fire\+Right}} (int x\+Coord, int y\+Coord) const
+\begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire above last hit. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_a2a505b16f8be6fc03997ea7b00b4f743}{can\+Fire\+Down}} (int x\+Coord, int y\+Coord) const
+\begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire right of last hit. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_a1fccff1e223fef6781e66b3882e774c8}{can\+Fire\+Left}} (int x\+Coord, int y\+Coord) const
+\begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire below of last hit. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_a_i_a0f95cec29282c032d8600d80bd5bd56b}{m\+\_\+initialX}}
+\begin{DoxyCompactList}\small\item\em helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire left of last hit. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_ad7603bd41d8b6d8167794058fc58cc98}{m\+\_\+initialY}}
+\begin{DoxyCompactList}\small\item\em y coordinate for \mbox{\hyperlink{class_a_i}{AI}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_ad394582be727cf23f769af12c4c72c26}{m\+\_\+directionX}}
+\begin{DoxyCompactList}\small\item\em direction of x \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a47478c6b0e59f70344771a5eaf423d03}{m\+\_\+directionY}}
+\begin{DoxyCompactList}\small\item\em y coordinate for \mbox{\hyperlink{class_a_i}{AI}} \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a157aa78be9c5c7dc820f9080c8904f8f}{m\+\_\+direction\+Tracker}}
+\begin{DoxyCompactList}\small\item\em 0,1,3,4 up down right left. Tracks clockwise direction for \mbox{\hyperlink{class_a_i}{AI}} Firing in Mediumplay \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a14b5b0af8962672f5d1640d6373ef21b}{m\+\_\+difficulty}}
+\begin{DoxyCompactList}\small\item\em 0 is easy, 1 is medium, 2 is hard \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a5eb545153045707e42c1cb403b93fa6f}{m\+\_\+medium\+State}}
+\begin{DoxyCompactList}\small\item\em keeps track of what the medium\+Play should go on the next turn \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_abeade07b24db2b1d79e9c2f2fed7efe6}{m\+\_\+inc\+Num}}
+\begin{DoxyCompactList}\small\item\em Increment number for coordinates clockwise around a hit. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_a67442b91ef8eed3ea4fad9563cb031f6}{m\+\_\+cont\+Checker}}
+\begin{DoxyCompactList}\small\item\em Keeps track of if the medium \mbox{\hyperlink{class_a_i}{AI}} should continue in a direction, false if they get a miss. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_a_i_afb8e675d9667667746e6e29899b7f0f4}{m\+\_\+fail\+Checker}}
+\begin{DoxyCompactList}\small\item\em Ensures that the \mbox{\hyperlink{class_a_i}{AI}} will try to fire again if the current location can\textquotesingle{}t be fired at. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_a_i_a942dd0bf28a696dabf6d62ebf4a4d476}{m\+\_\+opps\+Ships\+Sunk}}
+\begin{DoxyCompactList}\small\item\em Count of player\textquotesingle{}s ships that \mbox{\hyperlink{class_a_i}{AI}} sunk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_a_i}{AI}} is a subclass of the Player class. It instantiates an \mbox{\hyperlink{class_a_i}{AI}} object when user wants to play with \mbox{\hyperlink{class_a_i}{AI}} and handles the \mbox{\hyperlink{class_a_i}{AI}} easy, medium, and hard levels. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_a_i_a1b19f4f7fcc27c78d1e013be7bed0c49}\label{class_a_i_a1b19f4f7fcc27c78d1e013be7bed0c49}} 
+\index{AI@{AI}!AI@{AI}}
+\index{AI@{AI}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{AI()}{AI()}}
+{\footnotesize\ttfamily AI\+::\+AI (\begin{DoxyParamCaption}\item[{int}]{ship\+Count,  }\item[{int}]{difficulty }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_a_i}{AI}} CONSTRUCTOR
+
+
+\begin{DoxyParams}{Parameters}
+{\em ship\+Count} & Takes in the amount of ships chosen for game play \\
+\hline
+{\em difficulty} & 0 = easy, 1= medium, 2 = hard. \mbox{\hyperlink{class_a_i}{AI}} difficulty \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i_a66a8645f0c27285cd75346f2c2bbfb14}\label{class_a_i_a66a8645f0c27285cd75346f2c2bbfb14}} 
+\index{AI@{AI}!````~AI@{$\sim$AI}}
+\index{````~AI@{$\sim$AI}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{$\sim$AI()}{~AI()}}
+{\footnotesize\ttfamily AI\+::$\sim$\+AI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\hyperlink{class_a_i}{AI}} DESTRUCTOR
+
+Simple destructor for the heap allocated array (located in Player Class) 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_a_i_a5d32646e10a5f79e62b5b1271f87d86b}\label{class_a_i_a5d32646e10a5f79e62b5b1271f87d86b}} 
+\index{AI@{AI}!aiTurn@{aiTurn}}
+\index{aiTurn@{aiTurn}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{aiTurn()}{aiTurn()}}
+{\footnotesize\ttfamily void AI\+::ai\+Turn (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+creates a random orientation 
+
+function to call to run the \mbox{\hyperlink{class_a_i}{AI}} at the choosen difficulty based off the m\+\_\+difficulty variable 
+\begin{DoxyParams}{Parameters}
+{\em p,the} & pointer to player 1 object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i_a2a505b16f8be6fc03997ea7b00b4f743}\label{class_a_i_a2a505b16f8be6fc03997ea7b00b4f743}} 
+\index{AI@{AI}!canFireDown@{canFireDown}}
+\index{canFireDown@{canFireDown}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{canFireDown()}{canFireDown()}}
+{\footnotesize\ttfamily bool AI\+::can\+Fire\+Down (\begin{DoxyParamCaption}\item[{int}]{x\+Coord,  }\item[{int}]{y\+Coord }\end{DoxyParamCaption}) const}
+
+
+
+helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire right of last hit. 
+
+check for medium \mbox{\hyperlink{class_a_i}{AI}} to see if they can fire below a hit 
+\begin{DoxyParams}{Parameters}
+{\em x\+Coord,x} & coordinate of the coordinate to fire \\
+\hline
+{\em y\+Coord,y} & coordinate of the coordinate to fire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if can fire, else return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_a1fccff1e223fef6781e66b3882e774c8}\label{class_a_i_a1fccff1e223fef6781e66b3882e774c8}} 
+\index{AI@{AI}!canFireLeft@{canFireLeft}}
+\index{canFireLeft@{canFireLeft}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{canFireLeft()}{canFireLeft()}}
+{\footnotesize\ttfamily bool AI\+::can\+Fire\+Left (\begin{DoxyParamCaption}\item[{int}]{x\+Coord,  }\item[{int}]{y\+Coord }\end{DoxyParamCaption}) const}
+
+
+
+helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire below of last hit. 
+
+check for medium \mbox{\hyperlink{class_a_i}{AI}} to see if they can fire to the left of a hit 
+\begin{DoxyParams}{Parameters}
+{\em x\+Coord,x} & coordinate of the coordinate to fire \\
+\hline
+{\em y\+Coord,y} & coordinate of the coordinate to fire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if can fire, else return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_a22dc163f3d9e22003b4be4b125841161}\label{class_a_i_a22dc163f3d9e22003b4be4b125841161}} 
+\index{AI@{AI}!canFireRight@{canFireRight}}
+\index{canFireRight@{canFireRight}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{canFireRight()}{canFireRight()}}
+{\footnotesize\ttfamily bool AI\+::can\+Fire\+Right (\begin{DoxyParamCaption}\item[{int}]{x\+Coord,  }\item[{int}]{y\+Coord }\end{DoxyParamCaption}) const}
+
+
+
+helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire above last hit. 
+
+check for medium \mbox{\hyperlink{class_a_i}{AI}} to see if they can fire to the right of a hit 
+\begin{DoxyParams}{Parameters}
+{\em x\+Coord,x} & coordinate of the coordinate to fire \\
+\hline
+{\em y\+Coord,y} & coordinate of the coordinate to fire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if can fire, else return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_a5bdd1f1604749a994d87711f21569880}\label{class_a_i_a5bdd1f1604749a994d87711f21569880}} 
+\index{AI@{AI}!canFireUp@{canFireUp}}
+\index{canFireUp@{canFireUp}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{canFireUp()}{canFireUp()}}
+{\footnotesize\ttfamily bool AI\+::can\+Fire\+Up (\begin{DoxyParamCaption}\item[{int}]{x\+Coord,  }\item[{int}]{y\+Coord }\end{DoxyParamCaption}) const}
+
+
+
+helper method for Medium\+Play. Returns a boolean value for fail\+Checker 
+
+check for medium \mbox{\hyperlink{class_a_i}{AI}} to see if they can fire above a hit 
+\begin{DoxyParams}{Parameters}
+{\em x\+Coord,x} & coordinate of the coordinate to fire \\
+\hline
+{\em y\+Coord,y} & coordinate of the coordinate to fire \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if can fire, else return false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_a2bfd1c8bb10dee1df70e2a23d897d0f5}\label{class_a_i_a2bfd1c8bb10dee1df70e2a23d897d0f5}} 
+\index{AI@{AI}!easyPlay@{easyPlay}}
+\index{easyPlay@{easyPlay}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{easyPlay()}{easyPlay()}}
+{\footnotesize\ttfamily void AI\+::easy\+Play (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+This method is the shot action of the \mbox{\hyperlink{class_a_i}{AI}} when the user chooses easy difficulty. Easy play shoots at random coordinates.
+
+
+\begin{DoxyParams}{Parameters}
+{\em p,the} & pointer to player one object ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i_a12d5a124cf58192ba8b17b585daa8d43}\label{class_a_i_a12d5a124cf58192ba8b17b585daa8d43}} 
+\index{AI@{AI}!getDifficulty@{getDifficulty}}
+\index{getDifficulty@{getDifficulty}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{getDifficulty()}{getDifficulty()}}
+{\footnotesize\ttfamily int AI\+::get\+Difficulty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+this will call the different turn (play) types 
+
+METHODS
+
+This gets the difficulty and returns it. \begin{DoxyReturn}{Returns}
+Returns the difficulty level of \mbox{\hyperlink{class_a_i}{AI}} (0= easy; 1= medium; 2= hard) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_a9e9d6eb321005dfa4d36739cb1aaef28}\label{class_a_i_a9e9d6eb321005dfa4d36739cb1aaef28}} 
+\index{AI@{AI}!getFailChecker@{getFailChecker}}
+\index{getFailChecker@{getFailChecker}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{getFailChecker()}{getFailChecker()}}
+{\footnotesize\ttfamily bool AI\+::get\+Fail\+Checker (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+for testing 
+
+Helper function to return the value of m\+\_\+fail\+Checker. \mbox{\Hypertarget{class_a_i_a73aa27bb0c5c21400be7ef08b66df2ba}\label{class_a_i_a73aa27bb0c5c21400be7ef08b66df2ba}} 
+\index{AI@{AI}!hardPlay@{hardPlay}}
+\index{hardPlay@{hardPlay}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{hardPlay()}{hardPlay()}}
+{\footnotesize\ttfamily void AI\+::hard\+Play (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+If user chooses medium \mbox{\hyperlink{class_a_i}{AI}}, this will be called. If \mbox{\hyperlink{class_a_i}{AI}} shoots and hits, then \mbox{\hyperlink{class_a_i}{AI}} continues to shoot around that location. 
+
+function called when \mbox{\hyperlink{class_a_i}{AI}} is meant to play at hard difficulty level
+
+In hard play the \mbox{\hyperlink{class_a_i}{AI}} knows exactly where every opponent ship is and hits them systematically. 
+\begin{DoxyParams}{Parameters}
+{\em p,the} & pointer to player 1 object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i_ab6078e60157c7d9d48b6449809d8dab3}\label{class_a_i_ab6078e60157c7d9d48b6449809d8dab3}} 
+\index{AI@{AI}!mediumPlay@{mediumPlay}}
+\index{mediumPlay@{mediumPlay}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{mediumPlay()}{mediumPlay()}}
+{\footnotesize\ttfamily void AI\+::medium\+Play (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classplayer}{player}} $\ast$}]{p }\end{DoxyParamCaption})}
+
+
+
+If user chooses easy \mbox{\hyperlink{class_a_i}{AI}}, this will be called. \mbox{\hyperlink{class_a_i}{AI}} shoots randomly. 
+
+function is called when \mbox{\hyperlink{class_a_i}{AI}} is meant to play at the medium difficulty level
+
+pass in player one to these
+
+The \mbox{\hyperlink{class_a_i}{AI}} fires randomly, once the \mbox{\hyperlink{class_a_i}{AI}} makes a hit it starts to hit in clockwise direction starting above the original hit and moves out until a ship is sunk. 
+\begin{DoxyParams}{Parameters}
+{\em p,the} & pointer to player 1 object \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_a_i_a50f62c34f596f9a73758cb3e053504d8}\label{class_a_i_a50f62c34f596f9a73758cb3e053504d8}} 
+\index{AI@{AI}!randomCoord@{randomCoord}}
+\index{randomCoord@{randomCoord}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{randomCoord()}{randomCoord()}}
+{\footnotesize\ttfamily int AI\+::random\+Coord (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+If user chooses hard \mbox{\hyperlink{class_a_i}{AI}}, this will be called. \mbox{\hyperlink{class_a_i}{AI}} knows where ships are and shoot at them. 
+
+random cooordinate generator for random ship placement and fire \begin{DoxyReturn}{Returns}
+int, number from 0 to 10 to represent the coordinates on the boards 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_a_i_a8048f1e7fc1faf9ffd78506aaae5dc35}\label{class_a_i_a8048f1e7fc1faf9ffd78506aaae5dc35}} 
+\index{AI@{AI}!randomOrien@{randomOrien}}
+\index{randomOrien@{randomOrien}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{randomOrien()}{randomOrien()}}
+{\footnotesize\ttfamily int AI\+::random\+Orien (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+creates a random number 
+
+random orientation generator, 0 (true) for horizontal and 1 (false) for vertical \begin{DoxyReturn}{Returns}
+int, 0 for true or 1 for false 
+\end{DoxyReturn}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_a_i_a67442b91ef8eed3ea4fad9563cb031f6}\label{class_a_i_a67442b91ef8eed3ea4fad9563cb031f6}} 
+\index{AI@{AI}!m\_contChecker@{m\_contChecker}}
+\index{m\_contChecker@{m\_contChecker}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_contChecker}{m\_contChecker}}
+{\footnotesize\ttfamily bool AI\+::m\+\_\+cont\+Checker\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Keeps track of if the medium \mbox{\hyperlink{class_a_i}{AI}} should continue in a direction, false if they get a miss. 
+
+\mbox{\Hypertarget{class_a_i_a14b5b0af8962672f5d1640d6373ef21b}\label{class_a_i_a14b5b0af8962672f5d1640d6373ef21b}} 
+\index{AI@{AI}!m\_difficulty@{m\_difficulty}}
+\index{m\_difficulty@{m\_difficulty}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_difficulty}{m\_difficulty}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+difficulty\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+0 is easy, 1 is medium, 2 is hard 
+
+\mbox{\Hypertarget{class_a_i_a157aa78be9c5c7dc820f9080c8904f8f}\label{class_a_i_a157aa78be9c5c7dc820f9080c8904f8f}} 
+\index{AI@{AI}!m\_directionTracker@{m\_directionTracker}}
+\index{m\_directionTracker@{m\_directionTracker}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_directionTracker}{m\_directionTracker}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+direction\+Tracker\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+0,1,3,4 up down right left. Tracks clockwise direction for \mbox{\hyperlink{class_a_i}{AI}} Firing in Mediumplay 
+
+\mbox{\Hypertarget{class_a_i_ad394582be727cf23f769af12c4c72c26}\label{class_a_i_ad394582be727cf23f769af12c4c72c26}} 
+\index{AI@{AI}!m\_directionX@{m\_directionX}}
+\index{m\_directionX@{m\_directionX}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_directionX}{m\_directionX}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+directionX\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+direction of x 
+
+\mbox{\Hypertarget{class_a_i_a47478c6b0e59f70344771a5eaf423d03}\label{class_a_i_a47478c6b0e59f70344771a5eaf423d03}} 
+\index{AI@{AI}!m\_directionY@{m\_directionY}}
+\index{m\_directionY@{m\_directionY}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_directionY}{m\_directionY}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+directionY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+y coordinate for \mbox{\hyperlink{class_a_i}{AI}} 
+
+\mbox{\Hypertarget{class_a_i_afb8e675d9667667746e6e29899b7f0f4}\label{class_a_i_afb8e675d9667667746e6e29899b7f0f4}} 
+\index{AI@{AI}!m\_failChecker@{m\_failChecker}}
+\index{m\_failChecker@{m\_failChecker}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_failChecker}{m\_failChecker}}
+{\footnotesize\ttfamily bool AI\+::m\+\_\+fail\+Checker\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Ensures that the \mbox{\hyperlink{class_a_i}{AI}} will try to fire again if the current location can\textquotesingle{}t be fired at. 
+
+\mbox{\Hypertarget{class_a_i_abeade07b24db2b1d79e9c2f2fed7efe6}\label{class_a_i_abeade07b24db2b1d79e9c2f2fed7efe6}} 
+\index{AI@{AI}!m\_incNum@{m\_incNum}}
+\index{m\_incNum@{m\_incNum}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_incNum}{m\_incNum}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+inc\+Num\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Increment number for coordinates clockwise around a hit. 
+
+\mbox{\Hypertarget{class_a_i_a0f95cec29282c032d8600d80bd5bd56b}\label{class_a_i_a0f95cec29282c032d8600d80bd5bd56b}} 
+\index{AI@{AI}!m\_initialX@{m\_initialX}}
+\index{m\_initialX@{m\_initialX}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_initialX}{m\_initialX}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+initialX\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+helper method for Medium\+Play. Returns true for if \mbox{\hyperlink{class_a_i}{AI}} can fire left of last hit. 
+
+x coordinate for \mbox{\hyperlink{class_a_i}{AI}} \mbox{\Hypertarget{class_a_i_ad7603bd41d8b6d8167794058fc58cc98}\label{class_a_i_ad7603bd41d8b6d8167794058fc58cc98}} 
+\index{AI@{AI}!m\_initialY@{m\_initialY}}
+\index{m\_initialY@{m\_initialY}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_initialY}{m\_initialY}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+initialY\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+y coordinate for \mbox{\hyperlink{class_a_i}{AI}} 
+
+\mbox{\Hypertarget{class_a_i_a5eb545153045707e42c1cb403b93fa6f}\label{class_a_i_a5eb545153045707e42c1cb403b93fa6f}} 
+\index{AI@{AI}!m\_mediumState@{m\_mediumState}}
+\index{m\_mediumState@{m\_mediumState}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_mediumState}{m\_mediumState}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+medium\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+keeps track of what the medium\+Play should go on the next turn 
+
+\mbox{\Hypertarget{class_a_i_a942dd0bf28a696dabf6d62ebf4a4d476}\label{class_a_i_a942dd0bf28a696dabf6d62ebf4a4d476}} 
+\index{AI@{AI}!m\_oppsShipsSunk@{m\_oppsShipsSunk}}
+\index{m\_oppsShipsSunk@{m\_oppsShipsSunk}!AI@{AI}}
+\doxysubsubsection{\texorpdfstring{m\_oppsShipsSunk}{m\_oppsShipsSunk}}
+{\footnotesize\ttfamily int AI\+::m\+\_\+opps\+Ships\+Sunk\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Count of player\textquotesingle{}s ships that \mbox{\hyperlink{class_a_i}{AI}} sunk. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+code/\mbox{\hyperlink{_a_i_8h}{AI.\+h}}\item 
+code/\mbox{\hyperlink{_a_i_8cpp}{AI.\+cpp}}\end{DoxyCompactItemize}
